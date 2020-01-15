@@ -5,9 +5,41 @@ import copy
 # number of motif
 
 Nm = 8
-Node_num = 23
+Node_num = 347
 
 edge_adj = [['0' for i in range(Node_num)] for j in range(Node_num)]
+
+
+def countEdge(grapgfile):
+    A, nodN = read_adjMatrix(grapgfile)
+    rd = np.argsort(sum(np.transpose(A)))
+    rdA = A[rd]
+    rdA[:, ] = rdA[:, rd]
+    for i in range(nodN):
+        rdA[i][i] = 0
+    # print  "graph %d number of nodes:"% i,nodN
+
+    Nm_1 = count_chain(rdA, nodN, 2, 1)
+    print(1)
+    Nm_2 = count_chain(rdA, nodN, 3, 2)
+    print(2)
+    Nm_3 = count_poly_edge(rdA, nodN)
+    print(3)
+    Nm_4 = count_chain(rdA, nodN, 4, 4)
+    print(4)
+    Nm_5 = count_star(rdA, nodN, 3, 5)
+    print(5)
+    Nm_6 = count_poly_qua(rdA, nodN)
+    print(6)
+    Nm_7 = count_chain(rdA, nodN, 5, 7)
+    print(7)
+    Nm_8 = count_star(rdA, nodN, 4, 8)
+    print(8)
+
+    edge_adj_matrix = np.array(edge_adj)
+    return edge_adj_matrix
+    #np.savetxt('./count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+
 
 # for i in range(Node_num):
 #     for j in range(Node_num):
@@ -15,8 +47,8 @@ edge_adj = [['0' for i in range(Node_num)] for j in range(Node_num)]
 #         edge_adj[i][j] += str(Nm)
 
 
-def read_adjMatrix():
-    array = open('./../data/mutag/graph_1.csv').readlines()
+def read_adjMatrix(graphfile):
+    array = open(graphfile).readlines()
     N = len(array)
     matrix = []
     for line in array:
@@ -67,7 +99,7 @@ def find_next(a,N,i,rest,motif):
             x = np.nonzero(a[i])
             a[i].fill(0)
             next_Index = x[0][0]
-            "存在边，边属于哪个模体"
+            # "存在边，边属于哪个模体"
             m = int(next_Index)
             edge_adj[i][m] += str(motif)
             edge_adj[m][i] += str(motif)
@@ -161,8 +193,6 @@ def count_poly_qua(A, N):
     return 0
 
 
-
-
 # with open("CountMotif_web.csv", "wb") as fc:
 #      csvWriter = csv.writer(fc)
 #      for i in range(Ng):
@@ -171,32 +201,3 @@ def count_poly_qua(A, N):
 #         csvWriter.writerow(count_Motifs(i+1))
 #         fc.close
 
-
-A,nodN=read_adjMatrix()
-rd=np.argsort(sum(np.transpose(A)))
-rdA=A[rd]
-rdA[:,]=rdA[:,rd]
-for i in range(nodN):
-    rdA[i][i] = 0
-# print  "graph %d number of nodes:"% i,nodN
-
-
-Nm_1=count_chain(rdA,nodN,2,1)
-print(1)
-Nm_2=count_chain(rdA,nodN,3,2)
-print(2)
-Nm_3= count_poly_edge(rdA, nodN)
-print(3)
-Nm_4=count_chain(rdA,nodN,4,4)
-print(4)
-Nm_5=count_star(rdA,nodN,3,5)
-print(5)
-Nm_6=count_poly_qua(rdA, nodN)
-print(6)
-Nm_7=count_chain(rdA,nodN,5,7)
-print(7)
-Nm_8=count_star(rdA,nodN,4,8)
-print(8)
-
-edge_adj_matrix = np.array(edge_adj)
-np.savetxt('./../data/count_edge_mutag.csv', edge_adj_matrix, delimiter=",", fmt='%s')

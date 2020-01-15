@@ -8,15 +8,14 @@ import importlib
 
 from dgl.data import register_data_args
 
-from utils.inits import to_cuda
-from utils.io import print_graph_stats, read_params, create_default_path, remove_model
-
 from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES
 from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
 from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
 from core.models.model import Model
 from core.app import App
 
+from utils.inits import to_cuda
+from utils.io import print_graph_stats, read_params, create_default_path, remove_model
 
 MODULE = 'core.data.{}'
 AVAILABLE_DATASETS = {
