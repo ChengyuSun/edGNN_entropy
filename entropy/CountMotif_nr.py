@@ -3,6 +3,7 @@ import numpy as np
 import csv
 import copy
 import pandas as pd
+import xlrd
 # number of motif
 
 Nm = 8
@@ -22,6 +23,7 @@ def read_adjMatrix(graphfile):
     return matrix,N
 
 def countMotifs(graphfile):
+
     A,nodN=read_adjMatrix(graphfile)
     rd=np.argsort(sum(np.transpose(A)))
     rdA=A[rd]
@@ -134,8 +136,6 @@ def writeMotifNumber(graphfile):
         fc.close
         return
 
-for i in range(1):
-    countMotifs('./data/graph'+str(i+1)+'.xlsx')
 
 
 

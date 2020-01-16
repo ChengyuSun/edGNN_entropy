@@ -8,7 +8,7 @@ Nm=8
 Nn=347
 
 def get_Amount_of_Motif():
-    array=open('./CountMotif.csv').readlines()
+    array=open('./data2/CountMotif.csv').readlines()
     matrix=[]
     for line in array:
         line=line.strip('\r\n').split(',')

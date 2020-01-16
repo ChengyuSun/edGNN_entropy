@@ -1,6 +1,5 @@
 import numpy as np
 
-
 def edgeEntropy(entropyVactor,edge_adj_matrix):
     #count_edge_file = "./count_edge_.csv"
     edge_entropy_file = "./data2/edge_entropy.csv"

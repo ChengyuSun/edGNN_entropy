@@ -10,37 +10,6 @@ Node_num = 347
 edge_adj = [['0' for i in range(Node_num)] for j in range(Node_num)]
 
 
-def countEdge(grapgfile):
-    A, nodN = read_adjMatrix(grapgfile)
-    rd = np.argsort(sum(np.transpose(A)))
-    rdA = A[rd]
-    rdA[:, ] = rdA[:, rd]
-    for i in range(nodN):
-        rdA[i][i] = 0
-    # print  "graph %d number of nodes:"% i,nodN
-
-    Nm_1 = count_chain(rdA, nodN, 2, 1)
-    print(1)
-    Nm_2 = count_chain(rdA, nodN, 3, 2)
-    print(2)
-    Nm_3 = count_poly_edge(rdA, nodN)
-    print(3)
-    Nm_4 = count_chain(rdA, nodN, 4, 4)
-    print(4)
-    Nm_5 = count_star(rdA, nodN, 3, 5)
-    print(5)
-    Nm_6 = count_poly_qua(rdA, nodN)
-    print(6)
-    Nm_7 = count_chain(rdA, nodN, 5, 7)
-    print(7)
-    Nm_8 = count_star(rdA, nodN, 4, 8)
-    print(8)
-
-    edge_adj_matrix = np.array(edge_adj)
-    return edge_adj_matrix
-    #np.savetxt('./count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
-
-
 # for i in range(Node_num):
 #     for j in range(Node_num):
 #         print type(i)
@@ -193,11 +162,35 @@ def count_poly_qua(A, N):
     return 0
 
 
-# with open("CountMotif_web.csv", "wb") as fc:
-#      csvWriter = csv.writer(fc)
-#      for i in range(Ng):
-#         if i%10==0:
-#             print i
-#         csvWriter.writerow(count_Motifs(i+1))
-#         fc.close
+def countEdge(grapgfile):
+    A, nodN = read_adjMatrix(grapgfile)
+    rd = np.argsort(sum(np.transpose(A)))
+    rdA = A[rd]
+    rdA[:, ] = rdA[:, rd]
+    for i in range(nodN):
+        rdA[i][i] = 0
+    # print  "graph %d number of nodes:"% i,nodN
 
+    Nm_1 = count_chain(rdA, nodN, 2, 1)
+    print(1)
+    Nm_2 = count_chain(rdA, nodN, 3, 2)
+    print(2)
+    Nm_3 = count_poly_edge(rdA, nodN)
+    print(3)
+    Nm_4 = count_chain(rdA, nodN, 4, 4)
+    print(4)
+    Nm_5 = count_star(rdA, nodN, 3, 5)
+    print(5)
+    Nm_6 = count_poly_qua(rdA, nodN)
+    print(6)
+    Nm_7 = count_chain(rdA, nodN, 5, 7)
+    print(7)
+    Nm_8 = count_star(rdA, nodN, 4, 8)
+    print(8)
+
+    edge_adj_matrix = np.array(edge_adj)
+    np.savetxt('./count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+    return edge_adj_matrix
+
+
+print(countEdge('./data2/graphfile.csv'))

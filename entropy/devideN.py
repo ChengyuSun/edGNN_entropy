@@ -17,7 +17,7 @@ def devide(N):
         n[i][i]=1
     return n
 dN_matrix=devide(Nn)
-with open("devide_"+str(Nn)+"_Nodes.csv","w") as fc:
+with open("./data2/devide_"+str(Nn)+"_Nodes.csv","w") as fc:
     csvWriter=csv.writer(fc)
     for i in range(Nn):
         csvWriter.writerow([sum(dN_matrix[i])])
