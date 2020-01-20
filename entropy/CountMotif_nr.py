@@ -126,7 +126,7 @@ def count_triangle(A3,N):
     return n
 
 def count_polygon0(num,edges):
-    n=num/edges
+    n=num//edges
     return n
 
 def writeMotifNumber(graphfile):

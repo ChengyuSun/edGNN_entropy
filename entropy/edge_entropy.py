@@ -1,21 +1,16 @@
 import numpy as np
 
-def edgeEntropy(entropyVactor,edge_adj_matrix):
-    #count_edge_file = "./count_edge_.csv"
-    edge_entropy_file = "./data2/edge_entropy.csv"
-
+def edgeEntropy(entropyVactor):
+    count_edge_file = "./data2/count_edge.csv"
     # f2 = open(entropyfilename, "r").readlines()
     # for line in f2:
     #     vector = [float(x) for x in line.split(",")]
     # print(vector)
     vector=entropyVactor
-
-
     number_vector = [1, 2, 3, 3, 3, 4, 4, 4]
 
-    # f = open(count_edge_file, "r")
-    # lines = f.readlines()
-    lines=edge_adj_matrix
+    f = open(count_edge_file, "r")
+    lines = f.readlines()
     Node = len(lines)
 
     edge_entropy_matrix = np.zeros((Node, Node), np.float)
@@ -38,5 +33,5 @@ def edgeEntropy(entropyVactor,edge_adj_matrix):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
         line_number += 1
 
-    np.savetxt(edge_entropy_file, edge_entropy_matrix, delimiter=",", fmt="%f")
+    np.savetxt("./data2/edge_entropy.csv", edge_entropy_matrix, delimiter=",", fmt="%f")
     return edge_entropy_matrix

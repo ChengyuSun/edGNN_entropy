@@ -189,7 +189,7 @@ def countEdge(grapgfile):
     print(8)
 
     edge_adj_matrix = np.array(edge_adj)
-    np.savetxt('./count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+    np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
     return edge_adj_matrix
 
 

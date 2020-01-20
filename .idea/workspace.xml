@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/edGNN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/edGNN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entropy/CountMotif_nr.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/CountMotif_nr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/Entropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/Entropy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entropy/countedge.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/countedge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/devideN.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/devideN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entropy/edge_entropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/edge_entropy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entropy/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/interface.py" afterDir="false" />
     </list>
@@ -42,7 +37,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../motif" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../edGNN-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -208,6 +203,14 @@
       <workItem from="1578645001359" duration="7225000" />
       <workItem from="1578709548907" duration="43939000" />
     </task>
+    <task id="LOCAL-00001" summary="1.16fromlab">
+      <created>1579140807777</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1579140807777</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -235,5 +238,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="1.16fromlab" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.16fromlab" />
   </component>
 </project>
