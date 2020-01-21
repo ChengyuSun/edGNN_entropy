@@ -85,7 +85,7 @@ if __name__ == '__main__':
                         help="Path to JSON configuration file.")
     parser.add_argument("--data_path", type=str, required=True,
                         help="Path from where to load the data (assuming they were preprocessed beforehand).")
-    parser.add_argument("--gpu", type=int, default=-1, help="gpu")
+    parser.add_argument("--gpu", type=int, default=1, help="gpu")
     parser.add_argument("--lr", type=float, default=1e-3,
                         help="learning rate")
     parser.add_argument("--n-epochs", type=int, default=200,
@@ -93,7 +93,7 @@ if __name__ == '__main__':
     parser.add_argument("--weight-decay", type=float, default=5e-4,
                         help="Weight for L2 loss")
     parser.add_argument("--batch-size", type=int, default=16, help="batch size (only for graph classification)")
-
+    # parser.add_argument("--dataset", type=str, required=True, help="dataset name")
     args = parser.parse_args()
 
     main(args)
