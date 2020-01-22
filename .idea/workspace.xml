@@ -2,11 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/edGNN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/edGNN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/dataset.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/graph" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/labels" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/n_classes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/n_entities" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/n_relations" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_A.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_edge_labels.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_indicator.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_labels.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_node_labels.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/run_model" beforeDir="false" afterPath="$PROJECT_DIR$/bin/run_model" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/dataset.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/dataset.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/graph" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/graph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/labels" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/labels" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/n_classes" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/n_classes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/n_entities" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/n_entities" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/n_relations" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/n_relations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_A.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_edge_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_edge_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_graph_indicator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_graph_indicator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_graph_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_graph_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_node_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_node_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/model.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,26 +36,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/edGNN$run_model.coverage" NAME="run_model Coverage Results" MODIFIED="1579578879550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/edGNN$run_model.coverage" NAME="run_model Coverage Results" MODIFIED="1579617336308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
     <SUITE FILE_PATH="coverage/edGNN$devideN.coverage" NAME="devideN Coverage Results" MODIFIED="1578838906421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
     <SUITE FILE_PATH="coverage/edGNN$CountMotif_nr.coverage" NAME="CountMotif_nr Coverage Results" MODIFIED="1578965445594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
-    <SUITE FILE_PATH="coverage/edGNN$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1579572283641" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/edGNN$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1579591340986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
     <SUITE FILE_PATH="coverage/edGNN$countedge.coverage" NAME="countedge Coverage Results" MODIFIED="1578886217560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/preprocess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-300">
-              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-              <folding>
-                <element signature="e#24#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/run_model">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/models/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="144">
+              <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -56,8 +65,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/models/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state relative-caret-position="174">
+              <caret line="178" column="78" selection-start-line="178" selection-start-column="28" selection-end-line="178" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/torch/nn/modules/module.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="488" selection-start-line="488" selection-end-line="488" />
             </state>
           </provider>
         </entry>
@@ -91,6 +118,8 @@
       <list>
         <option value="$PROJECT_DIR$/entropy/interface.py" />
         <option value="$PROJECT_DIR$/bin/run_model" />
+        <option value="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt" />
+        <option value="$PROJECT_DIR$/core/models/model.py" />
       </list>
     </option>
   </component>
@@ -120,22 +149,31 @@
               <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
               <item name="edGNN" type="462c0819:PsiDirectoryNode" />
               <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="outdata" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
               <item name="edGNN" type="462c0819:PsiDirectoryNode" />
               <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="outdata" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
+              <item name="ptc_fr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edGNN" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
+              <item name="ptc_fr" type="462c0819:PsiDirectoryNode" />
               <item name="unzipped" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
               <item name="edGNN" type="462c0819:PsiDirectoryNode" />
               <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="outdata" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
+              <item name="ptc_fr" type="462c0819:PsiDirectoryNode" />
               <item name="unzipped" type="462c0819:PsiDirectoryNode" />
-              <item name="MUTAG" type="462c0819:PsiDirectoryNode" />
+              <item name="PTC_FR" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
@@ -154,13 +192,6 @@
               <item name="core" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="edGNN" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="config_files" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -177,6 +208,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\bin\preprocessed_data" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy\data" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy" />
     </key>
@@ -277,7 +309,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/preprocess" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="dortmund --dataset ptc_fr --out_folder ./preprocessed_data/ptc_fr" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -299,7 +331,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/run_model" />
-      <option name="PARAMETERS" value="--dataset MUTAG --config_fpath ../core/models/config_files/config_edGNN_graph_class_mutag.json --data_path ./outdata --gpu -1 --dataset mutagenicity" />
+      <option name="PARAMETERS" value="--dataset ptc_fr --config_fpath ../core/models/config_files/config_edGNN_graph_class_ptc.json --data_path ./preprocessed_data/ptc_fr/ --n-epochs 40 --gpu -1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -344,11 +376,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579140807777</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1.21预处理完成之后model存在问题">
+      <created>1579581449090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579581449090</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65315000" />
+    <option name="totallyTimeSpent" value="78254000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -368,7 +407,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31586403" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1898017" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,7 +462,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1.16fromlab" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.16fromlab" />
+    <MESSAGE value="1.21预处理完成之后model存在问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.21预处理完成之后model存在问题" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -501,7 +541,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_A.txt">
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_A.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="11" column="4" lean-forward="true" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
@@ -525,6 +565,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_graph_labels.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAG/graph">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-900" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="488" selection-start-line="488" selection-end-line="488" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/dortmund.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/models/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/run_model">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -532,30 +611,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocess">
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/graph">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#24#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="125">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/outdata/unzipped/MUTAG/MUTAG_graph_labels.txt">
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_A.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/constants.py">
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_node_labels.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_indicator.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="-127443" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_labels.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8468" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="22" column="1" lean-forward="true" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="174">
+          <caret line="178" column="78" selection-start-line="178" selection-start-column="28" selection-end-line="178" selection-end-column="78" />
         </state>
       </provider>
     </entry>
