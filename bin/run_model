@@ -8,7 +8,7 @@ import importlib
 
 from dgl.data import register_data_args
 
-from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES
+from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES, LABELS
 from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
 from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
 from core.models.model import Model
@@ -49,6 +49,11 @@ def main(args):
         raise ValueError('Unable to load dataset', args.dataset)
 
     print_graph_stats(data[GRAPH])
+
+
+    print('data[N_CLASSES]:  '+str(data[N_CLASSES]))
+    print("data[N_RELS]:   "+str(data[N_RELS]))
+    print('data[N_ENTITIES]:  '+str(data[N_ENTITIES]))
 
     config_params = read_params(args.config_fpath, verbose=True)
 

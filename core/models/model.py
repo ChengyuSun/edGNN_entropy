@@ -172,10 +172,13 @@ class Model(nn.Module):
         if isinstance(self.embed_nodes, nn.Embedding):
             node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
         elif isinstance(self.embed_nodes, torch.Tensor):
-            print(self.g.ndata)
-            print(self.embed_nodes)
-            print(GNN_NODE_LABELS_KEY)
-            print(self.g.ndata[GNN_NODE_LABELS_KEY])
+
+
+            print('self.embed_nodes:  '+str(self.embed_nodes))
+            print('self.g.ndata[GNN_NODE_LABELS_KEY]:  '+str(self.g.ndata[GNN_NODE_LABELS_KEY]))
+            print('len:  '+str(len(self.g.ndata[GNN_NODE_LABELS_KEY])))
+
+
             node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY].type(torch.uint8)]
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
