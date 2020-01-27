@@ -6,14 +6,15 @@ import dgl
 
 
 def print_graph_stats(g, name='Graph'):
-    if isinstance(g, dgl.DGLGraph):
+    #if isinstance(g, dgl.DGLGraph):
+    for g1 in g:
         print("""\n----Graph statistics------'
           Name %s
           # Edges %d
           # Nodes %d""" %
               (name,
-               g.number_of_edges(),
-               g.number_of_nodes()))
+               g1.number_of_edges(),
+               g1.number_of_nodes()))
 
 
 def save_checkpoint(model, save_path=''):

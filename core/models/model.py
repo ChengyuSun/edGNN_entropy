@@ -167,18 +167,15 @@ class Model(nn.Module):
             g.set_n_initializer(dgl.init.zero_initializer)
             g.set_e_initializer(dgl.init.zero_initializer)
             self.g = g
+        print('self.g.ndata:   ' +str(self.g.ndata[GNN_NODE_LABELS_KEY])+' \n  len:  '+ str(len(self.g.ndata[GNN_NODE_LABELS_KEY])))
+        print('self.g.edata[hel]:   ' + str(self.g.edata['hel'])+' \n  len:  '+ str(len(self.g.edata['hel'])))
+        print('self.g.edata[norm]:   ' + str(self.g.edata['norm']) + ' \n  len:  ' + str(len(self.g.edata['norm'])))
+        print('self.g.number_of_nodes:   ' + str(self.g.number_of_nodes()))
 
         # 1. Build node features
         if isinstance(self.embed_nodes, nn.Embedding):
             node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
         elif isinstance(self.embed_nodes, torch.Tensor):
-
-
-            print('self.embed_nodes:  '+str(self.embed_nodes))
-            print('self.g.ndata[GNN_NODE_LABELS_KEY]:  '+str(self.g.ndata[GNN_NODE_LABELS_KEY]))
-            print('len:  '+str(len(self.g.ndata[GNN_NODE_LABELS_KEY])))
-
-
             node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY].type(torch.uint8)]
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)

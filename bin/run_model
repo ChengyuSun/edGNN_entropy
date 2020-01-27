@@ -48,26 +48,11 @@ def main(args):
     else:
         raise ValueError('Unable to load dataset', args.dataset)
 
-    print_graph_stats(data[GRAPH])
+    #print_graph_stats(data[GRAPH])
 
-
-    print('data[N_CLASSES]:  '+str(data[N_CLASSES]))
-    print("data[N_RELS]:   "+str(data[N_RELS]))
-    print('data[N_ENTITIES]:  '+str(data[N_ENTITIES]))
+    print('len(data[labels]:  '+str(len(data['labels'])))
 
     config_params = read_params(args.config_fpath, verbose=True)
-
-    # create GNN model
-    model = Model(g=data[GRAPH],
-                  config_params=config_params[0],
-                  n_classes=data[N_CLASSES],
-                  n_rels=data[N_RELS] if N_RELS in data else None,
-                  n_entities=data[N_ENTITIES] if N_ENTITIES in data else None,
-                  is_cuda=cuda,
-                  mode=mode)
-
-    if cuda:
-        model.cuda()
 
     # 1. Training
     app = App()

@@ -89,7 +89,9 @@ class App:
             kf = KFold(n_splits=num_folds)
 
             for k, (train_index, test_index) in enumerate(kf.split(graphs)):
-
+                print(k)
+                print(len(train_index))
+                print(len(test_index))
                 # create GNN model
                 self.model = Model(g=data[GRAPH],
                                    config_params=model_config,
@@ -120,8 +122,12 @@ class App:
                 # extract indices to split train and val
                 random_indices = list(range(len(train_val_graphs)))
                 random.shuffle(random_indices)
+                print('len(random_indices:  '+str(len(random_indices)))
                 val_indices = random_indices[:int(num_samples/num_folds)]
                 train_indices = random_indices[int(num_samples/num_folds):]
+
+                print('val_indices'+str(val_indices)+'\n len(val_indices: '+str(len(val_indices)))
+                print('train_indices' + str(train_indices) + '\n len(train_indices: ' + str(len(train_indices)))
 
                 # train batch
                 training_graphs = [train_val_graphs[i] for i in train_indices]
@@ -140,13 +146,17 @@ class App:
 
                 dur = []
                 for epoch in range(learning_config['n_epochs']):
+                    print("befor model.train!!!")
                     self.model.train()
                     if epoch >= 3:
                         t0 = time.time()
                     losses = []
                     training_accuracies = []
                     for iter, (bg, label) in enumerate(training_batches):
+                        print('bg:  '+str(bg))
+                        print('label:  '+str(label))
                         logits = self.model(bg)
+                        print('after self.model!!!')
                         loss = loss_fcn(logits, label)
                         losses.append(loss.item())
                         _, indices = torch.max(logits, dim=1)
