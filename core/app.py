@@ -139,6 +139,7 @@ class App:
                 self.validation_batch = dgl.batch(validation_graphs)
 
                 training_samples = list(map(list, zip(training_graphs, training_labels)))
+                print('training_samples: '+str(training_samples)+'\n len(training_samples:  '+str(len(training_samples)))
                 training_batches = DataLoader(training_samples,
                                               batch_size=learning_config['batch_size'],
                                               shuffle=True,

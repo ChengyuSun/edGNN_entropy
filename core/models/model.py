@@ -163,31 +163,46 @@ class Model(nn.Module):
 
     def forward(self, g):
 
+        print('in the forwared!!!  paremeter g is : '+str(g)+'\n len(g is :  '+str(len(g)))
+
         if g is not None:
             g.set_n_initializer(dgl.init.zero_initializer)
             g.set_e_initializer(dgl.init.zero_initializer)
             self.g = g
+
+
+        print('self.g.number_of_nodes:   ' + str(self.g.number_of_nodes()))
         print('self.g.ndata:   ' +str(self.g.ndata[GNN_NODE_LABELS_KEY])+' \n  len:  '+ str(len(self.g.ndata[GNN_NODE_LABELS_KEY])))
         print('self.g.edata[hel]:   ' + str(self.g.edata['hel'])+' \n  len:  '+ str(len(self.g.edata['hel'])))
         print('self.g.edata[norm]:   ' + str(self.g.edata['norm']) + ' \n  len:  ' + str(len(self.g.edata['norm'])))
-        print('self.g.number_of_nodes:   ' + str(self.g.number_of_nodes()))
+
 
         # 1. Build node features
         if isinstance(self.embed_nodes, nn.Embedding):
             node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
         elif isinstance(self.embed_nodes, torch.Tensor):
-            node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY].type(torch.uint8)]
+            #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY].type(torch.uint8)]
+            # for label in self.g.ndata[GNN_NODE_LABELS_KEY]:
+            #     f=torch.eye(self.n_entities,self.n_entities)
+            #     f[label][label]=0
+            #     node_features.append(f)
+            node_features=torch.zeros(self.g.number_of_nodes, self.node_dim).scatter_(1, self.g.ndata[GNN_NODE_LABELS_KEY], 1)
+            print('node_features:  '+str(node_features))
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
         node_features = node_features.cuda() if self.is_cuda else node_features
 
         # 2. Build edge features
         if isinstance(self.embed_edges, nn.Embedding):
+
             edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
         elif isinstance(self.embed_edges, torch.Tensor):
-            edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY]]
+            #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
+            edge_features=torch.zeros(len(self.g.self.g.edata['hel']),self.edge_dim).scatter_(1,self.g.edata[GNN_EDGE_LABELS_KEY],1)
+            print('edge_features:  ' + str(edge_features))
         else:
             edge_features = None
+
 
         # 3. Iterate over each layer
         for layer_idx, layer in enumerate(self.layers):
