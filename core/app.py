@@ -147,17 +147,17 @@ class App:
 
                 dur = []
                 for epoch in range(learning_config['n_epochs']):
-                    print("befor model.train!!!")
+                    #print("befor model.train!!!")
                     self.model.train()
                     if epoch >= 3:
                         t0 = time.time()
                     losses = []
                     training_accuracies = []
                     for iter, (bg, label) in enumerate(training_batches):
-                        print('bg:  '+str(bg))
-                        print('label:  '+str(label))
+                        # print('bg:  '+str(bg))
+                        # print('label:  '+str(label))
                         logits = self.model(bg)
-                        print('after self.model!!!')
+                        #print('after self.model!!!')
                         loss = loss_fcn(logits, label)
                         losses.append(loss.item())
                         _, indices = torch.max(logits, dim=1)
