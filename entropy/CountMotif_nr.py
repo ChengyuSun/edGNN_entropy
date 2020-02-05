@@ -2,29 +2,12 @@
 import numpy as np
 import csv
 import copy
-import pandas as pd
-import xlrd
+import entropy.io as io
 # number of motif
 
 Nm = 8
 
-
-def read_adjMatrix(graphfile):
-    data_xls = pd.read_excel(io=graphfile,sheet_name=0,header=None,index_col=None)
-    data_xls.to_csv('./data2/graphfile.csv', sep=',', index=0,header=0,encoding='utf-8')
-    array = open('./data2/graphfile.csv').readlines()
-    N = len(array)
-    matrix = []
-    for line in array:
-        line = line.strip('\r\n').split(',')
-        line = [int(x) for x in line]
-        matrix.append(line)
-    matrix = np.array(matrix)
-    return matrix,N
-
-def countMotifs(graphfile):
-
-    A,nodN=read_adjMatrix(graphfile)
+def countMotifs(A,nodN):
     rd=np.argsort(sum(np.transpose(A)))
     rdA=A[rd]
     rdA[:,]=rdA[:,rd]

@@ -2,6 +2,7 @@
 import numpy as np
 import csv
 import copy
+import entropy.io as io
 # number of motif
 
 Nm = 8
@@ -15,17 +16,6 @@ edge_adj = [['0' for i in range(Node_num)] for j in range(Node_num)]
 #         print type(i)
 #         edge_adj[i][j] += str(Nm)
 
-
-def read_adjMatrix(graphfile):
-    array = open(graphfile).readlines()
-    N = len(array)
-    matrix = []
-    for line in array:
-        line = line.strip('\r\n').split(',')
-        line = [int(float(x)) for x in line]
-        matrix.append(line)
-    matrix = np.array(matrix)
-    return matrix,N
 
 
 def count_star(A,N,neiN,motif):
@@ -162,8 +152,7 @@ def count_poly_qua(A, N):
     return 0
 
 
-def countEdge(grapgfile):
-    A, nodN = read_adjMatrix(grapgfile)
+def countEdge(A,nodN):
     rd = np.argsort(sum(np.transpose(A)))
     rdA = A[rd]
     rdA[:, ] = rdA[:, rd]
@@ -193,4 +182,3 @@ def countEdge(grapgfile):
     return edge_adj_matrix
 
 
-print(countEdge('./data2/graphfile.csv'))
