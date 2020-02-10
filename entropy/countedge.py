@@ -178,7 +178,9 @@ def countEdge(A,nodN):
     print(8)
 
     edge_adj_matrix = np.array(edge_adj)
-    np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+    print('edge_adj: '+str(len(edge_adj)))
+    print('edge_adj_matrix: ' + str(len(edge_adj_matrix)))
+    #np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
     return edge_adj_matrix
 
 

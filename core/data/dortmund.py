@@ -11,6 +11,8 @@ from core.models.constants import GNN_NODE_LABELS_KEY, GNN_NODE_ATTS_KEY, GNN_ED
 from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
 import core.data.utils as utils
 from core.data.utils import complete_path
+from entropy.interface import writeEdgeAttribute
+
 
 ADJACENCY_SUFFIX = '_A.txt'
 GRAPH_ID_SUFFIX = '_graph_indicator.txt'
@@ -71,6 +73,7 @@ def preprocess_dortmund(*, dataset, out_folder):
     dataset_name = d[0]
     dirpath = complete_path(EXTRACT_FOLDER, dataset_name)
     data = dict()
+    fpath = ''
     for f in os.listdir(dirpath):
         if f == "README.txt":
             continue
@@ -107,6 +110,13 @@ def preprocess_dortmund(*, dataset, out_folder):
         graphs[g_id] = g
         node2node_per_graph[g_id] = n2n
         graph_labels[g_id] = data[GRAPH_LABELS_SUFFIX][g_id - 1]
+
+
+    #边熵作为属性加入data中
+
+    data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
+
+
 
     # process edges
     for i in range(len(data[ADJACENCY_SUFFIX])):
