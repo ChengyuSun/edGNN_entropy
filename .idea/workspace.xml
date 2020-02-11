@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/Entropy2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/countedge.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/countedge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/countedge2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/data2/devide_347_Nodes.csv" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/data2/devide_347_Nodes.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/edge_entropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/edge_entropy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/dortmund.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/dortmund.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/entropy/data2/edge_entropy.csv" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/data2/edge_entropy.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/entropy/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/interface.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,7 +73,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.interface">
+  <component name="RunManager" selected="Python.preprocess">
     <configuration name="Entropy2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="edGNN" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,11 +241,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.preprocess" />
         <item itemvalue="Python.interface" />
         <item itemvalue="Python.Entropy2" />
         <item itemvalue="Python.countedge2" />
         <item itemvalue="Python.run_model" />
-        <item itemvalue="Python.preprocess" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581350248699</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="0211基本完成">
+      <created>1581395674231</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1581395674231</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -386,7 +390,8 @@
     <MESSAGE value="0131成功运行原代码" />
     <MESSAGE value="0205修改entropy接口，准备加入边熵" />
     <MESSAGE value="0210 找出部分bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="0210 找出部分bug" />
+    <MESSAGE value="0211基本完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="0211基本完成" />
   </component>
   <component name="masterDetails">
     <states>

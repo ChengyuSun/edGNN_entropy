@@ -115,7 +115,7 @@ def preprocess_dortmund(*, dataset, out_folder):
     #边熵作为属性加入data中
 
     data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
-
+    np.savetxt("./data2/edge_attribute.csv", data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
 
 
     # process edges

@@ -13,14 +13,12 @@ def writeEdgeEntropy(graphfile):
     A, nodN = io.read_adjMatrix_csv(graphfile)
     return edgeEntropy(graphEntropy(countMotifs(A,nodN)),countEdge(A,nodN))
 
-writeEdgeEntropy('./data/graph10.xlsx')
-
-
 def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
     # build graphs with nodes
     edge_index=0
     for g_id in graph_ids:
+        print('正在处理图：'+str(g_id))
         node_ids = np.argwhere(graph_ids == g_id).squeeze()
         node_ids.sort()
 
