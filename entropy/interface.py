@@ -17,7 +17,8 @@ def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
     # build graphs with nodes
     edge_index=0
-    for g_id in graph_ids:
+    node_index_begin=0
+    for g_id in set(graph_ids):
         print('正在处理图：'+str(g_id))
         node_ids = np.argwhere(graph_ids == g_id).squeeze()
         node_ids.sort()
@@ -26,14 +27,24 @@ def writeEdgeAttribute(graph_ids,adj):
         temp_A=np.zeros([temp_nodN,temp_nodN],int)
 
         edge_index_begin=edge_index
+        print('node_ids'+str(node_ids))
 
-        while adj[edge_index][0] in node_ids:
-            temp_A[adj[edge_index][0]][adj[edge_index][1]]=1
+
+
+        while (edge_index<len(adj))and(adj[edge_index][0]-1 in node_ids):
+            temp_A[adj[edge_index][0]-1-node_index_begin][adj[edge_index][1]-1-node_index_begin]=1
             edge_index+=1
 
-        entropy_matrix = edgeEntropy(graphEntropy(countMotifs(temp_A, temp_nodN)),countEdge(temp_A, temp_nodN))
+        print('temp_A\n'+str(temp_A))
 
-        for j in (edge_index_begin,edge_index):
-            edge_entropys[j]=entropy_matrix[adj[j][0]][adj[j][1]]
+        entropy_matrix = edgeEntropy(graphEntropy(countMotifs(temp_A, temp_nodN),temp_nodN),countEdge(temp_A, temp_nodN))
 
+        print('entropy_matrix\n '+str(entropy_matrix))
+
+        print(str(edge_index_begin)+'  加入属性的起止边：'+str(edge_index-1))
+        for j in range(edge_index_begin,edge_index):
+            edge_entropys.append(entropy_matrix[adj[j][0]-1-node_index_begin][adj[j][1]-1-node_index_begin])
+
+        node_index_begin+=temp_nodN
+    print('edge_entropys长度为:'+str(len(edge_entropys)))
     return edge_entropys

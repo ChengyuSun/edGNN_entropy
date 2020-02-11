@@ -32,5 +32,5 @@ def edgeEntropy(entropyVactor,lines):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
         line_number += 1
 
-    np.savetxt("./data2/edge_entropy.csv", edge_entropy_matrix, delimiter=",", fmt="%f")
+    #np.savetxt("./data2/edge_entropy.csv", edge_entropy_matrix, delimiter=",", fmt="%f")
     return edge_entropy_matrix

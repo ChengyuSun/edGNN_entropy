@@ -5,7 +5,6 @@ import csv
 import math
 
 Nm=8
-Nn=347
 
 def get_Amount_of_Motif():
     array=open('./data2/CountMotif.csv').readlines()
@@ -51,12 +50,13 @@ def calEntropy(n,N,dN):
     Integral=sqrt(beta)*sqrt(pi)*DELTA
     Entropy=[]
     r=27.0
-    global Nm
     for i in range(Nm):
+        if n[i]==0:
+            Entropy.append(0)
+            continue
         m_integral=iso[i]*(Integral**e[i])*r**(l[i]-e[i])
         if N - l[i] * n[i] > 0:
-            logZ = n[i] * (log(m_integral) - math.log(n[i]) - l[i] * math.log(l[i]) + 1) + (N - l[i] * n[i]) * (
-               math.log(r)- math.log(N - l[i] * n[i]) +1)
+            logZ = n[i] * (log(m_integral) - math.log(n[i]) - l[i] * math.log(l[i]) + 1) + (N - l[i] * n[i]) * (math.log(r)- math.log(N - l[i] * n[i]) +1)
         else:
             logZ = n[i] * (-math.log(n[i]) + 1 + log(m_integral) - math.log(factorial(l[i])))
         logZ+=math.log(dN)
@@ -67,9 +67,10 @@ def calEntropy(n,N,dN):
     return Entropy
 
 
-def graphEntropy(motifNumber):
-    dN = read_data(Nn - 1, './data2/devide_347_Nodes.csv')
-    return calEntropy(motifNumber,Nn,dN)
+def graphEntropy(motifNumber,nodN):
+    dN = read_data(nodN - 1, 'F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy\data2\devide_347_Nodes.csv')
+
+    return calEntropy(motifNumber,nodN,dN)
 
 
 # motif_num_matrix = get_Amount_of_Motif()

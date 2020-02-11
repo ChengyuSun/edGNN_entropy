@@ -180,24 +180,24 @@ def countEdge(A,nodN):
     # print  "graph %d number of nodes:"% i,nodN
 
     Nm_1 = count_chain(rdA, nodN, 2, 1,edge_adj)
-    print(1)
+    #print(1)
     Nm_2 = count_chain(rdA, nodN, 3, 2,edge_adj)
-    print(2)
+    #print(2)
     Nm_3 = count_poly_edge(rdA, nodN,edge_adj)
-    print(3)
+    #print(3)
     Nm_4 = count_chain(rdA, nodN, 4, 4,edge_adj)
-    print(4)
+    #print(4)
     Nm_5 = count_star(rdA, nodN, 3, 5,edge_adj)
-    print(5)
+    #print(5)
     Nm_6 = count_poly_qua(rdA, nodN,edge_adj)
-    print(6)
+    #print(6)
     Nm_7 = count_chain(rdA, nodN, 5, 7,edge_adj)
-    print(7)
+    #print(7)
     Nm_8 = count_star(rdA, nodN, 4, 8,edge_adj)
-    print(8)
+    #print(8)
 
     edge_adj_matrix = np.array(edge_adj)
-    np.savetxt('./data2/graph10CE.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+    #np.savetxt('./data2/graph10CE.csv', edge_adj_matrix, delimiter=",", fmt='%s')
     return edge_adj_matrix
 
 

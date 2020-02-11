@@ -25,7 +25,7 @@ def countMotifs(A,nodN):
     Nm_7=count_chain(rdA,nodN,5)
     Nm_8=count_star(rdA,nodN,4)
     num=[Nm_1,Nm_2,Nm_3,Nm_4,Nm_5,Nm_6,Nm_7,Nm_8]
-    print (num)
+    print ('count_motifs: '+str(num))
     return num
 
 def count_star(A,N,neiN):
