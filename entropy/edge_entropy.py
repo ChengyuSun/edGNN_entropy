@@ -16,7 +16,6 @@ def edgeEntropy(entropyVactor,lines):
     edge_entropy_matrix = np.zeros((Node, Node), np.float)
     line_number = 0
     for line in lines:
-        line = line.strip('\n').split(',')
         column_number = 0
         for edge_motif in line:
 
