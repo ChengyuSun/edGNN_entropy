@@ -11,7 +11,10 @@ def writeEdgeEntropy(graphfile):
         graphfile=io.translata_xlsx_to_csv(graphfile)
         print('转变格式成功')
     A, nodN = io.read_adjMatrix_csv(graphfile)
-    return edgeEntropy(graphEntropy(countMotifs(A,nodN)),countEdge(A,nodN))
+    #return edgeEntropy(graphEntropy(countMotifs(A,nodN),nodN),countEdge(A,nodN))
+    return countEdge(A,nodN)
+
+print(writeEdgeEntropy('./data/graph10.xlsx'))
 
 def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
