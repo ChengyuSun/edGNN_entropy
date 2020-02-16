@@ -2,19 +2,22 @@ from entropy.CountMotif_nr import countMotifs
 from entropy.Entropy import graphEntropy
 from entropy.edge_entropy import edgeEntropy
 from entropy.countedge import countEdge
-import entropy.io as io
+import entropy.utils as utils
 import numpy as np
 
 
 def writeEdgeEntropy(graphfile):
     if graphfile.endswith(".xlsx"):
-        graphfile=io.translata_xlsx_to_csv(graphfile)
+        graphfile=utils.translata_xlsx_to_csv(graphfile)
         print('转变格式成功')
-    A, nodN = io.read_adjMatrix_csv(graphfile)
-    #return edgeEntropy(graphEntropy(countMotifs(A,nodN),nodN),countEdge(A,nodN))
-    return countEdge(A,nodN)
+    A, nodN = utils.read_adjMatrix_csv(graphfile)
+    print('A\n'+str(A))
+    temp=countEdge(A,nodN)
+    print('count_edge\n'+str(temp))
+    return edgeEntropy(graphEntropy(countMotifs(A,nodN),nodN),temp)
+    #return countEdge(A,nodN)
 
-print(writeEdgeEntropy('./data/graph10.xlsx'))
+#print(writeEdgeEntropy('./data/graph11.xlsx'))
 
 def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
@@ -30,19 +33,12 @@ def writeEdgeAttribute(graph_ids,adj):
         temp_A=np.zeros([temp_nodN,temp_nodN],int)
 
         edge_index_begin=edge_index
-        print('node_ids'+str(node_ids))
-
-
 
         while (edge_index<len(adj))and(adj[edge_index][0]-1 in node_ids):
             temp_A[adj[edge_index][0]-1-node_index_begin][adj[edge_index][1]-1-node_index_begin]=1
             edge_index+=1
 
-        print('temp_A\n'+str(temp_A))
-
         entropy_matrix = edgeEntropy(graphEntropy(countMotifs(temp_A, temp_nodN),temp_nodN),countEdge(temp_A, temp_nodN))
-
-        print('entropy_matrix\n '+str(entropy_matrix))
 
         print(str(edge_index_begin)+'  加入属性的起止边：'+str(edge_index-1))
         for j in range(edge_index_begin,edge_index):

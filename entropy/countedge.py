@@ -173,7 +173,6 @@ def count_poly_qua(A, N,edge_adj):
 def countEdge(A,nodN):
     edge_adj = [['0' for i in range(nodN)] for j in range(nodN)]
     rd = np.argsort(sum(np.transpose(A)))
-    print('rd: '+str(rd))
     rdA = A[rd]
     rdA[:, ] = rdA[:, rd]
     for i in range(nodN):
@@ -197,10 +196,13 @@ def countEdge(A,nodN):
     Nm_8 = count_star(rdA, nodN, 4, 8,edge_adj)
     #print(8)
 
-    edge_adj_matrix = np.array(edge_adj)
-    print('edge_adj_matrix:'+str(edge_adj_matrix))
-    np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
-    return edge_adj_matrix
+    rd2=np.argsort(rd)
+    edge_adj=np.array(edge_adj)
+    edge_adj=edge_adj[rd2]
+    #np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
+    return np.transpose(np.transpose(edge_adj)[rd2])
+
+
 
 
 
