@@ -2,15 +2,17 @@
 Model Interface
 """
 import copy
-import torch
 import importlib
-import torch.nn as nn
-import torch.nn.functional as F
 
 import dgl
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 from dgl import DGLGraph
+
+from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION, GNN_EDGE_LABELS_KEY, GNN_NODE_LABELS_KEY, \
+    GNN_EDGE_FEAT_KEY
 from core.utils import compute_node_degrees
-from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION, GNN_EDGE_LABELS_KEY, GNN_NODE_LABELS_KEY
 
 MODULE = "core.models.layers.{}"
 LAYER_MODULES = {
@@ -110,6 +112,7 @@ class Model(nn.Module):
             self.edge_dim = self.config_params['edge_dim']
             self.embed_edges = nn.Embedding(self.n_rels, self.edge_dim)
         elif 'edge_one_hot' in self.config_params:
+            #在edge标签后加入一维entropy(需要*2)
             self.edge_dim = self.n_rels
             self.embed_edges = torch.eye(self.edge_dim, self.edge_dim)
             if self.is_cuda:
@@ -149,7 +152,7 @@ class Model(nn.Module):
 
         # build and append layers
         print('\n*** Building model ***')
-        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim, self.n_classes,
+        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim+1, self.n_classes,
                                                                        layer_params, self.mode):
             print('* Building new layer with args:', node_dim, edge_dim, n_out, act, kwargs)
             self.layers.append(self.Layer(self.g, node_dim, edge_dim, n_out, act, **kwargs))
@@ -163,7 +166,7 @@ class Model(nn.Module):
 
     def forward(self, g):
 
-        #print('in the forwared!!!')
+       #print('in the forwared!!!')
 
         if g is not None:
             g.set_n_initializer(dgl.init.zero_initializer)
@@ -174,26 +177,35 @@ class Model(nn.Module):
         # print('self.g.edata[hel]:   ' + str(self.g.edata['hel'])+' \n  len:  '+ str(len(self.g.edata['hel'])))
         # print('self.g.edata[norm]:   ' + str(self.g.edata['norm']) + ' \n  len:  ' + str(len(self.g.edata['norm'])))
 
+        #print('g.len:' + str(len(g)))
         # 1. Build node features
         if isinstance(self.embed_nodes, nn.Embedding):
             node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
         elif isinstance(self.embed_nodes, torch.Tensor):
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1)
             node_features=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).scatter_(1 , label.long(), 1)
-            #print('node_features[0]:  '+str(node_features.numpy()))
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
         node_features = node_features.cuda() if self.is_cuda else node_features
 
         # 2. Build edge features
         if isinstance(self.embed_edges, nn.Embedding):
-
             edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
         elif isinstance(self.embed_edges, torch.Tensor):
             #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
             label=self.g.edata[GNN_EDGE_LABELS_KEY].view(-1,1)
             edge_features=torch.zeros(len(self.g.edata[GNN_EDGE_LABELS_KEY]),self.edge_dim).scatter_(1,label.long(),1)
-            #print('edge_features:  ' + str(edge_features))
+
+            # print("edge_features:" + str(edge_features.size()))
+            # print("self.g.edata[GNN_EDGE_FEAT_KEY]:" + str(self.g.edata[GNN_EDGE_FEAT_KEY].size()))
+            b=self.g.edata[GNN_EDGE_FEAT_KEY].size()
+            if len(b)==1:
+                edge_entropy = self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
+                edge_features=torch.cat((edge_features,edge_entropy),1)
+            else:
+                edge_features=self.g.edata[GNN_EDGE_FEAT_KEY]
+            # print('edge_features:  ' + str(len(edge_features))+str(edge_features))
+            # print('self.g.edata[GNN_EDGE_LABELS_KEY]:'+str(len(self.g.edata[GNN_EDGE_FEAT_KEY]))+str(self.g.edata[GNN_EDGE_FEAT_KEY]))
         else:
             edge_features = None
 

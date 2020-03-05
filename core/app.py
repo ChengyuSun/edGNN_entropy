@@ -1,18 +1,18 @@
-import time
-import numpy as np
-import dgl
-import torch
-from torch.utils.data import DataLoader
 import random
+import time
+
+import dgl
+import numpy as np
+import torch
 from sklearn.model_selection import KFold
+from torch.utils.data import DataLoader
 
-from utils.early_stopping import EarlyStopping
-from utils.io import load_checkpoint
-
-from core.data.constants import LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, GRAPH
+from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES
+from core.data.constants import LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK
 from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
 from core.models.model import Model
-from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES
+from utils.early_stopping import EarlyStopping
+from utils.io import load_checkpoint
 
 
 def collate(samples):
@@ -122,12 +122,12 @@ class App:
                 # extract indices to split train and val
                 random_indices = list(range(len(train_val_graphs)))
                 random.shuffle(random_indices)
-                print('len(random_indices:  '+str(len(random_indices)))
+                #print('len(random_indices:  '+str(len(random_indices)))
                 val_indices = random_indices[:int(num_samples/num_folds)]
                 train_indices = random_indices[int(num_samples/num_folds):]
 
-                print('val_indices'+str(val_indices)+'\n len(val_indices: '+str(len(val_indices)))
-                print('train_indices' + str(train_indices) + '\n len(train_indices: ' + str(len(train_indices)))
+                # print('val_indices'+str(val_indices)+'\n len(val_indices: '+str(len(val_indices)))
+                # print('train_indices' + str(train_indices) + '\n len(train_indices: ' + str(len(train_indices)))
 
                 # train batch
                 training_graphs = [train_val_graphs[i] for i in train_indices]
@@ -147,7 +147,7 @@ class App:
 
                 dur = []
                 for epoch in range(learning_config['n_epochs']):
-                    #print("befor model.train!!!")
+                    print("epoch:"+str(epoch))
                     self.model.train()
                     if epoch >= 3:
                         t0 = time.time()

@@ -1,8 +1,9 @@
 #encoding: utf-8
-import numpy as np
-import csv
 import copy
-import entropy.io as io
+import csv
+
+import numpy as np
+
 # number of motif
 
 Nm = 8

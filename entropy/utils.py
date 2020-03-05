@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import xlrd
 
 
 def read_adjMatrix_csv(graphfile_csv):

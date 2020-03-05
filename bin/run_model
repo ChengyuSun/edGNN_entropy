@@ -2,20 +2,17 @@
 """
 Run model script.
 """
-import torch
 import argparse
 import importlib
 
+import torch
 from dgl.data import register_data_args
 
-from core.data.constants import GRAPH, N_RELS, N_CLASSES, N_ENTITIES, LABELS
-from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
-from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
-from core.models.model import Model
 from core.app import App
-
+from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
+from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
 from utils.inits import to_cuda
-from utils.io import print_graph_stats, read_params, create_default_path, remove_model
+from utils.io import read_params, create_default_path, remove_model
 
 MODULE = 'core.data.{}'
 AVAILABLE_DATASETS = {
@@ -49,8 +46,6 @@ def main(args):
         raise ValueError('Unable to load dataset', args.dataset)
 
     #print_graph_stats(data[GRAPH])
-
-    print('len(data[labels]:  '+str(len(data['labels'])))
 
     config_params = read_params(args.config_fpath, verbose=True)
 

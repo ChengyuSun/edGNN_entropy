@@ -1,8 +1,8 @@
 #encoding: utf-8
-from sympy import *
-import numpy as np
-import csv
 import math
+
+import numpy as np
+from sympy import *
 
 Nm=8
 
@@ -68,7 +68,7 @@ def calEntropy(n,N,dN):
 
 
 def graphEntropy(motifNumber,nodN):
-    dN = read_data(nodN - 1, './data2/devide_347_Nodes.csv')
+    dN = read_data(nodN - 1, 'F:\PyCharm 2018.3.5\PyCharmProjects\edgnn_entropy\edGNN_entropy\entropy\data2\devide_347_Nodes.csv')
     return calEntropy(motifNumber,nodN,dN)
 
 
