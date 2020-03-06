@@ -49,18 +49,20 @@ def main(args):
 
     config_params = read_params(args.config_fpath, verbose=True)
 
-    # 1. Training
-    app = App()
-    learning_config = {'lr': args.lr, 'n_epochs': args.n_epochs, 'weight_decay': args.weight_decay, 'batch_size': args.batch_size, 'cuda': cuda}
-    print('\n*** Start training ***\n')
-    app.train(data, config_params[0], learning_config, default_path, mode=mode)
 
-    # 2. Testing
-    print('\n*** Start testing ***\n')
-    app.test(data, default_path, mode=mode)
+    for i in range(5):
+        # 1. Training
+        app = App()
+        learning_config = {'lr': args.lr, 'n_epochs': args.n_epochs, 'weight_decay': args.weight_decay, 'batch_size': args.batch_size, 'cuda': cuda}
+        print('\n*** Start training ***\n')
+        app.train(data, config_params[0], learning_config, default_path, mode=mode)
 
-    # 3. Delete model
-    remove_model(default_path)
+        # 2. Testing
+        print('\n*** Start testing ***\n')
+        app.test(data, default_path, mode=mode)
+
+        # 3. Delete model
+        remove_model(default_path)
 
 
 if __name__ == '__main__':

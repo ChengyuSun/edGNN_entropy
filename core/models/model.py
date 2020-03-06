@@ -112,7 +112,6 @@ class Model(nn.Module):
             self.edge_dim = self.config_params['edge_dim']
             self.embed_edges = nn.Embedding(self.n_rels, self.edge_dim)
         elif 'edge_one_hot' in self.config_params:
-            #在edge标签后加入一维entropy(需要*2)
             self.edge_dim = self.n_rels
             self.embed_edges = torch.eye(self.edge_dim, self.edge_dim)
             if self.is_cuda:
@@ -152,6 +151,9 @@ class Model(nn.Module):
 
         # build and append layers
         print('\n*** Building model ***')
+        #if need entropy , the edge_dim need to be self.edge_dim+1
+        # else it just equals to self.edge_dim
+
         for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim+1, self.n_classes,
                                                                        layer_params, self.mode):
             print('* Building new layer with args:', node_dim, edge_dim, n_out, act, kwargs)
@@ -198,12 +200,14 @@ class Model(nn.Module):
 
             # print("edge_features:" + str(edge_features.size()))
             # print("self.g.edata[GNN_EDGE_FEAT_KEY]:" + str(self.g.edata[GNN_EDGE_FEAT_KEY].size()))
-            b=self.g.edata[GNN_EDGE_FEAT_KEY].size()
-            if len(b)==1:
-                edge_entropy = self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
-                edge_features=torch.cat((edge_features,edge_entropy),1)
-            else:
-                edge_features=self.g.edata[GNN_EDGE_FEAT_KEY]
+
+            if GNN_EDGE_FEAT_KEY in self.g.edata.keys():
+                b = self.g.edata[GNN_EDGE_FEAT_KEY].size()
+                if len(b) == 1:
+                    edge_entropy = self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
+                    edge_features = torch.cat((edge_features, edge_entropy), 1)
+                else:
+                    edge_features = self.g.edata[GNN_EDGE_FEAT_KEY]
             # print('edge_features:  ' + str(len(edge_features))+str(edge_features))
             # print('self.g.edata[GNN_EDGE_LABELS_KEY]:'+str(len(self.g.edata[GNN_EDGE_FEAT_KEY]))+str(self.g.edata[GNN_EDGE_FEAT_KEY]))
         else:
