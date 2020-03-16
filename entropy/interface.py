@@ -1,9 +1,10 @@
+import numpy as np
+
+import entropy.utils as utils
 from entropy.CountMotif_nr import countMotifs
 from entropy.Entropy import graphEntropy
-from entropy.edge_entropy import edgeEntropy
 from entropy.countedge import countEdge
-import entropy.utils as utils
-import numpy as np
+from entropy.edge_entropy import edgeEntropy
 
 
 def writeEdgeEntropy(graphfile):
@@ -40,7 +41,7 @@ def writeEdgeAttribute(graph_ids,adj):
 
         entropy_matrix = edgeEntropy(graphEntropy(countMotifs(temp_A, temp_nodN),temp_nodN),countEdge(temp_A, temp_nodN))
 
-        print(str(edge_index_begin)+'  加入属性的起止边：'+str(edge_index-1))
+        #print(str(edge_index_begin)+'  加入属性的起止边：'+str(edge_index-1))
         for j in range(edge_index_begin,edge_index):
             edge_entropys.append(entropy_matrix[adj[j][0]-1-node_index_begin][adj[j][1]-1-node_index_begin])
 

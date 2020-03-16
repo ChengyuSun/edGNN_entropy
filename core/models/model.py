@@ -154,7 +154,7 @@ class Model(nn.Module):
         #if need entropy , the edge_dim need to be self.edge_dim+1
         # else it just equals to self.edge_dim
 
-        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim+1, self.n_classes,
+        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim, self.n_classes,
                                                                        layer_params, self.mode):
             print('* Building new layer with args:', node_dim, edge_dim, n_out, act, kwargs)
             self.layers.append(self.Layer(self.g, node_dim, edge_dim, n_out, act, **kwargs))
@@ -182,9 +182,11 @@ class Model(nn.Module):
         #print('g.len:' + str(len(g)))
         # 1. Build node features
         if isinstance(self.embed_nodes, nn.Embedding):
-            node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
+            #node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
+            node_features=self.g.ndata[GNN_NODE_LABELS_KEY].float().view(len(self.g.ndata[GNN_NODE_LABELS_KEY]),1)
         elif isinstance(self.embed_nodes, torch.Tensor):
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1)
+            #print('label:'+str(label.size())+str(label))
             node_features=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).scatter_(1 , label.long(), 1)
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
@@ -192,7 +194,9 @@ class Model(nn.Module):
 
         # 2. Build edge features
         if isinstance(self.embed_edges, nn.Embedding):
-            edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
+            # edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
+            #only edge entropy
+            edge_features=self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
         elif isinstance(self.embed_edges, torch.Tensor):
             #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
             label=self.g.edata[GNN_EDGE_LABELS_KEY].view(-1,1)

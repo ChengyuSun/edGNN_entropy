@@ -1,18 +1,16 @@
 import os
-import torch
 import zipfile
-import requests
-import numpy as np
 
+import numpy as np
+import torch
 from dgl import DGLGraph
 
-from core.data.constants import GRAPH, LABELS, N_CLASSES, N_RELS, N_ENTITIES
-from core.models.constants import GNN_NODE_LABELS_KEY, GNN_NODE_ATTS_KEY, GNN_EDGE_FEAT_KEY
-from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
 import core.data.utils as utils
+from core.data.constants import GRAPH, LABELS, N_CLASSES, N_RELS, N_ENTITIES
 from core.data.utils import complete_path
+from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
+from core.models.constants import GNN_NODE_LABELS_KEY, GNN_NODE_ATTS_KEY, GNN_EDGE_FEAT_KEY
 from entropy.interface import writeEdgeAttribute
-
 
 ADJACENCY_SUFFIX = '_A.txt'
 GRAPH_ID_SUFFIX = '_graph_indicator.txt'
@@ -54,14 +52,14 @@ def preprocess_dortmund(*, dataset, out_folder):
       dataset (str): dataset name (from ptc_fm, ptc_fr, ptc_mm, ptc_mr)
       out_folder (str): path to folder where to save preprocessed graph
     """
-    DATASET_PATH = complete_path(out_folder, 'dataset.zip')
-
-    dataset_url = "".join([BASE_URL, dataset.upper(), EXTENSION])
-    r = requests.get(dataset_url, allow_redirects=True)
-    r.raise_for_status()
-
-    with open(DATASET_PATH, 'wb') as fhandle:
-        fhandle.write(r.content)
+    DATASET_PATH = complete_path(out_folder, dataset+'.zip')
+    #
+    # dataset_url = "".join([BASE_URL, dataset.upper(), EXTENSION])
+    # r = requests.get(dataset_url, allow_redirects=True)
+    # r.raise_for_status()
+    #
+    # with open(DATASET_PATH, 'wb') as fhandle:
+    #     fhandle.write(r.content)
 
     EXTRACT_FOLDER = complete_path(out_folder, 'unzipped')
     with zipfile.ZipFile(DATASET_PATH, "r") as zip_ref:
@@ -112,10 +110,10 @@ def preprocess_dortmund(*, dataset, out_folder):
         graph_labels[g_id] = data[GRAPH_LABELS_SUFFIX][g_id - 1]
 
 
-    #边熵作为属性加入data中
+    # 边熵作为属性加入data中
 
     data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
-    np.savetxt(out_folder+'edge_att.csv', data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
+    np.savetxt(out_folder+'/edge_att.csv', data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
 
     # process edges
     for i in range(len(data[ADJACENCY_SUFFIX])):
@@ -143,16 +141,17 @@ def preprocess_dortmund(*, dataset, out_folder):
         labels.append(graph_labels[g_id])
 
     # add edge normalization
-    for graph in graph_list:
+    if EDGE_LABELS_SUFFIX in data:
+        for graph in graph_list:
 
-        edge_src, edge_dst = graph.edges()
-        edge_dst = list(edge_dst.data.numpy())
-        edge_type = list(graph.edata[GNN_EDGE_LABELS_KEY])
-        _, inverse_index, count = np.unique((edge_dst, edge_type), axis=1, return_inverse=True,
-                                            return_counts=True)
-        degrees = count[inverse_index]
-        edge_norm = np.ones(len(edge_dst), dtype=np.float32) / degrees.astype(np.float32)
-        graph.edata[GNN_EDGE_NORM] = torch.FloatTensor(edge_norm)
+            edge_src, edge_dst = graph.edges()
+            edge_dst = list(edge_dst.data.numpy())
+            edge_type = list(graph.edata[GNN_EDGE_LABELS_KEY])
+            _, inverse_index, count = np.unique((edge_dst, edge_type), axis=1, return_inverse=True,
+                                                return_counts=True)
+            degrees = count[inverse_index]
+            edge_norm = np.ones(len(edge_dst), dtype=np.float32) / degrees.astype(np.float32)
+            graph.edata[GNN_EDGE_NORM] = torch.FloatTensor(edge_norm)
 
     label_set = set(labels)
     num_labels = len(label_set)
@@ -160,7 +159,9 @@ def preprocess_dortmund(*, dataset, out_folder):
     labels = [mapping[label] for label in labels]
 
     num_entities = len(set(data[NODE_LABELS_SUFFIX]))
-    num_rels = len(set(data[EDGE_LABELS_SUFFIX]))
+    num_rels=1
+    if EDGE_LABELS_SUFFIX in data:
+        num_rels = len(set(data[EDGE_LABELS_SUFFIX]))
 
     torch.save(torch.LongTensor(labels), complete_path(out_folder, LABELS))
 

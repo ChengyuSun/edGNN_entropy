@@ -37,7 +37,8 @@ def main(args):
         data = module.load_dglrgcn(args.data_path)
         data = to_cuda(data) if cuda else data
         mode = NODE_CLASSIFICATION
-    elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR or args.dataset == PTC_FM:
+    elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR \
+            or args.dataset == PTC_FM or args.dataset == 'NCI1':
         module = importlib.import_module(MODULE.format('dortmund'))
         data = module.load_dortmund(args.data_path)
         data = to_cuda(data) if cuda else data
