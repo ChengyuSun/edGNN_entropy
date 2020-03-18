@@ -159,7 +159,8 @@ def preprocess_dortmund(*, dataset, out_folder):
 
     num_entities = len(set(data[NODE_LABELS_SUFFIX]))
 
-    num_rels = len(set(data[EDGE_LABELS_SUFFIX]))
+    if EDGE_LABELS_SUFFIX in data:
+        num_rels = len(set(data[EDGE_LABELS_SUFFIX]))
 
     torch.save(torch.LongTensor(labels), complete_path(out_folder, LABELS))
 
