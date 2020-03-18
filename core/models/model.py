@@ -185,9 +185,10 @@ class Model(nn.Module):
             #node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
             node_features=self.g.ndata[GNN_NODE_LABELS_KEY].float().view(len(self.g.ndata[GNN_NODE_LABELS_KEY]),1)
         elif isinstance(self.embed_nodes, torch.Tensor):
-            node_features = self.embed_nodes(self.g.ndata[GNN_NODE_LABELS_KEY])
-            # label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1)
-            # node_features=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).scatter_(1 , label.long(), 1)
+            #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
+            label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1)
+            node_features = torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim)
+            node_features=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).scatter_(1 , label.long().cuda(), 1)
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
         node_features = node_features.cuda() if self.is_cuda else node_features
@@ -195,7 +196,6 @@ class Model(nn.Module):
         # 2. Build edge features
         if isinstance(self.embed_edges, nn.Embedding):
             # edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
-
 
             #only edge feature,no edge label
             edge_features=self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
