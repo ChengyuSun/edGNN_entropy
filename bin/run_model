@@ -4,9 +4,12 @@ Run model script.
 """
 import argparse
 import importlib
+import sys
 
 import torch
 from dgl.data import register_data_args
+
+sys.path.append('../')
 
 from core.app import App
 from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR

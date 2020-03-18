@@ -89,9 +89,9 @@ class App:
             kf = KFold(n_splits=num_folds)
 
             for k, (train_index, test_index) in enumerate(kf.split(graphs)):
-                print(k)
-                print(len(train_index))
-                print(len(test_index))
+                # print(k)
+                # print(len(train_index))
+                # print(len(test_index))
                 # create GNN model
                 self.model = Model(g=data[GRAPH],
                                    config_params=model_config,
@@ -139,7 +139,7 @@ class App:
                 self.validation_batch = dgl.batch(validation_graphs)
 
                 training_samples = list(map(list, zip(training_graphs, training_labels)))
-                print('training_samples: '+str(training_samples)+'\n len(training_samples:  '+str(len(training_samples)))
+                #print('training_samples: '+str(training_samples)+'\n len(training_samples:  '+str(len(training_samples)))
                 training_batches = DataLoader(training_samples,
                                               batch_size=learning_config['batch_size'],
                                               shuffle=True,
@@ -208,6 +208,6 @@ class App:
 
         print("\nTest Accuracy {:.4f}".format(acc))
 
-        with open('./ptc_entropy_acc.txt', 'a+') as f:
+        with open('./NCI1_entropy_acc.txt', 'a+') as f:
             f.write(str(acc) + '\n')
         return acc
