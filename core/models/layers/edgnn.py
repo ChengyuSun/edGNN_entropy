@@ -81,10 +81,12 @@ class edGNNLayer(nn.Module):
         if self.g.edata is not None:
             # print('edges.src[GNN_NODE_FEAT_IN_KEY]:'+str(edges.src[GNN_NODE_FEAT_IN_KEY].size()))
             # print('edges.data[GNN_EDGE_FEAT_KEY]:'+str(edges.data[GNN_EDGE_FEAT_KEY].size()))
-            msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
-                             edges.data[GNN_EDGE_FEAT_KEY]],
-                            dim=1)
-
+            if edges.data[GNN_EDGE_FEAT_KEY]!=None:
+                msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
+                                 edges.data[GNN_EDGE_FEAT_KEY]],
+                                dim=1)
+            else:
+                msg = edges.src[GNN_NODE_FEAT_IN_KEY]
             if self.dropout:
                 msg = self.dropout(msg)
         else:

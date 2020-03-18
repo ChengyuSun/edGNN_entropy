@@ -195,16 +195,22 @@ class Model(nn.Module):
         # 2. Build edge features
         if isinstance(self.embed_edges, nn.Embedding):
             # edge_features = self.embed_edges(self.g.edata[GNN_EDGE_LABELS_KEY])
-            #only edge entropy
+
+
+            #only edge feature,no edge label
             edge_features=self.g.edata[GNN_EDGE_FEAT_KEY].float().view(len(self.g.edata[GNN_EDGE_FEAT_KEY]), 1)
         elif isinstance(self.embed_edges, torch.Tensor):
             #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
+
+            #turn label into one-hot
             label=self.g.edata[GNN_EDGE_LABELS_KEY].view(-1,1)
             edge_features=torch.zeros(len(self.g.edata[GNN_EDGE_LABELS_KEY]),self.edge_dim).scatter_(1,label.long(),1)
 
             # print("edge_features:" + str(edge_features.size()))
             # print("self.g.edata[GNN_EDGE_FEAT_KEY]:" + str(self.g.edata[GNN_EDGE_FEAT_KEY].size()))
 
+
+            #cat edge label(noe-hot) with edge entropy(1 dimention vector)
             if GNN_EDGE_FEAT_KEY in self.g.edata.keys():
                 b = self.g.edata[GNN_EDGE_FEAT_KEY].size()
                 if len(b) == 1:
@@ -212,6 +218,8 @@ class Model(nn.Module):
                     edge_features = torch.cat((edge_features, edge_entropy), 1)
                 else:
                     edge_features = self.g.edata[GNN_EDGE_FEAT_KEY]
+
+
             # print('edge_features:  ' + str(len(edge_features))+str(edge_features))
             # print('self.g.edata[GNN_EDGE_LABELS_KEY]:'+str(len(self.g.edata[GNN_EDGE_FEAT_KEY]))+str(self.g.edata[GNN_EDGE_FEAT_KEY]))
         else:

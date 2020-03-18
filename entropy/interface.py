@@ -46,5 +46,4 @@ def writeEdgeAttribute(graph_ids,adj):
             edge_entropys.append(entropy_matrix[adj[j][0]-1-node_index_begin][adj[j][1]-1-node_index_begin])
 
         node_index_begin+=temp_nodN
-    print('edge_entropys长度为:'+str(len(edge_entropys)))
     return edge_entropys
