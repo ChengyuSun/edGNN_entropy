@@ -60,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/models/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="187" column="79" lean-forward="true" selection-start-line="187" selection-start-column="79" selection-end-line="187" selection-end-column="79" />
+            <state relative-caret-position="257">
+              <caret line="189" column="125" selection-start-line="189" selection-start-column="125" selection-end-line="189" selection-end-column="125" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -410,7 +410,7 @@
       <workItem from="1583458148140" duration="6623000" />
       <workItem from="1583933356675" duration="1330000" />
       <workItem from="1584072633565" duration="37948000" />
-      <workItem from="1584492560501" duration="10603000" />
+      <workItem from="1584492560501" duration="12153000" />
     </task>
     <task id="LOCAL-00001" summary="1.16fromlab">
       <created>1579140807777</created>
@@ -538,11 +538,25 @@
       <option name="project" value="LOCAL" />
       <updated>1584533174520</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="0318测试NCI1_no_entropy_3">
+      <created>1584533909357</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1584533909357</updated>
+    </task>
+    <task id="LOCAL-00020" summary="0318测试NCI1_no_entropy_4">
+      <created>1584534988970</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1584534988970</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="389063000" />
+    <option name="totallyTimeSpent" value="390613000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,7 +652,9 @@
     <MESSAGE value="0316适应server的修改" />
     <MESSAGE value="0318测试NCI1_no_entropy" />
     <MESSAGE value="0318测试NCI1_no_entropy_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="0318测试NCI1_no_entropy_2" />
+    <MESSAGE value="0318测试NCI1_no_entropy_3" />
+    <MESSAGE value="0318测试NCI1_no_entropy_4" />
+    <option name="LAST_COMMIT_MESSAGE" value="0318测试NCI1_no_entropy_4" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -924,8 +940,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="187" column="79" lean-forward="true" selection-start-line="187" selection-start-column="79" selection-end-line="187" selection-end-column="79" />
+        <state relative-caret-position="257">
+          <caret line="189" column="125" selection-start-line="189" selection-start-column="125" selection-end-line="189" selection-end-column="125" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
