@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bin/preprocessed_data/NCI1_no_entropy/NCI1.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/model.py" afterDir="false" />
     </list>
@@ -14,7 +15,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/edGNN$run_model.coverage" NAME="run_model Coverage Results" MODIFIED="1581768072398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
     <SUITE FILE_PATH="coverage/edGNN$devideN.coverage" NAME="devideN Coverage Results" MODIFIED="1578838906421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
-    <SUITE FILE_PATH="coverage/edGNN_entropy$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1584334144702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/edGNN_entropy$preprocess.coverage" NAME="preprocess Coverage Results" MODIFIED="1584535723017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
     <SUITE FILE_PATH="coverage/edGNN$CountMotif_nr.coverage" NAME="CountMotif_nr Coverage Results" MODIFIED="1578965445594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
     <SUITE FILE_PATH="coverage/edGNN$interface.coverage" NAME="interface Coverage Results" MODIFIED="1581748397180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/entropy" />
     <SUITE FILE_PATH="coverage/edGNN_entropy$run_model.coverage" NAME="run_model Coverage Results" MODIFIED="1584349441415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
@@ -28,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -49,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/core/data/dortmund.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="196">
-              <caret line="161" column="34" lean-forward="true" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
+              <caret line="161" column="34" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -60,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/models/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="189" column="125" selection-start-line="189" selection-start-column="125" selection-end-line="189" selection-end-column="125" />
+            <state relative-caret-position="232">
+              <caret line="191" column="42" lean-forward="true" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -73,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="86" column="38" lean-forward="true" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+              <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -161,6 +162,13 @@
             <path>
               <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
               <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
+              <item name="NCI1_entropy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -209,17 +217,18 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edgnn_entropy\edGNN_entropy\bin\preprocessed_data\NCI1_no_entropy" />
+      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edgnn_entropy\edGNN_entropy\bin\preprocessed_data\NCI1" />
+      <recent name="D:\PycharmProjects\edgnn\entropy\data2" />
+      <recent name="D:\PycharmProjects\edgnn\entropy" />
+      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edgnn_entropy\edGNN_entropy\bin\preprocessed_data\NCI1_entropy" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\bin" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\bin\preprocessed_data" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy\data" />
-      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edgnn_entropy\edGNN_entropy\bin\preprocessed_data\NCI1" />
-      <recent name="D:\PycharmProjects\edgnn\entropy\data2" />
-      <recent name="D:\PycharmProjects\edgnn\entropy" />
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy" />
     </key>
   </component>
@@ -338,7 +347,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/preprocess" />
-      <option name="PARAMETERS" value="dortmund --dataset NCI1 --out_folder ./preprocessed_data/NCI1_entropy" />
+      <option name="PARAMETERS" value="dortmund --dataset NCI1 --out_folder ./preprocessed_data/NCI1_no_entropy" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -360,7 +369,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/run_model" />
-      <option name="PARAMETERS" value="--dataset NCI1 --config_fpath ../core/models/config_files/config_edGNN_graph_class_NCI1.json --data_path ./preprocessed_data/NCI1_entropy/ --n-epochs 40 --gpu -1" />
+      <option name="PARAMETERS" value="--dataset NCI1 --config_fpath ../core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json --data_path ./preprocessed_data/NCI1_no_entropy/ --n-epochs 40 --gpu 0" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -410,7 +419,7 @@
       <workItem from="1583458148140" duration="6623000" />
       <workItem from="1583933356675" duration="1330000" />
       <workItem from="1584072633565" duration="37948000" />
-      <workItem from="1584492560501" duration="12153000" />
+      <workItem from="1584492560501" duration="12696000" />
     </task>
     <task id="LOCAL-00001" summary="1.16fromlab">
       <created>1579140807777</created>
@@ -552,11 +561,18 @@
       <option name="project" value="LOCAL" />
       <updated>1584534988970</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="0318测试NCI1_no_entropy">
+      <created>1584535467809</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1584535467809</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="390613000" />
+    <option name="totallyTimeSpent" value="391156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -576,7 +592,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39093485" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3937677" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.48866856" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -585,8 +601,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.15439093" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286119" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.15439093" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.10481586" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -650,11 +666,11 @@
     <MESSAGE value="0306稍作修改的版本，可以明显看出加了边熵效果不好" />
     <MESSAGE value="0316尝试其他数据集" />
     <MESSAGE value="0316适应server的修改" />
-    <MESSAGE value="0318测试NCI1_no_entropy" />
     <MESSAGE value="0318测试NCI1_no_entropy_2" />
     <MESSAGE value="0318测试NCI1_no_entropy_3" />
     <MESSAGE value="0318测试NCI1_no_entropy_4" />
-    <option name="LAST_COMMIT_MESSAGE" value="0318测试NCI1_no_entropy_4" />
+    <MESSAGE value="0318测试NCI1_no_entropy" />
+    <option name="LAST_COMMIT_MESSAGE" value="0318测试NCI1_no_entropy" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -907,21 +923,21 @@
     <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="86" column="38" lean-forward="true" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+          <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/data/dortmund.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
-          <caret line="161" column="34" lean-forward="true" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
+          <caret line="161" column="34" selection-start-line="161" selection-start-column="34" selection-end-line="161" selection-end-column="34" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -940,8 +956,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="189" column="125" selection-start-line="189" selection-start-column="125" selection-end-line="189" selection-end-column="125" />
+        <state relative-caret-position="232">
+          <caret line="191" column="42" lean-forward="true" selection-start-line="191" selection-start-column="42" selection-end-line="191" selection-end-column="42" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
