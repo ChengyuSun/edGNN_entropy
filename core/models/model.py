@@ -187,10 +187,14 @@ class Model(nn.Module):
         elif isinstance(self.embed_nodes, torch.Tensor):
             #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1).long()
-            print(torch.cuda.is_available())
-            torch_device = torch.device("cuda")
-            label = label.to(torch_device)
-            node_features=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).scatter_(1 , label, 1)
+            print(label.type())
+            label=label.cuda()
+            print(label.type())
+            zeros=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim)
+            print(zeros.type())
+            zeros=zeros.cuda()
+            print(zeros.type())
+            node_features=zeros.scatter_(1 , label, 1)
         else:
             node_features = torch.zeros(self.g.number_of_nodes(), self.node_dim)
         node_features = node_features.cuda() if self.is_cuda else node_features

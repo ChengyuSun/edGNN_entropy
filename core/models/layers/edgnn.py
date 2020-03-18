@@ -4,7 +4,7 @@ edGNN layer (add link to the paper)
 import torch
 import torch.nn as nn
 
-from core.models.constants import GNN_EDGE_FEAT_KEY, GNN_AGG_MSG_KEY
+from core.models.constants import GNN_AGG_MSG_KEY
 from core.models.constants import GNN_MSG_KEY, GNN_NODE_FEAT_IN_KEY, GNN_NODE_FEAT_OUT_KEY
 from core.utils import reset_graph_features
 from utils.inits import init_weights
@@ -81,12 +81,12 @@ class edGNNLayer(nn.Module):
         if self.g.edata is not None:
             # print('edges.src[GNN_NODE_FEAT_IN_KEY]:'+str(edges.src[GNN_NODE_FEAT_IN_KEY].size()))
             # print('edges.data[GNN_EDGE_FEAT_KEY]:'+str(edges.data[GNN_EDGE_FEAT_KEY].size()))
-            if edges.data[GNN_EDGE_FEAT_KEY]!=None:
-                msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
-                                 edges.data[GNN_EDGE_FEAT_KEY]],
-                                dim=1)
-            else:
-                msg = edges.src[GNN_NODE_FEAT_IN_KEY]
+
+            # msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
+            #                      edges.data[GNN_EDGE_FEAT_KEY]],
+            #                     dim=1)
+
+            msg = edges.src[GNN_NODE_FEAT_IN_KEY]
             if self.dropout:
                 msg = self.dropout(msg)
         else:
@@ -128,7 +128,7 @@ class edGNNLayer(nn.Module):
 
         # 2. set current iteration features
         self.g.ndata[GNN_NODE_FEAT_IN_KEY] = node_features
-        self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
+        #self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
 
         # 3. aggregate messages
         self.g.update_all(self.gnn_msg,
