@@ -187,6 +187,10 @@ class Model(nn.Module):
         elif isinstance(self.embed_nodes, torch.Tensor):
             #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1).long().cuda()
+            o=torch.ones(len(label),1).long().cuda()
+            label=label-o
+            # print('node_dim:'+str(self.node_dim))
+            # print('label'+str(label))
             zeros=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).cuda()
             node_features=zeros.scatter_(1 , label, 1)
         else:
