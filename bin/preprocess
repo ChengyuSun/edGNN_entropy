@@ -14,7 +14,6 @@ AVAILABLE_DATASETS = {
     'dortmund'
 }
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
@@ -44,19 +43,17 @@ if __name__ == "__main__":
         for arg in optional_args:
             subpar.add_argument('--' + arg, default=defaults[arg])
 
-
     args = parser.parse_args()
 
     print("=== PARSED COMMAND-LINE OPTIONS ===")
-    print(args)
-    print()
+    print(args, '\n')
 
     fn_args = args.__dict__
     dataset = fn_args.pop('subparser_name')
 
     module = importlib.import_module(MODULE.format(dataset))
     preprocess_fn = getattr(module, PREPROCESS_FN.format(dataset))
-    
+
     print("=== PRINT FROM PREPROCESS_FN ===")
     preprocess_fn(**fn_args)
     print()

@@ -1,3 +1,11 @@
+# preprocessed data
+bin/preprocessed_data/*/unzipped
+bin/preprocessed_data/*/graph
+bin/preprocessed_data/*/labels
+bin/preprocessed_data/*/n_classes
+bin/preprocessed_data/*/n_entities
+bin/preprocessed_data/*/n_relations
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

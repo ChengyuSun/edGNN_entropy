@@ -51,7 +51,7 @@ def preprocess_dortmund(*, dataset, out_folder):
       dataset (str): dataset name (from ptc_fm, ptc_fr, ptc_mm, ptc_mr)
       out_folder (str): path to folder where to save preprocessed graph
     """
-    DATASET_PATH = complete_path(out_folder, dataset+'.zip')
+    DATASET_PATH = complete_path(out_folder, dataset + '.zip')
     #
     # dataset_url = "".join([BASE_URL, dataset.upper(), EXTENSION])
     # r = requests.get(dataset_url, allow_redirects=True)
@@ -72,14 +72,16 @@ def preprocess_dortmund(*, dataset, out_folder):
     data = dict()
     fpath = ''
     for f in os.listdir(dirpath):
-        if f == "README.md":
+        if f.startswith('README'):
             continue
         fpath = complete_path(dirpath, f)
         suffix = f.replace(dataset_name, '')
         if 'attributes' in suffix:
-            data[suffix] = np.loadtxt(fpath, dtype=np.float, delimiter=',')
+            data[suffix] = np.loadtxt(fpath, dtype=np.float, delimiter=',',
+                                      encoding='utf-8')
         else:
-            data[suffix] = np.loadtxt(fpath, dtype=np.int, delimiter=',')
+            data[suffix] = np.loadtxt(fpath, dtype=np.int, delimiter=',',
+                                      encoding='utf-8')
 
     graph_ids = set(data[GRAPH_ID_SUFFIX])
     node2graph = dict()
@@ -89,6 +91,15 @@ def preprocess_dortmund(*, dataset, out_folder):
     node2node_per_graph = dict()
 
     # build graphs with nodes
+    """
+    graphs: map graph_id to a DGLGraph object
+    graph_ids: distinct id for all graphs
+    graph_labels: a dict maps graph_id to its label, which is a ndarray
+    g_id: current graph id
+    node_ids / n_id: global node ids from the dataset of the current graph
+    node2graph: a dict maps n_id to graph_id(g_id)
+    n2n: a dict maps n_id to relative position in the current graph
+    """
     for g_id in graph_ids:
         node_ids = np.argwhere(data[GRAPH_ID_SUFFIX] == g_id).squeeze()
         node_ids.sort()
@@ -108,13 +119,16 @@ def preprocess_dortmund(*, dataset, out_folder):
         node2node_per_graph[g_id] = n2n
         graph_labels[g_id] = data[GRAPH_LABELS_SUFFIX][g_id - 1]
 
-
     # 边熵作为属性加入data中
 
     # data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
     # np.savetxt(out_folder+'/edge_att.csv', data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
 
     # process edges
+    """
+    orig_edge: an edge from the dataset
+    n_id_0: start node of an edge
+    """
     for i in range(len(data[ADJACENCY_SUFFIX])):
         orig_edge = data[ADJACENCY_SUFFIX][i] - 1
 
@@ -132,8 +146,8 @@ def preprocess_dortmund(*, dataset, out_folder):
 
         graphs[g_id].add_edge(n2n[n_id_0], n2n[orig_edge[1]], edata)
 
-    graph_list = []
-    labels = []
+    graph_list = []  # store all the GDLgraph objects
+    labels = []      # store all label arrays
 
     for g_id in graphs.keys():
         graph_list.append(graphs[g_id])
@@ -141,9 +155,8 @@ def preprocess_dortmund(*, dataset, out_folder):
 
     # add edge normalization
     if EDGE_LABELS_SUFFIX in data:
-        for graph in graph_list:
-
-            edge_src, edge_dst = graph.edges()
+        for graph in graph_list:                # graph: a GDLgraph object
+            edge_src, edge_dst = graph.edges()  # two nodes of an edge
             edge_dst = list(edge_dst.data.numpy())
             edge_type = list(graph.edata[GNN_EDGE_LABELS_KEY])
             _, inverse_index, count = np.unique((edge_dst, edge_type), axis=1, return_inverse=True,
@@ -166,7 +179,7 @@ def preprocess_dortmund(*, dataset, out_folder):
 
     utils.save_pickle(num_labels, complete_path(out_folder, N_CLASSES))
     utils.save_pickle(num_entities, complete_path(out_folder, N_ENTITIES))
-    #utils.save_pickle(num_rels, complete_path(out_folder, N_RELS))
+    # utils.save_pickle(num_rels, complete_path(out_folder, N_RELS))
     utils.save_pickle(graph_list, complete_path(out_folder, GRAPH))
 
 
@@ -175,7 +188,7 @@ def load_dortmund(folder):
         GRAPH: utils.load_pickle(complete_path(folder, GRAPH)),
         N_CLASSES: utils.load_pickle(complete_path(folder, N_CLASSES)),
         N_ENTITIES: utils.load_pickle(complete_path(folder, N_ENTITIES)),
-        #N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
+        # N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
     }
 
     for k in [LABELS]:

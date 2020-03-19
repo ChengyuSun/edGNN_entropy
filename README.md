@@ -47,3 +47,10 @@ run_model
 ```
 
 if you want more details,please read [README_original.md](README_original.md).
+
+## detail
+### 预处理后数据
+1. graph       按照图的id顺序存储的每张图, DGLGraph
+2. labels      按照图id顺序存储的每张图的label, 0/1, torch.LongTensor
+3. n_classes   图的label的种类数, int
+4. n_entities  节点的label种类数, int
