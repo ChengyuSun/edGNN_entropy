@@ -127,7 +127,7 @@ class edGNNLayer(nn.Module):
 
         # 2. set current iteration features
         self.g.ndata[GNN_NODE_FEAT_IN_KEY] = node_features
-        #self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
+        self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
 
         # 3. aggregate messages
         self.g.update_all(self.gnn_msg,
