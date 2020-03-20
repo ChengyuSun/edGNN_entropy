@@ -85,7 +85,7 @@ class App:
             self.accuracies = np.zeros(10)
             graphs = data[GRAPH]                 # load all the graphs
             num_samples = len(graphs)
-            print('num_samples'+str(len(num_samples)))
+            print('num_samples'+str(num_samples))
             num_folds = 10
             kf = KFold(n_splits=num_folds)
 
