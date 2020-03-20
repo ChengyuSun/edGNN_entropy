@@ -88,7 +88,7 @@ class App:
             print('num_samples'+str(num_samples))
             num_folds = 10
             kf = KFold(n_splits=num_folds)
-
+            print('enumerate(kf.split(graphs))'+str(enumerate(kf.split(graphs))))
             for k, (train_index, test_index) in enumerate(kf.split(graphs)):
                 # print(k)
                 print('train_index'+str(len(train_index)))

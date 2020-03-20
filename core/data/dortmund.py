@@ -6,7 +6,7 @@ import torch
 from dgl import DGLGraph
 
 import core.data.utils as utils
-from core.data.constants import GRAPH, LABELS, N_CLASSES, N_ENTITIES
+from core.data.constants import GRAPH, LABELS, N_CLASSES, N_ENTITIES, N_RELS
 from core.data.utils import complete_path
 from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
 from core.models.constants import GNN_NODE_LABELS_KEY, GNN_NODE_ATTS_KEY, GNN_EDGE_FEAT_KEY
@@ -166,7 +166,7 @@ def preprocess_dortmund(*, dataset, out_folder):
 
     utils.save_pickle(num_labels, complete_path(out_folder, N_CLASSES))
     utils.save_pickle(num_entities, complete_path(out_folder, N_ENTITIES))
-    #utils.save_pickle(num_rels, complete_path(out_folder, N_RELS))
+    utils.save_pickle(num_rels, complete_path(out_folder, N_RELS))
     utils.save_pickle(graph_list, complete_path(out_folder, GRAPH))
 
 
@@ -175,7 +175,7 @@ def load_dortmund(folder):
         GRAPH: utils.load_pickle(complete_path(folder, GRAPH)),
         N_CLASSES: utils.load_pickle(complete_path(folder, N_CLASSES)),
         N_ENTITIES: utils.load_pickle(complete_path(folder, N_ENTITIES)),
-        #N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
+        N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
     }
 
     for k in [LABELS]:
