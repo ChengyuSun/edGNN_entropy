@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from core.models.constants import GNN_AGG_MSG_KEY
-from core.models.constants import GNN_MSG_KEY, GNN_NODE_FEAT_IN_KEY, GNN_NODE_FEAT_OUT_KEY
+from core.models.constants import GNN_MSG_KEY, GNN_NODE_FEAT_IN_KEY, GNN_NODE_FEAT_OUT_KEY, GNN_EDGE_FEAT_KEY
 from core.utils import reset_graph_features
 from utils.inits import init_weights
 from utils.inits import reset
@@ -81,11 +81,11 @@ class edGNNLayer(nn.Module):
         if self.g.edata is not None:
             # print('edges.data[GNN_EDGE_FEAT_KEY]:'+str(edges.data[GNN_EDGE_FEAT_KEY].size()))
 
-            # msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
-            #                      edges.data[GNN_EDGE_FEAT_KEY]],
-            #                     dim=1)
+            msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
+                                 edges.data[GNN_EDGE_FEAT_KEY]],
+                                dim=1)
 
-            msg = edges.src[GNN_NODE_FEAT_IN_KEY]
+            #msg = edges.src[GNN_NODE_FEAT_IN_KEY]
             if self.dropout:
                 msg = self.dropout(msg)
         else:
