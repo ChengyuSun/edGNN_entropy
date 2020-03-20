@@ -121,7 +121,11 @@ class edGNNLayer(nn.Module):
 
         if g is not None:
             self.g = g
-
+        0.3875912408759124
+        0.4474452554744525
+        0.5260340632603406
+        0.4846715328467154
+        0.410705596107056
         # 1. clean graph features
         reset_graph_features(self.g)
 

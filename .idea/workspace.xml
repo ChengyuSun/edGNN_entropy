@@ -94,8 +94,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+            <state relative-caret-position="260">
+              <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
               <folding>
                 <element signature="e#44#56#0" expanded="true" />
               </folding>
@@ -471,7 +471,7 @@
       <workItem from="1583458148140" duration="6623000" />
       <workItem from="1583933356675" duration="1330000" />
       <workItem from="1584072633565" duration="37948000" />
-      <workItem from="1584492560501" duration="41319000" />
+      <workItem from="1584492560501" duration="43442000" />
     </task>
     <task id="LOCAL-00001" summary="1.16fromlab">
       <created>1579140807777</created>
@@ -669,11 +669,25 @@
       <option name="project" value="LOCAL" />
       <updated>1584677799706</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="0320测试NCI1_entropy">
+      <created>1584684438565</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1584684438565</updated>
+    </task>
+    <task id="LOCAL-00030" summary="0320测试NCI1_entropy">
+      <created>1584684769655</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1584684769655</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="419779000" />
+    <option name="totallyTimeSpent" value="421902000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -686,7 +700,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25536194" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -702,8 +715,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.15439093" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.26345608" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.15439093" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.26203966" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1088,8 +1101,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="85" column="38" lean-forward="true" selection-start-line="85" selection-start-column="38" selection-end-line="85" selection-end-column="38" />
+        <state relative-caret-position="260">
+          <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
           <folding>
             <element signature="e#44#56#0" expanded="true" />
           </folding>
