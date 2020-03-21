@@ -190,9 +190,9 @@ class Model(nn.Module):
             #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1).long().cuda()
 
-            #NCI1 need the below 2 lines
-            #o = torch.ones(len(label), 1).long().cuda()
-            #label=label-o
+            #NCI need the below 2 lines
+            o = torch.ones(len(label), 1).long().cuda()
+            label=label-o
 
             zeros=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).cuda()
             node_features=zeros.scatter_(1 , label, 1)
