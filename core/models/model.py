@@ -67,7 +67,7 @@ def layer_build_args(node_dim, edge_dim, n_classes, layer_params, mode):
 
 class Model(nn.Module):
 
-    def __init__(self, g, config_params, n_classes=None, n_rels=None, n_entities=None, is_cuda=False, mode=NODE_CLASSIFICATION):
+    def __init__(self, g, config_params, n_classes=None, n_rels=1, n_entities=None, is_cuda=False, mode=NODE_CLASSIFICATION):
         """
         Instantiate a graph neural network.
 
