@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/model.py" afterDir="false" />
-    </list>
+    <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,8 +72,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/models/model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+            <state relative-caret-position="328">
+              <caret line="194" column="26" lean-forward="true" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -439,7 +446,7 @@
       <workItem from="1583458148140" duration="6623000" />
       <workItem from="1583933356675" duration="1330000" />
       <workItem from="1584072633565" duration="37948000" />
-      <workItem from="1584492560501" duration="50631000" />
+      <workItem from="1584492560501" duration="50979000" />
     </task>
     <task id="LOCAL-00001" summary="1.16fromlab">
       <created>1579140807777</created>
@@ -700,11 +707,25 @@
       <option name="project" value="LOCAL" />
       <updated>1584791857323</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="0321测试nci109_entropy,n_rels缺省值改为1">
+      <created>1584793549417</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1584793549417</updated>
+    </task>
+    <task id="LOCAL-00039" summary="0321测试nci109_entropy,n_rels缺省值改为1">
+      <created>1584793696759</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1584793696759</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="429091000" />
+    <option name="totallyTimeSpent" value="429439000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -782,7 +803,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1.21预处理完成之后model存在问题" />
     <MESSAGE value="1.22tensor维度冲突" />
     <MESSAGE value="0125没进展" />
     <MESSAGE value="0127基本锁定问题出现位置" />
@@ -807,7 +827,8 @@
     <MESSAGE value="0320测试ptc_entropy" />
     <MESSAGE value="0321测试mutag_entropy" />
     <MESSAGE value="0321测试nci109_entropy" />
-    <option name="LAST_COMMIT_MESSAGE" value="0321测试nci109_entropy" />
+    <MESSAGE value="0321测试nci109_entropy,n_rels缺省值改为1" />
+    <option name="LAST_COMMIT_MESSAGE" value="0321测试nci109_entropy,n_rels缺省值改为1" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -1042,13 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="133" column="55" lean-forward="true" selection-start-line="133" selection-start-column="55" selection-end-line="133" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/entropy/interface.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -1121,6 +1135,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/run_model">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1133,8 +1154,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/models/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="69" column="65" selection-start-line="69" selection-start-column="65" selection-end-line="69" selection-end-column="65" />
+        <state relative-caret-position="328">
+          <caret line="194" column="26" lean-forward="true" selection-start-line="194" selection-start-column="26" selection-end-line="194" selection-end-column="26" />
         </state>
       </provider>
     </entry>
