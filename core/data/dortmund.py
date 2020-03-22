@@ -6,10 +6,11 @@ import torch
 from dgl import DGLGraph
 
 import core.data.utils as utils
-from core.data.constants import GRAPH, LABELS, N_CLASSES, N_ENTITIES
+from core.data.constants import GRAPH, LABELS, N_CLASSES, N_ENTITIES, N_RELS
 from core.data.utils import complete_path
 from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
 from core.models.constants import GNN_NODE_LABELS_KEY, GNN_NODE_ATTS_KEY, GNN_EDGE_FEAT_KEY
+from entropy.interface import writeEdgeAttribute
 
 ADJACENCY_SUFFIX = '_A.txt'
 GRAPH_ID_SUFFIX = '_graph_indicator.txt'
@@ -111,8 +112,8 @@ def preprocess_dortmund(*, dataset, out_folder):
 
     # 边熵作为属性加入data中
 
-    # data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
-    # np.savetxt(out_folder+'/edge_att.csv', data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
+    data[EDGE_ATT_SUFFIX]=writeEdgeAttribute(data[GRAPH_ID_SUFFIX],data[ADJACENCY_SUFFIX])
+    np.savetxt(out_folder+'/edge_att.csv', data[EDGE_ATT_SUFFIX], delimiter="\n", fmt="%f")
 
     # process edges
     for i in range(len(data[ADJACENCY_SUFFIX])):
@@ -175,7 +176,7 @@ def load_dortmund(folder):
         GRAPH: utils.load_pickle(complete_path(folder, GRAPH)),
         N_CLASSES: utils.load_pickle(complete_path(folder, N_CLASSES)),
         N_ENTITIES: utils.load_pickle(complete_path(folder, N_ENTITIES)),
-        #N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
+        N_RELS: utils.load_pickle(complete_path(folder, N_RELS))
     }
 
     for k in [LABELS]:

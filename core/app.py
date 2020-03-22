@@ -109,7 +109,7 @@ class App:
                 if learning_config['cuda']:
                     self.model.cuda()
 
-                print('\n\n\nProcess new k')
+                print('\n\n\nProcess new k {}'.format(k))
 
                 # testing batch
                 testing_graphs = [graphs[i] for i in test_index]

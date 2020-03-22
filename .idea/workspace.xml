@@ -2,12 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="117e8958-37b3-4f00-9f1f-abf37ee96b9d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/edGNN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/edGNN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/dataset.zip" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/ptc_fr.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/graph" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/graph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/labels" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/labels" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_A.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_A.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_edge_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_edge_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_indicator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_indicator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_node_labels.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_node_labels.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/run_model" beforeDir="false" afterPath="$PROJECT_DIR$/bin/run_model" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/CountMotif_nr.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/CountMotif_nr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entropy/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/entropy/interface.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/dortmund.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/data/dortmund.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models/model.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,88 +52,6 @@
     <expand />
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/preprocess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1490">
-              <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
-              <folding>
-                <element signature="e#24#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3495">
-              <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entropy/interface.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-370">
-              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/entropy/CountMotif_nr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/data/dglrgcn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/contrib/data/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/models/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="158" column="93" lean-forward="true" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
-              <folding>
-                <element signature="e#24#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -128,49 +59,13 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>GNN_EDGE_FEAT_KEY</find>
-      <find>Number of nodes</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/bin/pre_powernet.py" />
-        <option value="$PROJECT_DIR$/bin/average.py" />
-        <option value="$PROJECT_DIR$/bin/powernet_interface.py" />
-        <option value="$PROJECT_DIR$/entropy/Entropy.py" />
-        <option value="$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_ptc.json" />
-        <option value="$PROJECT_DIR$/bin/ptc_entropy_acc.txt" />
-        <option value="$PROJECT_DIR$/bin/ptc_acc.txt" />
-        <option value="$PROJECT_DIR$/WorkReport.txt" />
-        <option value="$PROJECT_DIR$/README.txt" />
-        <option value="$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_mutag.json" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json" />
-        <option value="$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_A.txt" />
-        <option value="$PROJECT_DIR$/bin/NCI1_entropy_acc.txt" />
-        <option value="$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1.json" />
-        <option value="$PROJECT_DIR$/core/models/constants.py" />
-        <option value="$PROJECT_DIR$/bin/run_model" />
-        <option value="$PROJECT_DIR$/bin/preprocess" />
-        <option value="$PROJECT_DIR$/core/data/dortmund.py" />
-        <option value="$PROJECT_DIR$/venv/Lib/site-packages/dgl/contrib/data/__init__.py" />
-        <option value="$PROJECT_DIR$/venv/Lib/site-packages/dgl/contrib/data/knowledge_graph.py" />
-        <option value="$PROJECT_DIR$/core/models/config_files/config_edGNN_node_class.json" />
-        <option value="$PROJECT_DIR$/core/data/dglrgcn.py" />
-        <option value="$PROJECT_DIR$/entropy/countedge.py" />
-        <option value="$PROJECT_DIR$/core/models/layers/edgnn.py" />
-        <option value="$PROJECT_DIR$/core/app.py" />
-        <option value="$PROJECT_DIR$/core/models/model.py" />
-        <option value="$PROJECT_DIR$/entropy/interface.py" />
-        <option value="$PROJECT_DIR$/entropy/CountMotif_nr.py" />
-      </list>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
@@ -182,91 +77,14 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="bin" type="462c0819:PsiDirectoryNode" />
-              <item name="preprocessed_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="config_files" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="layers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="entropy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="data2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="edGNN_entropy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="edGNN_entropy" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/venv" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -289,63 +107,7 @@
       <recent name="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\entropy" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.preprocess">
-    <configuration name="Entropy2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="edGNN" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/entropy" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/entropy/Entropy2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="average" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="edGNN" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/average.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.run ptc_fr">
     <configuration name="countedge2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="edGNN" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -368,21 +130,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="interface" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="preprocess ptc_fr" type="PythonConfigurationType" factoryName="Python">
       <module name="edGNN" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="F:\PyCharm 2018.3.5\PyCharmProjects\edGNN\edGNN\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/entropy" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/entropy/interface.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/preprocess" />
+      <option name="PARAMETERS" value="dortmund --dataset ptc_fr --out_folder ./preprocessed_data/ptc_fr" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -412,6 +174,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="run ptc_fr" type="PythonConfigurationType" factoryName="Python">
+      <module name="edGNN" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\airan\Anaconda3\envs\graph\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/run_model" />
+      <option name="PARAMETERS" value="--dataset ptc_fr --config_fpath ../core/models/config_files/config_edGNN_graph_class_ptc.json --data_path ./preprocessed_data/ptc_fr/ --n-epochs 40 --gpu 0" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run_model" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="edGNN" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -419,14 +203,14 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\Users\airan\Anaconda3\envs\graph\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/run_model" />
-      <option name="PARAMETERS" value="--dataset NCI1 --config_fpath ../core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json --data_path ./preprocessed_data/NCI1_no_entropy/ --n-epochs 40 --gpu -1" />
+      <option name="PARAMETERS" value="--dataset NCI1 --config_fpath ../core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json --data_path ./preprocessed_data/NCI1_no_entropy/ --n-epochs 40 --gpu 0" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -436,18 +220,14 @@
     </configuration>
     <list>
       <item itemvalue="Python.preprocess" />
-      <item itemvalue="Python.interface" />
+      <item itemvalue="Python.preprocess ptc_fr" />
+      <item itemvalue="Python.run ptc_fr" />
       <item itemvalue="Python.run_model" />
       <item itemvalue="Python.countedge2" />
-      <item itemvalue="Python.Entropy2" />
-      <item itemvalue="Python.average" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.interface" />
         <item itemvalue="Python.run_model" />
-        <item itemvalue="Python.average" />
-        <item itemvalue="Python.Entropy2" />
         <item itemvalue="Python.countedge2" />
       </list>
     </recent_temporary>
@@ -796,9 +576,6 @@
     <option name="localTasksCounter" value="46" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="446929000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -807,33 +584,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25536194" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.40509915" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.48866856" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067025" side_tool="true" weight="0.25212464" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.15439093" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49932975" weight="0.19971672" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
-      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -847,12 +597,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -903,370 +647,52 @@
     <option name="LAST_COMMIT_MESSAGE" value="0322测试mutag-node-entropy" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bin/powernet_interface.py" />
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fredge_att.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WorkReport.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README_original.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="150">
-            <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_RGCN_graph_class.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1582">
-          <caret line="192" column="36" lean-forward="true" selection-start-line="192" selection-start-column="36" selection-end-line="192" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAGedge_att.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136825">
-          <caret line="5473" column="10" selection-start-line="5473" selection-start-column="10" selection-end-line="5473" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/view.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/importlib/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="105" column="6" lean-forward="true" selection-start-line="105" selection-start-column="6" selection-end-line="105" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_mutag.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="27" lean-forward="true" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_graph_indicator.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/MUTAG/unzipped/MUTAG/MUTAG_A.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/NCI1/unzipped/NCI1/NCI1_graph_indicator.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="44" column="1" lean-forward="true" selection-start-line="21" selection-end-line="44" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/NCI1/unzipped/NCI1/NCI1_A.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="90" column="5" lean-forward="true" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_edge_labels.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_graph_indicator.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="1" lean-forward="true" selection-start-line="2" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/ptc_fr/unzipped/PTC_FR/PTC_FR_A.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/entropy_acc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/no_entropy_acc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="18" lean-forward="true" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/Entropy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1225">
-          <caret line="52" column="23" lean-forward="true" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/NCI1_entropy_acc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="6" lean-forward="true" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocessed_data/NCI1_entropy/edge_att.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/early_stopping.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_ptc.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/run_model">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="37" column="49" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding>
-            <element signature="e#49#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_graph_class_NCI1_noentropy.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="14" lean-forward="true" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/layers/rgcn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="962">
-          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/dortmund.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="102" column="48" selection-start-line="102" selection-start-column="48" selection-end-line="102" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/edge_entropy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/layers/edgnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-          <folding>
-            <element signature="e#44#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/contrib/data/knowledge_graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="85" column="26" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/data/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="162" column="35" lean-forward="true" selection-start-line="162" selection-start-column="35" selection-end-line="162" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/countedge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="197" column="12" lean-forward="true" selection-start-line="197" selection-start-column="12" selection-end-line="197" selection-end-column="12" />
-          <folding>
-            <element signature="e#17#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/config_files/config_edGNN_node_class.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/dgl/contrib/data/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/dglrgcn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="15" lean-forward="true" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/preprocess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1490">
-          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
-          <folding>
-            <element signature="e#24#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/CountMotif_nr.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/entropy/interface.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-370">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3495">
-          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/models/model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="158" column="93" lean-forward="true" selection-start-line="158" selection-start-column="93" selection-end-line="158" selection-end-column="93" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="201" y="86" width="1158" height="693" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584865381048">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="201" y="86" width="1158" height="693" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1584865381048" />
+    <state x="561" y="137" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1584860621833">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="561" y="137" key="#com.intellij.ide.macro.MacrosDialog/0.0.1536.864@0.0.1536.864" timestamp="1584860621833" />
+    <state x="496" y="44" key="#run_model" timestamp="1584859666281">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="496" y="44" key="#run_model/0.0.1536.864@0.0.1536.864" timestamp="1584859666281" />
+    <state x="548" y="186" key="FileChooserDialogImpl" timestamp="1584859752781">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="548" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1584859752781" />
+    <state width="1491" height="251" key="GridCell.Tab.0.bottom" timestamp="1584867179164">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="251" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1584867179164" />
+    <state width="1491" height="251" key="GridCell.Tab.0.center" timestamp="1584867179164">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="251" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1584867179164" />
+    <state width="1491" height="251" key="GridCell.Tab.0.left" timestamp="1584867179164">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="251" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1584867179164" />
+    <state width="1491" height="251" key="GridCell.Tab.0.right" timestamp="1584867179164">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1491" height="251" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1584867179164" />
+    <state x="277" y="74" key="SettingsEditor" timestamp="1584859773632">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="277" y="74" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1584859773632" />
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2" timestamp="1584867685174">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="165" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1584867685174" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/edGNN_entropy$run_ptc_fr.coverage" NAME="run ptc_fr Coverage Results" MODIFIED="1584867179154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/edGNN_entropy$preprocess_ptc_fr.coverage" NAME="preprocess ptc_fr Coverage Results" MODIFIED="1584860999787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
+    <SUITE FILE_PATH="coverage/edGNN_entropy$run_model.coverage" NAME="run_model Coverage Results" MODIFIED="1584859666307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin" />
   </component>
   <component name="masterDetails">
     <states>
