@@ -72,7 +72,7 @@ def preprocess_dortmund(*, dataset, out_folder):
     data = dict()
     fpath = ''
     for f in os.listdir(dirpath):
-        if f == "README.txt":
+        if "README" in f:
             continue
         fpath = complete_path(dirpath, f)
         suffix = f.replace(dataset_name, '')

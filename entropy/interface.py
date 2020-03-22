@@ -20,6 +20,20 @@ def writeEdgeEntropy(graphfile):
 
 #print(writeEdgeEntropy('./data/graph11.xlsx'))
 
+def edgeEntropy_node_class(edge_src,edge_dst,nodN):
+    edgeN=len(edge_src)
+    A=np.zeros([nodN,nodN],int)
+    for i in range(edgeN):
+        A[edge_src[i]][edge_dst[i]]=1
+    for i in range(nodN):
+        A[i][i]=0
+    print('矩阵还原完成，开始计算边熵')
+    entropy_matrix=edgeEntropy(graphEntropy(countMotifs(A, nodN), nodN), countEdge(A,nodN))
+    edge_entropys=[]
+    for i in range(edgeN):
+        edge_entropys.append(entropy_matrix[edge_src[i]][edge_dst[i]])
+    return edge_entropys
+
 def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
     # build graphs with nodes

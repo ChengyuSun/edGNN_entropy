@@ -9,6 +9,7 @@ import numpy as np
 Nm = 8
 
 def countMotifs(A,nodN):
+    print('开始countmotifs')
     rd=np.argsort(sum(np.transpose(A)))
     rdA=A[rd]
     rdA[:,]=rdA[:,rd]

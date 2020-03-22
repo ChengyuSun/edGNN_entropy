@@ -85,13 +85,14 @@ class App:
             self.accuracies = np.zeros(10)
             graphs = data[GRAPH]                 # load all the graphs
             num_samples = len(graphs)
+            print('num_samples'+str(num_samples))
             num_folds = 10
             kf = KFold(n_splits=num_folds)
-
+            print('enumerate(kf.split(graphs))'+str(enumerate(kf.split(graphs))))
             for k, (train_index, test_index) in enumerate(kf.split(graphs)):
                 # print(k)
-                # print(len(train_index))
-                # print(len(test_index))
+                print('train_index'+str(len(train_index)))
+                print('test_index'+str(len(test_index)))
                 # create GNN model
                 self.model = Model(g=data[GRAPH],
                                    config_params=model_config,
@@ -208,6 +209,6 @@ class App:
 
         print("\nTest Accuracy {:.4f}".format(acc))
 
-        with open('./NCI1_entropy_acc.txt', 'a+') as f:
+        with open('./aifb_entropy_acc.txt', 'a+') as f:
             f.write(str(acc) + '\n')
         return acc

@@ -1,13 +1,14 @@
-import torch
-import numpy as np
 from distutils.util import strtobool
 
-from dgl.contrib.data import load_data
+import numpy as np
+import torch
 from dgl import DGLGraph
+from dgl.contrib.data import load_data
 
 from core.data.constants import GRAPH, LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, N_RELS, N_CLASSES
-from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM
 from core.data.utils import complete_path, load_pickle, save_pickle
+from core.models.constants import GNN_EDGE_LABELS_KEY, GNN_EDGE_NORM, GNN_EDGE_FEAT_KEY
+from entropy.interface import edgeEntropy_node_class
 
 
 def preprocess_dglrgcn(*, dataset, out_folder, bfs_level=3, relabel=False, reverse_edges=False):
@@ -30,7 +31,6 @@ def preprocess_dglrgcn(*, dataset, out_folder, bfs_level=3, relabel=False, rever
     data = load_data(dataset=dataset, bfs_level=bfs_level, relabel=relabel)
 
     labels = torch.squeeze(torch.LongTensor(data.labels))
-
     def _idx_to_mask(idx, n):
         mask = np.zeros(n, dtype=int)
         mask[idx] = 1
@@ -52,7 +52,9 @@ def preprocess_dglrgcn(*, dataset, out_folder, bfs_level=3, relabel=False, rever
     g.add_nodes(data.num_nodes)
 
     edge_src, edge_dst, edge_type = data.edge_src, data.edge_dst, torch.LongTensor(data.edge_type)
-
+    print('edge_src',edge_src)
+    print('edge_dst',edge_dst)
+    print('edge_type',edge_type)
     if reverse_edges:
         g.add_edges(edge_src, edge_dst)
         g.add_edges(edge_dst, edge_src)
@@ -61,6 +63,7 @@ def preprocess_dglrgcn(*, dataset, out_folder, bfs_level=3, relabel=False, rever
     else:
         g.add_edges(edge_src, edge_dst)
         g.edata[GNN_EDGE_LABELS_KEY] = edge_type
+        g.edges[GNN_EDGE_FEAT_KEY]=edgeEntropy_node_class(edge_src,edge_dst,data.num_nodes)
         g.edata[GNN_EDGE_NORM] = torch.from_numpy(data.edge_norm).unsqueeze(1)
 
     save_pickle(g, complete_path(out_folder, GRAPH))

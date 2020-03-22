@@ -90,6 +90,8 @@ class Model(nn.Module):
         self.mode = mode
         self.config_params = config_params
         self.n_rels = n_rels
+        if self.n_rels==None:
+            self.n_rels=1
         self.n_classes = n_classes
         self.n_entities = n_entities
         self.g = g
@@ -154,7 +156,7 @@ class Model(nn.Module):
         #if need entropy , the edge_dim need to be self.edge_dim+1
         # else it just equals to self.edge_dim
 
-        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim, self.n_classes,
+        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim+1, self.n_classes,
                                                                        layer_params, self.mode):
             print('* Building new layer with args:', node_dim, edge_dim, n_out, act, kwargs)
             self.layers.append(self.Layer(self.g, node_dim, edge_dim, n_out, act, **kwargs))
@@ -187,10 +189,11 @@ class Model(nn.Module):
         elif isinstance(self.embed_nodes, torch.Tensor):
             #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
             label=self.g.ndata[GNN_NODE_LABELS_KEY].view(-1,1).long().cuda()
-            o=torch.ones(len(label),1).long().cuda()
+
+            #NCI need the below 2 lines
+            o = torch.ones(len(label), 1).long().cuda()
             label=label-o
-            # print('node_dim:'+str(self.node_dim))
-            # print('label'+str(label))
+
             zeros=torch.zeros(len(self.g.ndata[GNN_NODE_LABELS_KEY]), self.node_dim).cuda()
             node_features=zeros.scatter_(1 , label, 1)
         else:
@@ -207,8 +210,9 @@ class Model(nn.Module):
             #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
 
             #turn label into one-hot
-            label=self.g.edata[GNN_EDGE_LABELS_KEY].view(-1,1)
-            edge_features=torch.zeros(len(self.g.edata[GNN_EDGE_LABELS_KEY]),self.edge_dim).scatter_(1,label.long(),1)
+            label=self.g.edata[GNN_EDGE_LABELS_KEY].view(-1,1).long().cuda()
+            zeros = torch.zeros(len(self.g.edata[GNN_EDGE_LABELS_KEY]),self.edge_dim).cuda()
+            edge_features=zeros.scatter_(1,label,1)
 
             # print("edge_features:" + str(edge_features.size()))
             # print("self.g.edata[GNN_EDGE_FEAT_KEY]:" + str(self.g.edata[GNN_EDGE_FEAT_KEY].size()))
