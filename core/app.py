@@ -209,6 +209,6 @@ class App:
 
         print("\nTest Accuracy {:.4f}".format(acc))
 
-        with open('./mutag_node_entropy_acc.txt', 'a+') as f:
+        with open('./aifb_entropy_acc.txt', 'a+') as f:
             f.write(str(acc) + '\n')
         return acc
