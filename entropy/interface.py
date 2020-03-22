@@ -23,13 +23,13 @@ def writeEdgeEntropy(graphfile):
 def edgeEntropy_node_class(edge_src,edge_dst,nodN):
     edgeN=len(edge_src)
     A=np.zeros([nodN,nodN],int)
-    for i in edgeN:
+    for i in range(edgeN):
         A[edge_src[i]][edge_dst[i]]=1
-    for i in nodN:
+    for i in range(nodN):
         A[i][i]=0
     entropy_matrix=edgeEntropy(graphEntropy(countMotifs(A, nodN), nodN), countEdge(A,nodN))
     edge_entropys=[]
-    for i in edgeN:
+    for i in range(edgeN):
         edge_entropys.append(entropy_matrix[edge_src[i]][edge_dst[i]])
     return edge_entropys
 
