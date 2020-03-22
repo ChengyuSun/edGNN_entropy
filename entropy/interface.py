@@ -20,6 +20,19 @@ def writeEdgeEntropy(graphfile):
 
 #print(writeEdgeEntropy('./data/graph11.xlsx'))
 
+def edgeEntropy_node_class(edge_src,edge_dst,nodN):
+    edgeN=len(edge_src)
+    A=np.zeros([nodN,nodN],int)
+    for i in edgeN:
+        A[edge_src[i]][edge_dst[i]]=1
+    for i in nodN:
+        A[i][i]=0
+    entropy_matrix=edgeEntropy(graphEntropy(countMotifs(A, nodN), nodN), countEdge(A,nodN))
+    edge_entropys=[]
+    for i in edgeN:
+        edge_entropys.append(entropy_matrix[edge_src[i]][edge_dst[i]])
+    return edge_entropys
+
 def writeEdgeAttribute(graph_ids,adj):
     edge_entropys=[]
     # build graphs with nodes

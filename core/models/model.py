@@ -156,7 +156,7 @@ class Model(nn.Module):
         #if need entropy , the edge_dim need to be self.edge_dim+1
         # else it just equals to self.edge_dim
 
-        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim, self.n_classes,
+        for node_dim, edge_dim, n_out, act, kwargs in layer_build_args(self.node_dim, self.edge_dim+1, self.n_classes,
                                                                        layer_params, self.mode):
             print('* Building new layer with args:', node_dim, edge_dim, n_out, act, kwargs)
             self.layers.append(self.Layer(self.g, node_dim, edge_dim, n_out, act, **kwargs))
