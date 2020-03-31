@@ -72,16 +72,20 @@ def save_cora(out_folder):
         attention=torch.from_numpy(np.array(attention))
         attention_sum=torch.add(attention_sum.double(),attention.double())
 
-    attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8) # 2708*2708*8
+    attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8) # 2708*2708*8
 
-    edge_feature=torch.mul(attention_average,edge_entropy)
+    edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
 
-    g.edata[GNN_EDGE_LABELS_KEY] =edge_feature
+    edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
     for i in range(N):
         for j in range(N):
             if adj[i][j] > 0:
                 g.add_edges(i, j)
+                edge_feature.append(edge_feature_all[i*N+j])
+
+    g.edata[GNN_EDGE_LABELS_KEY] =torch.from_numpy(edge_feature)
+    print('g.edata[GNN_EDGE_LABELS_KEY]:',g.edata[GNN_EDGE_LABELS_KEY].size())
 
 
     #save
