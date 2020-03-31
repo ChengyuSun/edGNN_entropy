@@ -106,6 +106,7 @@ class App:
 
                 if learning_config['cuda']:
                     self.model.cuda()
+                    print('model cuda')
 
                 print('\n\n\nProcess new k')
 
