@@ -60,22 +60,22 @@ def save_cora(out_folder):
         edge_entropy.append(vector2)
     edge_entropy=torch.from_numpy(np.array(edge_entropy))
 
-    # attention_sum=torch.zeros(nodN,nodN)
-    # for i in range(8):
-    #     attention=[]
-    #     filename='../bin/preprocessed_data/cora/attentions/attention_{}.txt'.format(i)
-    #     attention_file=open(filename,"r").readlines()
-    #     for line in attention_file:
-    #         vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-    #         attention.append(vector3)
-    #     attention=torch.from_numpy(np.array(attention))
-    #     attention_sum=torch.add(attention_sum.double(),attention.double())
-    #
-    # attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
+    attention_sum=torch.zeros(nodN,nodN)
+    for i in range(8):
+        attention=[]
+        filename='../bin/preprocessed_data/cora/attentions/attention_{}.txt'.format(i)
+        attention_file=open(filename,"r").readlines()
+        for line in attention_file:
+            vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
+            attention.append(vector3)
+        attention=torch.from_numpy(np.array(attention))
+        attention_sum=torch.add(attention_sum.double(),attention.double())
 
-    # edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
+    attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
 
-    edge_feature_all=torch.randn(nodN*nodN,8).numpy()
+    edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
+
+    #edge_feature_all=torch.randn(nodN*nodN,8).numpy()
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
     for i in range(N):
@@ -83,6 +83,7 @@ def save_cora(out_folder):
             if adj[i][j] > 0:
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i*N+j])
+                print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
 
     g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
