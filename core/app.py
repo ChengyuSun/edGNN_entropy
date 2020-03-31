@@ -195,7 +195,7 @@ class App:
             print('Error while loading the model.', e)
 
         if mode == NODE_CLASSIFICATION:
-            test_mask = data[TEST_MASK]
+            test_mask = data[TEST_MASK].bool()
             labels = data[LABELS]
             acc, _ = self.model.eval_node_classification(labels, test_mask)
         else:

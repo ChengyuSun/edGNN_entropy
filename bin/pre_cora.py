@@ -7,7 +7,7 @@ from dgl import DGLGraph
 
 from core.data.constants import GRAPH, LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, N_CLASSES
 from core.data.utils import complete_path, load_pickle, save_pickle
-from core.models.constants import GNN_NODE_ATTS_KEY
+from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_csv
 
 
@@ -74,8 +74,8 @@ def save_cora(out_folder):
     # attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
 
     # edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
-    edge_feature_all=edge_entropy.numpy()
 
+    edge_feature_all=torch.randn(nodN*nodN,8).numpy()
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
     for i in range(N):
@@ -84,8 +84,8 @@ def save_cora(out_folder):
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i*N+j])
 
-    #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
-
+    g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
+    print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
