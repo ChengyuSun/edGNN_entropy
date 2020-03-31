@@ -103,6 +103,7 @@ class edGNNLayer(nn.Module):
                        nodes.data[GNN_AGG_MSG_KEY]],
                       dim=1)
 
+        print('h:',h.type())
         h = self.linear(h)
 
         if self.activation:
