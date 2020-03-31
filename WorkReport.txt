@@ -1,0 +1,15 @@
+My work: I add edge-entropy into my graph structure, then I use edGNN algorithm to do graph classification.
+
+My dataset: ptc_fr & MUTAG
+
+Accuracy（graph classification）:
+    ptc_fr with edge-entropy: 0.581031746031746/0.5584920634920635/0.5498412698412698/0.5611111111111111/0.546984126984127
+    ptc_fr without edge_entropy:0.6814285714285714/0.6271428571428572/0.6154761904761904/0.6582539682539682/0.6555555555555557
+
+    MUTAG with edge_entropy:0.7970760233918128/0.7865497076023391/0.7921052631578946/0.8023391812865498/0.7654970760233917
+    MUATG without edge_entropy:0.8391812865497077/0.8669590643274855/0.8304093567251462/0.8666666666666668/0.8511695906432749
+
+My problem: After my "optimization", Accuracy drops down.I haven't adjusted my network  hyper-parameters yet, because I don't konw how.
+
+
+    thanks for reading : )
