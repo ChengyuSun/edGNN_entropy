@@ -51,6 +51,9 @@ class App:
                                          lr=learning_config['lr'],
                                          weight_decay=learning_config['weight_decay'])
 
+            if learning_config['cuda']:
+                self.model.cuda()
+                print('model cuda')
             for epoch in range(learning_config['n_epochs']):
                 self.model.train()
                 if epoch >= 3:
