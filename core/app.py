@@ -34,8 +34,8 @@ class App:
         labels = data[LABELS]
         # initialize graph
         if mode == NODE_CLASSIFICATION:
-            train_mask = data[TRAIN_MASK]
-            val_mask = data[VAL_MASK]
+            train_mask = data[TRAIN_MASK].bool()
+            val_mask = data[VAL_MASK].bool()
             dur = []
 
             # create GNN model
@@ -109,7 +109,7 @@ class App:
 
                 if learning_config['cuda']:
                     self.model.cuda()
-                    print('model cuda')
+                    #print('model cuda')
 
                 print('\n\n\nProcess new k')
 

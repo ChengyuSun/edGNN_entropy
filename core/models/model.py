@@ -182,7 +182,7 @@ class Model(nn.Module):
 
             #for cora
             node_features = self.g.ndata[GNN_NODE_ATTS_KEY].float().cuda()
-            print('node_features to cuda')
+            #print('node_features to cuda')
 
         elif isinstance(self.embed_nodes, torch.Tensor):
             #node_features = self.embed_nodes[self.g.ndata[GNN_NODE_LABELS_KEY]]
@@ -207,7 +207,7 @@ class Model(nn.Module):
 
             #for cora
             edge_features = self.g.edata[GNN_EDGE_FEAT_KEY].float().cuda()
-            print('edge_features to cuda')
+            #print('edge_features to cuda')
         elif isinstance(self.embed_edges, torch.Tensor):
             #edge_features = self.embed_edges[self.g.edata[GNN_EDGE_LABELS_KEY].type(torch.uint8)]
 
