@@ -62,6 +62,7 @@ def save_cora(out_folder):
         #     sum+=item
         edge_entropy.append(vector2)
     edge_entropy=torch.from_numpy(np.array(edge_entropy))
+    print('edge_entropy:',edge_entropy.size())
 
     attention_sum=torch.zeros(nodN,nodN)
     for i in range(8):
@@ -71,7 +72,7 @@ def save_cora(out_folder):
         for line in attention_file:
             vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
             attention.append(vector3)
-        attention=torch.from_numpy(np.array(attention))
+        attention=torch.from_numpy(np.array(attention)).view(nodN*nodN,1)
         if i ==0:
             attention_sum=attention.double()
         else :
