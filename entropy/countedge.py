@@ -3,35 +3,13 @@ import copy
 
 import numpy as np
 
-# number of motif
-
-Nm = 8
-Node_num = 23
-
-
-# for i in range(Node_num):
-#     for j in range(Node_num):
-#         print type(i)
-#         edge_adj[i][j] += str(Nm)
-
-
-def read_adjMatrix():
-    array = open('./data2/graphfile.csv').readlines()
-    N = len(array)
-    matrix = []
-    for line in array:
-        line = line.strip('\r\n').split(',')
-        line = [int(float(x)) for x in line]
-        matrix.append(line)
-    matrix = np.array(matrix)
-    return matrix,N
-
 
 def count_star(A,N,neiN,motif,edge_adj):
     n=0
     a=copy.copy(A)
     for i in range(N):
         if (np.sum(a[i])>neiN-1):
+            print('{} star center is {}'.format(motif,i))
             n+=1
             edge_num = neiN
             while edge_num > 0:
@@ -50,6 +28,46 @@ def count_star(A,N,neiN,motif,edge_adj):
                 for k in range(N):
                     a[k][j]=0
     return n
+
+def count_star_5and8(A,nodN,edge_adj):
+    n_motif5=0
+    n_motif8=0
+    for i in range(nodN):
+        x0 = np.nonzero(A[i])
+        x=x0[0]
+        degree=len(x)
+        if degree<3:
+            continue
+        for a_3 in range(degree-2):
+            for b_3 in range(a_3+1,degree-1):
+                for c_3 in range(b_3+1,degree):
+                    n_motif5+=1
+                    #print('star 5 center {} to {} {} {}'.format(i,x[a_3],x[b_3],x[c_3]))
+                    edge_adj[i][x[a_3]] += '5'
+                    edge_adj[x[a_3]][i] += '5'
+                    edge_adj[i][x[b_3]] += '5'
+                    edge_adj[x[b_3]][i] += '5'
+                    edge_adj[i][x[c_3]] += '5'
+                    edge_adj[x[c_3]][i] += '5'
+        if degree>=4:
+            for a_4 in range(degree-3):
+                for b_4 in range(a_4+1,degree-2):
+                    for c_4 in range(b_4+1,degree-1):
+                        for d_4 in range(c_4+1,degree):
+                            n_motif8+=1
+                            #print('star 8 center {} to {} {} {} {}'.format(i, x[a_4], x[b_4], x[c_4],x[d_4]))
+                            edge_adj[i][x[a_4]] += '8'
+                            edge_adj[x[a_4]][i] += '8'
+                            edge_adj[i][x[b_4]] += '8'
+                            edge_adj[x[b_4]][i] += '8'
+                            edge_adj[i][x[c_4]] += '8'
+                            edge_adj[x[c_4]][i] += '8'
+                            edge_adj[i][x[d_4]] += '8'
+                            edge_adj[x[d_4]][i] += '8'
+    return n_motif5,n_motif8
+
+
+
 def find_next(a,N,i,rest,stack,motif,edge_adj,n):
     if rest==0:
         #print('当前搜索完成！',stack)
@@ -88,30 +106,6 @@ def count_chain(A,N,len,motif,edge_adj):
     #chain都被计算了两次，头尾各一次
     return n
 
-"""
-def circle_find_next(a,N,i,rest):
-    if rest==0:
-        return i
-    else:
-        if np.sum(a[i])>0:
-            for j in range(N):
-                a[j][i]=0
-            x = np.nonzero(a[i])
-            a[i].fill(0)
-            next_Index=x[0]
-            for k in next_Index:
-                return circle_find_next(a,N,k,rest-1)
-        else:
-            return -1
-def count_polygon(A,N,edges):
-    n=0
-    a=copy.copy(A)
-    for i in range(N):
-        if circle_find_next(a,N,i,edges)==i:
-            n+=1
-    return n
-"""
-
 def count_quads(A2,A4,N):
     re=0
     n=0
@@ -123,6 +117,8 @@ def count_quads(A2,A4,N):
         if(A4[i][i]-re)>=2:n+=1
         re=0
     return n
+
+
 def count_triangle(A3,N):
     n=0
     for i in range(N):
@@ -172,52 +168,24 @@ def count_poly_qua(A, N,edge_adj):
     return n
 
 
-
-
-# with open("CountMotif_web.csv", "wb") as fc:
-#      csvWriter = csv.writer(fc)
-#      for i in range(Ng):
-#         if i%10==0:
-#             print i
-#         csvWriter.writerow(count_Motifs(i+1))
-#         fc.close
-
 def countEdge(A,nodN):
     edge_adj = [['0' for i in range(nodN)] for j in range(nodN)]
-    # rd = np.argsort(sum(np.transpose(A)))
-    # rdA = A[rd]
-    # rdA[:, ] = rdA[:, rd]
     for i in range(nodN):
         A[i][i] = 0
-    # print  "graph %d number of nodes:"% i,nodN
     print('start counting edges and motifs')
     Nm_1 = count_chain(A, nodN, 2, 1,edge_adj)
-    print(1)
     Nm_2 = count_chain(A, nodN, 3, 2,edge_adj)
-    print(2)
     Nm_3 = count_poly_edge(A, nodN,edge_adj)
-    print(3)
     Nm_4 = count_chain(A, nodN, 4, 4,edge_adj)
-    print(4)
-    Nm_5 = count_star(A, nodN, 3, 5,edge_adj)
-    print(5)
+    Nm_5,Nm_8 = count_star_5and8(A, nodN,edge_adj)
     Nm_6 = count_poly_qua(A, nodN,edge_adj)
-    print(6)
     Nm_7 = count_chain(A, nodN, 5, 7,edge_adj)
-    print(7)
-    Nm_8 = count_star(A, nodN, 4, 8,edge_adj)
-    print(8)
     count_motifs=[Nm_1,Nm_2,Nm_3,Nm_4,Nm_5,Nm_6,Nm_7,Nm_8]
-    # rd2=np.argsort(rd)
-    with open('./data/count_edge.txt', 'w') as file:
+    with open('../entropy/data/count_edge.txt', 'w') as file:
         for line in edge_adj:
             for item in line:
                 file.write(item+',')
             file.write('\n')
-    # edge_adj=np.array(edge_adj)
-    # edge_adj=edge_adj[rd2]
-    #np.savetxt('./data2/count_edge.csv', edge_adj_matrix, delimiter=",", fmt='%s')
-    #return np.transpose(np.transpose(edge_adj)[rd2])
     return edge_adj,count_motifs
 
 
