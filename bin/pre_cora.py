@@ -77,7 +77,11 @@ def save_cora(out_folder):
     #attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
     attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
 
-    edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
+    print('attention_average:',attention_average.size())
+    print('edge_entropy:',edge_entropy.size())
+
+    edge_feature_all=torch.mul(attention_average,edge_entropy)
+    edge_feature_all=edge_feature_all.numpy()
 
     #edge_feature_all=torch.randn(nodN*nodN,8).numpy()
     edge_feature=[]
