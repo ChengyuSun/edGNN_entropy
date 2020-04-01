@@ -9,7 +9,7 @@ def count_star(A,N,neiN,motif,edge_adj):
     a=copy.copy(A)
     for i in range(N):
         if (np.sum(a[i])>neiN-1):
-            print('{} star center is {}'.format(motif,i))
+            #print('{} star center is {}'.format(motif,i))
             n+=1
             edge_num = neiN
             while edge_num > 0:
@@ -68,7 +68,7 @@ def count_star_5and8(A,nodN,edge_adj):
 
 
 
-def find_next(a,N,i,rest,stack,motif,edge_adj,n):
+def find_next_2(a,N,i,rest,stack,motif,edge_adj,n):
     if rest==0:
         #print('当前搜索完成！',stack)
         for j in range(len(stack)-1):
@@ -85,7 +85,7 @@ def find_next(a,N,i,rest,stack,motif,edge_adj,n):
                 if  next_Index not in stack:
                     #print('next_Index:',next_Index)
                     stack.append(next_Index)
-                    temp=find_next(a,N,next_Index,rest-1,stack,motif,edge_adj,temp)
+                    temp=find_next_2(a,N,next_Index,rest-1,stack,motif,edge_adj,temp)
                     stack.pop()
             return temp
         else:
@@ -93,7 +93,7 @@ def find_next(a,N,i,rest,stack,motif,edge_adj,n):
             return n
 
 
-def count_chain(A,N,len,motif,edge_adj):
+def count_chain_2(A,N,len,motif,edge_adj):
     #print('开始计算motif：',motif)
     n=0
     a = copy.copy(A)
@@ -101,9 +101,40 @@ def count_chain(A,N,len,motif,edge_adj):
         #print('当前搜索起点：',i)
         stack = []
         stack.append(i)
-        n=find_next(a,N,i,len-1,stack,motif,edge_adj,n)
-    #print('chain: {}  has {}'.format(motif,n))
-    #chain都被计算了两次，头尾各一次
+        n=find_next_2(a,N,i,len-1,stack,motif,edge_adj,n)
+    return n
+
+def find_next(a,N,i,rest,stack):
+    if rest==0:
+        a[i].fill(0)
+        for j in range(N):
+            a[j][i] = 0
+        return i
+    else:
+        if np.sum(a[i])>0:
+            for j in range(N):
+                a[j][i]=0
+            x = np.nonzero(a[i])
+            a[i].fill(0)
+            next_Index=x[0][0]
+            stack.append(next_Index)
+            return find_next(a,N,next_Index,rest-1,stack)
+        else:
+            stack.pop()
+            return -1
+
+def count_chain(A,N,rest,motif,edge_adj):
+    n=0
+    a = copy.copy(A)
+    for i in range(N):
+        stack=[]
+        stack.append(i)
+        if find_next(a,N,i,rest-1,stack)>=0:
+            #print('当前搜索完成！', stack)
+            for j in range(len(stack) - 1):
+                edge_adj[stack[j]][stack[j + 1]] += str(motif)
+                edge_adj[stack[j + 1]][stack[j]] += str(motif)
+            n+=1
     return n
 
 def count_quads(A2,A4,N):
@@ -177,9 +208,10 @@ def countEdge(A,nodN):
     Nm_2 = count_chain(A, nodN, 3, 2,edge_adj)
     Nm_3 = count_poly_edge(A, nodN,edge_adj)
     Nm_4 = count_chain(A, nodN, 4, 4,edge_adj)
-    Nm_5,Nm_8 = count_star_5and8(A, nodN,edge_adj)
+    Nm_5= count_star(A, nodN,3,5,edge_adj)
     Nm_6 = count_poly_qua(A, nodN,edge_adj)
     Nm_7 = count_chain(A, nodN, 5, 7,edge_adj)
+    Nm_8 = count_star(A,nodN,4,8,edge_adj)
     count_motifs=[Nm_1,Nm_2,Nm_3,Nm_4,Nm_5,Nm_6,Nm_7,Nm_8]
     with open('../entropy/data/count_edge.txt', 'w') as file:
         for line in edge_adj:

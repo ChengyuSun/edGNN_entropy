@@ -57,14 +57,14 @@ def save_cora(out_folder):
     edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        # sum=0
-        # for item in vector2:
-        #     sum+=item
-        edge_entropy.append(vector2)
-    edge_entropy=torch.from_numpy(np.array(edge_entropy))
+        sum=0
+        for item in vector2:
+            sum+=item
+        edge_entropy.append(sum)
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
     print('edge_entropy:',edge_entropy.size())
 
-    attention_sum=torch.zeros(nodN,nodN)
+    attention_sum=torch.zeros(nodN,nodN).view(nodN*nodN,1)
     for i in range(8):
         attention=[]
         filename='../bin/preprocessed_data/cora/attentions/attention_{}.txt'.format(i)
@@ -73,20 +73,19 @@ def save_cora(out_folder):
             vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
             attention.append(vector3)
         attention=torch.from_numpy(np.array(attention)).view(nodN*nodN,1)
-        if i ==0:
-            attention_sum=attention.double()
-        else :
-            attention_sum=torch.cat((attention_sum,attention.double()),1)
-        print('attention_sum:',attention_sum.size())
-        #attention_sum=torch.add(attention_sum.double(),attention.double())
+        # if i ==0:
+        #     attention_sum=attention.double()
+        # else :
+        #     attention_sum=torch.cat((attention_sum,attention.double()),1)
+        attention_sum=torch.add(attention_sum.double(),attention.double())
 
     #attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
 
-    #attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
+    attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
 
-    #edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
+    edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
 
-    edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
+    #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
