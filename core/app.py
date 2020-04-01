@@ -36,7 +36,7 @@ class App:
         if mode == NODE_CLASSIFICATION:
             train_mask = data[TRAIN_MASK].bool()
             val_mask = data[VAL_MASK].bool()
-            dur = []
+            #dur = []
 
             # create GNN model
             self.model = Model(g=data[GRAPH],
@@ -56,8 +56,8 @@ class App:
                 print('model cuda')
             for epoch in range(learning_config['n_epochs']):
                 self.model.train()
-                if epoch >= 3:
-                    t0 = time.time()
+                # if epoch >= 3:
+                #     t0 = time.time()
                 # forward
                 logits = self.model(None)
                 loss = loss_fcn(logits[train_mask], labels[train_mask])
@@ -66,13 +66,15 @@ class App:
                 loss.backward()
                 optimizer.step()
 
-                if epoch >= 3:
-                    dur.append(time.time() - t0)
+                # if epoch >= 3:
+                #     dur.append(time.time() - t0)
 
                 val_acc, val_loss = self.model.eval_node_classification(labels, val_mask)
-                print("Epoch {:05d} | Time(s) {:.4f} | Train loss {:.4f} | Val accuracy {:.4f} | "
+                train_acc,_=self.model.eval_node_classification(labels, train_mask)
+                print("Epoch {:05d} | Train acc {:.4f} | Train loss {:.4f} | Val accuracy {:.4f} | "
                       "Val loss {:.4f}".format(epoch,
-                                               np.mean(dur),
+                                               #np.mean(dur),
+                                               train_acc,
                                                loss.item(),
                                                val_acc,
                                                val_loss))
