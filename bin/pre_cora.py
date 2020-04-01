@@ -61,7 +61,7 @@ def save_cora(out_folder):
         for item in vector2:
             sum+=item
         edge_entropy.append(sum)
-    edge_entropy=torch.from_numpy(np.array(edge_entropy))
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
 
     attention_sum=torch.zeros(nodN,nodN)
     for i in range(8):
