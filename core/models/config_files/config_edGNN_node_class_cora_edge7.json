@@ -1,0 +1,11 @@
+{
+    "layer_type": "edGNNLayer",
+    "node_dim": 1433,
+    "edge_dim": 7,
+    "layer_params": {
+        "n_units": 64,
+        "activation": "relu",
+        "dropout": 0.5,
+	    "n_hidden_layers": 1
+    }
+}
