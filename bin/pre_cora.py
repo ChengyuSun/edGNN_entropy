@@ -95,6 +95,7 @@ def save_cora(out_folder):
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i*N+j])
                 #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
+    edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
     max_feature=max(edge_feature)
     min_feature=min(edge_feature)
@@ -132,8 +133,8 @@ def save_cora(out_folder):
             l = 6
         edge_feature2.append(l)
 
-    edge_feature2=torch.from_numpy(np.array(edge_feature2))
-    zeros = torch.zeros(len(edge_feature2), 7)
+    edge_feature2=torch.from_numpy(np.array(edge_feature2)).view(edge_num,1)
+    zeros = torch.zeros(edge_num, 7)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
     #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
