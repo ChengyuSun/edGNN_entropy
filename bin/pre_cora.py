@@ -100,7 +100,7 @@ def save_cora(out_folder):
     max_feature=max(edge_feature)
     min_feature=min(edge_feature)
     distance=max_feature-min_feature
-    cap=distance/7
+    cap=distance/5
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
 
@@ -108,10 +108,10 @@ def save_cora(out_folder):
     d2=len(np.where(edge_feature < (min_feature + cap*2))[0])-d1
     d3 = len(np.where(edge_feature < (min_feature + cap*3))[0]) - d2
     d4 = len(np.where(edge_feature < (min_feature + cap * 4))[0]) - d3
-    d5 = len(np.where(edge_feature < (min_feature + cap * 5))[0]) - d4
-    d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
-    d7 = len(edge_feature) - d6
-    print('{} {} {} {} {} {} {}:'.format(d1,d2,d3,d4,d5,d6,d7))
+    d5 = len(edge_feature) - d4
+    # d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
+    # d7 = len(edge_feature) - d6
+    print('{} {} {} {} {}:'.format(d1,d2,d3,d4,d5))
 
 
     edge_feature2=[]
@@ -125,21 +125,20 @@ def save_cora(out_folder):
             l = 2
         elif i < (min_feature + 4 * cap):
             l = 3
-        elif i < (min_feature + 5 * cap):
-            l = 4
-        elif i < (min_feature + 6 * cap):
-            l = 5
         else:
-            l = 6
+            l = 4
+        # elif i < (min_feature + 6 * cap):
+        #     l = 5
+        # else:
+        #     l = 6
         edge_feature2.append(l)
 
     edge_feature2=torch.from_numpy(np.array(edge_feature2)).view(edge_num,1)
-    zeros = torch.zeros(edge_num, 7)
+    zeros = torch.zeros(edge_num, 5)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
     #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
-
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
