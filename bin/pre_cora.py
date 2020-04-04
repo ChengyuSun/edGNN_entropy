@@ -11,7 +11,7 @@ from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_csv
 
 
-def save_cora(out_folder):
+def save_cora(out_folder,label_number):
 
     #label
     labels = []
@@ -100,46 +100,35 @@ def save_cora(out_folder):
     max_feature=max(edge_feature)
     min_feature=min(edge_feature)
     distance=max_feature-min_feature
-    cap=distance/8
+    cap=distance/label_number
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
 
-    d1=len(np.where(edge_feature < (min_feature + cap))[0])
-    d2=len(np.where(edge_feature < (min_feature + cap*2))[0])-d1
-    d3 = len(np.where(edge_feature < (min_feature + cap*3))[0]) - d2
-    d4 = len(np.where(edge_feature < (min_feature + cap * 4))[0]) - d3
-    d5 = len(np.where(edge_feature < (min_feature + cap * 5))[0]) - d4
-    d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
-    d7 = len(np.where(edge_feature < (min_feature + cap * 7))[0]) - d6
-    d8=len(edge_feature)-d7
-    print('{} {} {} {} {} {} {} {}:'.format(d1,d2,d3,d4,d5,d6,d7,d8))
+    def devide_n():
+        d_list=[]
+        d_before=0
+        for i in range(label_number):
+            d=len(np.where(edge_feature < (min_feature + cap * (i+1)))[0])-d_before
+            d_before=d
+            d_list.append(d)
+        return d_list
+    d_list=devide_n()
 
+    print(str(d_list))
 
-    edge_feature2=[]
+    edge_labels=[]
     for i in edge_feature:
-        l=0
-        if i < (min_feature + cap):
-            l=0
-        elif i< (min_feature + 2*cap):
-            l=1
-        elif i < (min_feature + 3 * cap):
-            l = 2
-        elif i < (min_feature + 4 * cap):
-            l = 3
-        elif i < (min_feature + 5 * cap):
-            l = 4
-        elif i < (min_feature + 6 * cap):
-            l = 5
-        elif i < (min_feature + 7* cap):
-            l = 6
-        else:
-            l = 7
-        edge_feature2.append(l)
+        temp=0
+        for j in range(label_number):
+            if (temp<i) and (i<=(min_feature + cap*(j+1))):
+                edge_labels.append(j)
+                break
 
-    edge_feature2=torch.from_numpy(np.array(edge_feature2)).view(edge_num,1)
-    zeros = torch.zeros(edge_num, 8)
-    edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
-    g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
+
+    edge_labels=torch.from_numpy(np.array(edge_labels)).view(edge_num,1)
+    zeros = torch.zeros(edge_num, label_number)
+    edge_labels = zeros.scatter_(1, edge_labels, 1)
+    g.edata[GNN_EDGE_FEAT_KEY]=edge_labels
     #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
