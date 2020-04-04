@@ -136,7 +136,11 @@ def save_cora(out_folder):
             l = 7
         edge_feature2.append(l)
 
-    edge_feature2=torch.from_numpy(np.array(edge_feature2)).view(edge_num,1)
+    edge_feature2 = np.array(edge_feature2)
+    for i in range(8):
+        print('i label has:', len(np.where(edge_feature2 == i)[0]))
+
+    edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
     zeros = torch.zeros(edge_num, 8)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
