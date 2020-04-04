@@ -109,7 +109,7 @@ def save_cora(out_folder,label_number):
         d_before=0
         for i in range(label_number):
             d=len(np.where(edge_feature < (min_feature + cap * (i+1)))[0])-d_before
-            d_before=d
+            d_before+=d
             d_list.append(d)
         return d_list
     d_list=devide_n()
