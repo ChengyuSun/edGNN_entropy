@@ -100,19 +100,20 @@ def save_cora(out_folder):
     max_feature=max(edge_feature)
     min_feature=min(edge_feature)
     distance=max_feature-min_feature
-    cap=distance/8
+    cap=distance/7
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
 
-    d1=len(np.where(edge_feature < (min_feature + cap))[0])
-    d2=len(np.where(edge_feature < (min_feature + cap*2))[0])-d1
-    d3 = len(np.where(edge_feature < (min_feature + cap*3))[0]) - d2
-    d4 = len(np.where(edge_feature < (min_feature + cap * 4))[0]) - d3
-    d5 = len(np.where(edge_feature < (min_feature + cap * 5))[0]) - d4
-    d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
-    d7 = len(np.where(edge_feature < (min_feature + cap * 7))[0]) - d6
-    d8=len(edge_feature)-d7
-    print('{} {} {} {} {} {} {} {}:'.format(d1,d2,d3,d4,d5,d6,d7,d8))
+    # d_before=0
+    # d1=len(np.where(edge_feature < (min_feature + cap))[0])
+    # d2=len(np.where(edge_feature < (min_feature + cap*2))[0])-d1
+    # d3 = len(np.where(edge_feature < (min_feature + cap*3))[0]) - d2
+    # d4 = len(np.where(edge_feature < (min_feature + cap * 4))[0]) - d3
+    # d5 = len(np.where(edge_feature < (min_feature + cap * 5))[0]) - d4
+    # d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
+    # d7 = len(np.where(edge_feature < (min_feature + cap * 7))[0]) - d6
+    # d8=len(edge_feature)-d7
+    # print('{} {} {} {} {} {} {} {}:'.format(d1,d2,d3,d4,d5,d6,d7,d8))
 
 
     edge_feature2=[]
@@ -130,18 +131,18 @@ def save_cora(out_folder):
             l = 4
         elif i < (min_feature + 6 * cap):
             l = 5
-        elif i < (min_feature + 7* cap):
-            l = 6
+        # elif i < (min_feature + 7* cap):
+        #     l = 6
         else:
-            l = 7
+            l = 6
         edge_feature2.append(l)
 
     edge_feature2 = np.array(edge_feature2)
-    for i in range(8):
+    for i in range(7):
         print('i label has:', len(np.where(edge_feature2 == i)[0]))
 
     edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
-    zeros = torch.zeros(edge_num, 8)
+    zeros = torch.zeros(edge_num, 7)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
     #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
