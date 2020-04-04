@@ -115,6 +115,7 @@ def save_cora(out_folder,label_number):
     d_list=devide_n()
 
     print(str(d_list))
+    print(sum(d_list))
 
     edge_labels=[]
     for i in edge_feature:
