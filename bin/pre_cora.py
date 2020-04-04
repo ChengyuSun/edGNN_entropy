@@ -57,10 +57,10 @@ def save_cora(out_folder,label_number):
     edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        sum=0
+        sum1=0
         for item in vector2:
-            sum+=item
-        edge_entropy.append(sum)
+            sum1+=item
+        edge_entropy.append(sum1)
     edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
     print('edge_entropy:',edge_entropy.size())
 
