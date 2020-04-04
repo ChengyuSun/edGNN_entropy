@@ -108,7 +108,7 @@ def save_cora(out_folder,label_number):
         d_list=[]
         d_before=0
         for i in range(label_number):
-            d=len(np.where(edge_feature < (min_feature + cap * (i+1)))[0])-d_before
+            d=len(np.where(edge_feature <= (min_feature + cap * (i+1)))[0])-d_before
             d_before+=d
             d_list.append(d)
         return d_list
@@ -119,12 +119,13 @@ def save_cora(out_folder,label_number):
 
     edge_labels=[]
     for i in edge_feature:
-        temp=0
-        for j in range(label_number):
-            if (temp<i) and (i<=(min_feature + cap*(j+1))):
-                edge_labels.append(j)
-                break
-
+        if i == max_feature:
+            edge_labels.append(label_number-1)
+        else:
+            for j in range(label_number):
+                if ((min_feature + cap * j) <= i) and (i <(min_feature + cap*(j+1))):
+                    edge_labels.append(j)
+                    break
 
     edge_labels=torch.from_numpy(np.array(edge_labels)).view(edge_num,1)
     zeros = torch.zeros(edge_num, label_number)
