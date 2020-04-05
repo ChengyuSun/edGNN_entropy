@@ -7,7 +7,7 @@ from dgl import DGLGraph
 
 from core.data.constants import GRAPH, LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, N_CLASSES
 from core.data.utils import complete_path, load_pickle, save_pickle
-from core.models.constants import GNN_NODE_ATTS_KEY
+from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_csv
 
 
@@ -87,6 +87,8 @@ def save_cora(out_folder):
 
     #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
+    edge_feature_all = edge_entropy.numpy()
+
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
     for i in range(N):
@@ -103,17 +105,6 @@ def save_cora(out_folder):
     cap=distance/8
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
-
-    # d_before=0
-    # d1=len(np.where(edge_feature < (min_feature + cap))[0])
-    # d2=len(np.where(edge_feature < (min_feature + cap*2))[0])-d1
-    # d3 = len(np.where(edge_feature < (min_feature + cap*3))[0]) - d2
-    # d4 = len(np.where(edge_feature < (min_feature + cap * 4))[0]) - d3
-    # d5 = len(np.where(edge_feature < (min_feature + cap * 5))[0]) - d4
-    # d6 = len(np.where(edge_feature < (min_feature + cap * 6))[0]) - d5
-    # d7 = len(np.where(edge_feature < (min_feature + cap * 7))[0]) - d6
-    # d8=len(edge_feature)-d7
-    # print('{} {} {} {} {} {} {} {}:'.format(d1,d2,d3,d4,d5,d6,d7,d8))
 
 
     edge_feature2=[]
@@ -144,8 +135,8 @@ def save_cora(out_folder):
     edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
     zeros = torch.zeros(edge_num, 8)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
-    #g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
-    #print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
+    g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
+    print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
