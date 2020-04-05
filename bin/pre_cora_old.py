@@ -7,7 +7,7 @@ from dgl import DGLGraph
 
 from core.data.constants import GRAPH, LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, N_CLASSES
 from core.data.utils import complete_path, load_pickle, save_pickle
-from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
+from core.models.constants import GNN_NODE_ATTS_KEY
 from entropy.utils import read_adjMatrix_csv
 
 
@@ -144,9 +144,8 @@ def save_cora(out_folder):
     edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
     zeros = torch.zeros(edge_num, 8)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
-    g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
-    #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
-    print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
+    #g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
+    #print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
