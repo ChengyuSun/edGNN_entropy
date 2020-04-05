@@ -100,7 +100,7 @@ def save_cora(out_folder):
     max_feature=max(edge_feature)
     min_feature=min(edge_feature)
     distance=max_feature-min_feature
-    cap=distance/7
+    cap=distance/8
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
 
@@ -131,18 +131,18 @@ def save_cora(out_folder):
             l = 4
         elif i < (min_feature + 6 * cap):
             l = 5
-        # elif i < (min_feature + 7* cap):
-        #     l = 6
-        else:
+        elif i < (min_feature + 7* cap):
             l = 6
+        else:
+            l = 7
         edge_feature2.append(l)
 
     edge_feature2 = np.array(edge_feature2)
-    for i in range(7):
+    for i in range(8):
         print('i label has:', len(np.where(edge_feature2 == i)[0]))
 
     edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
-    zeros = torch.zeros(edge_num, 7)
+    zeros = torch.zeros(edge_num, 8)
     edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
     #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
