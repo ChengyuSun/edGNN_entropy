@@ -25,7 +25,7 @@ class App:
 
     def __init__(self, early_stopping=True):
         if early_stopping:
-            self.early_stopping = EarlyStopping(patience=500, verbose=True)
+            self.early_stopping = EarlyStopping(patience=100, verbose=True)
 
     def train(self, data, model_config, learning_config, save_path='', mode=NODE_CLASSIFICATION):
 

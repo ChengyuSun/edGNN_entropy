@@ -2,4 +2,4 @@ import sys
 sys.path.append('../')
 from pre_cora_old import save_cora
 
-save_cora('../bin/preprocessed_data/cora_entropy_label8_no_attention')
+save_cora('../bin/preprocessed_data/cora_attention_label8')

@@ -87,7 +87,7 @@ def save_cora(out_folder):
 
     #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
-    edge_feature_all = edge_entropy.numpy()
+    edge_feature_all = attention_average.numpy()
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
