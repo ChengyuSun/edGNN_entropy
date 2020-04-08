@@ -193,7 +193,7 @@ def count_poly_qua(A, N,edge_adj):
                                 edge_adj[j][k] += str(6)
                                 edge_adj[k][j] += str(6)
                                 edge_adj[k][l] += str(6)
-                                edge_adj[k][k] += str(6)
+                                edge_adj[l][k] += str(6)
                                 edge_adj[i][l] += str(6)
                                 edge_adj[l][i] += str(6)
     return n
