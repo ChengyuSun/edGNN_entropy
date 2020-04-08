@@ -134,8 +134,6 @@ def count_chain(A,N,rest,motif,edge_adj):
             for j in range(len(stack) - 1):
                 edge_adj[stack[j]][stack[j + 1]] += str(motif)
                 edge_adj[stack[j + 1]][stack[j]] += str(motif)
-                if A[stack[j]][stack[j + 1]]==0:
-                    print('error in count chain , {} {}'.format(stack[j],stack[j+1]))
             n+=1
     return n
 

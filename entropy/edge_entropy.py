@@ -8,18 +8,29 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
     Node = len(countEdges)
     edge_entropy_matrix = np.zeros((Node, Node,8), np.float)
     line_number = 0
-    adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
+
+    adj, N = read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
     print('start calculationg edge-entropys')
+
     for line in countEdges:
         column_number = 0
+
         for edge_motif in line:
+            if (adj[line_number][column_number] != adj[column_number][line_number]):
+                print('adj error in {} {}'.format(line_number, column_number))
+
             if edge_motif == '0':
-                #print('edge_motif=0 in {} {}'.format(line_number,column_number))
+
+                if (adj[line_number][column_number] != 0):
+                    print('edge  {},{}  has no entropy'.format(line_number, column_number))
+
                 column_number += 1
                 continue
             else:
-                if(adj[line_number][column_number]==0):
-                    print('error in {} {}'.format(line_number,column_number))
+
+                if (adj[line_number][column_number]==0):
+                    print('error in {},{}'.format(line_number, column_number))
+
                 edge_entropy = [0 for i in range(8)]
                 for motif_number in edge_motif:
                     if motif_number != '0':
