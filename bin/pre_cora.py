@@ -87,8 +87,6 @@ def save_cora(out_folder,label_number):
 
     #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
-
-
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
     for i in range(N):

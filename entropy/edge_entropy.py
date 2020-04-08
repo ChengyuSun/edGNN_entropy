@@ -20,11 +20,6 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 column_number += 1
                 continue
             else:
-
-                if (adj[line_number][column_number]==0):
-                    print('error in {},{}'.format(line_number, column_number))
-                    print(edge_motif)
-
                 edge_entropy = [0 for i in range(8)]
                 for motif_number in edge_motif:
                     if motif_number != '0':
@@ -35,10 +30,6 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
                 column_number += 1
         line_number += 1
-        print('line',line_number)
-
-    return edge_entropy_matrix
-
     with open('../entropy/data/edge_entropy.txt', 'w') as file:
         for i in range(Node):
             for j in range(Node):
