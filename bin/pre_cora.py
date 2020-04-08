@@ -128,7 +128,7 @@ def save_cora(out_folder,label_number):
     zeros = torch.zeros(edge_num, label_number)
     edge_labels = zeros.scatter_(1, edge_labels, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_labels
-    g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
+    #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save

@@ -87,7 +87,7 @@ def save_cora(out_folder):
 
     #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
-    edge_feature_all = attention_average.numpy()
+    edge_feature_all = edge_entropy.numpy()
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
@@ -97,45 +97,48 @@ def save_cora(out_folder):
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i*N+j])
                 #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
-    edge_num=len(edge_feature)
-    edge_feature=np.array(edge_feature)
-    max_feature=max(edge_feature)
-    min_feature=min(edge_feature)
-    distance=max_feature-min_feature
-    cap=distance/8
-    print('the max in edge-feature:',max_feature)
-    print('the min in edge-feature:',min_feature)
 
 
-    edge_feature2=[]
-    for i in edge_feature:
-        l=0
-        if i < (min_feature + cap):
-            l=0
-        elif i< (min_feature + 2*cap):
-            l=1
-        elif i < (min_feature + 3 * cap):
-            l = 2
-        elif i < (min_feature + 4 * cap):
-            l = 3
-        elif i < (min_feature + 5 * cap):
-            l = 4
-        elif i < (min_feature + 6 * cap):
-            l = 5
-        elif i < (min_feature + 7* cap):
-            l = 6
-        else:
-            l = 7
-        edge_feature2.append(l)
+    # edge_num=len(edge_feature)
+    # edge_feature=np.array(edge_feature)
+    # max_feature=max(edge_feature)
+    # min_feature=min(edge_feature)
+    # distance=max_feature-min_feature
+    # cap=distance/8
+    # print('the max in edge-feature:',max_feature)
+    # print('the min in edge-feature:',min_feature)
 
-    edge_feature2 = np.array(edge_feature2)
-    for i in range(8):
-        print('i label has:', len(np.where(edge_feature2 == i)[0]))
-
-    edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
-    zeros = torch.zeros(edge_num, 8)
-    edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
-    g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
+    #
+    # edge_feature2=[]
+    # for i in edge_feature:
+    #     l=0
+    #     if i < (min_feature + cap):
+    #         l=0
+    #     elif i< (min_feature + 2*cap):
+    #         l=1
+    #     elif i < (min_feature + 3 * cap):
+    #         l = 2
+    #     elif i < (min_feature + 4 * cap):
+    #         l = 3
+    #     elif i < (min_feature + 5 * cap):
+    #         l = 4
+    #     elif i < (min_feature + 6 * cap):
+    #         l = 5
+    #     elif i < (min_feature + 7* cap):
+    #         l = 6
+    #     else:
+    #         l = 7
+    #     edge_feature2.append(l)
+    #
+    # edge_feature2 = np.array(edge_feature2)
+    # for i in range(8):
+    #     print('i label has:', len(np.where(edge_feature2 == i)[0]))
+    #
+    # edge_feature2=torch.from_numpy(edge_feature2).view(edge_num,1)
+    # zeros = torch.zeros(edge_num, 8)
+    # edge_feature2 = zeros.scatter_(1, edge_feature2, 1)
+    # g.edata[GNN_EDGE_FEAT_KEY]=edge_feature2
+    g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
