@@ -16,14 +16,7 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
         column_number = 0
 
         for edge_motif in line:
-            if (adj[line_number][column_number] != adj[column_number][line_number]):
-                print('adj error in {} {}'.format(line_number, column_number))
-
             if edge_motif == '0':
-
-                if (adj[line_number][column_number] != 0):
-                    print('edge  {},{}  has no entropy'.format(line_number, column_number))
-
                 column_number += 1
                 continue
             else:
