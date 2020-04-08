@@ -32,10 +32,10 @@ def save_cora(out_folder,label_number):
         mask[idx] = 1
         return torch.ByteTensor(mask)
 
-    val_idx = train_idx[:len(train_idx) // 5]
+    val_idx = train_idx[:len(train_idx) // 4]
     val_mask = _idx_to_mask(val_idx, labels.shape[0])
 
-    train_idx = train_idx[len(train_idx) // 5:]
+    train_idx = train_idx[len(train_idx) // 4:]
     train_mask = _idx_to_mask(train_idx, labels.shape[0])
 
     test_mask = _idx_to_mask(test_idx, labels.shape[0])
@@ -87,14 +87,28 @@ def save_cora(out_folder,label_number):
 
     #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
 
+
+
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
-    for i in range(N):
-        for j in range(N):
-            if adj[i][j] > 0:
-                g.add_edges(i, j)
-                edge_feature.append(edge_feature_all[i*N+j])
-                #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
+
+    with open('../bin/no_edge_file.txt', 'w') as no_edge_file:
+        for i in range(N):
+            for j in range(N):
+                if adj[i][j] > 0:
+                    g.add_edges(i, j)
+                    edge_feature.append(edge_feature_all[i*N+j])
+                else:
+                    no_edge_file.write(str(edge_feature_all[i*N+j])+'\n')
+                    #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
+
+    no_edge_file.close()
+    edge_feature.sort()
+    with open('../bin/edge_feature_file.txt', 'w') as edge_feature_file:
+        for i in edge_feature:
+            edge_feature_file.write(str(i)+'\n')
+    return
+
     edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
     max_feature=max(edge_feature)
@@ -103,19 +117,6 @@ def save_cora(out_folder,label_number):
     cap=distance/label_number
     print('the max in edge-feature:',max_feature)
     print('the min in edge-feature:',min_feature)
-
-    def devide_n():
-        d_list=[]
-        d_before=0
-        for i in range(label_number):
-            d=len(np.where(edge_feature <= (min_feature + cap * (i+1)))[0])-d_before
-            d_before+=d
-            d_list.append(d)
-        return d_list
-    d_list=devide_n()
-
-    print(str(d_list))
-    print(sum(d_list))
 
     edge_labels=[]
     for i in edge_feature:
