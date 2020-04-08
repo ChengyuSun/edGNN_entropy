@@ -91,24 +91,15 @@ def save_cora(out_folder,label_number):
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
-
-    with open('../bin/no_edge_file.txt', 'w') as no_edge_file:
-        for i in range(N):
-            for j in range(N):
-                if adj[i][j] > 0:
-                    g.add_edges(i, j)
-                    edge_feature.append(edge_feature_all[i*N+j])
-                else:
-                    no_edge_file.write(str(edge_feature_all[i*N+j])+'\n')
-                    #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
-
-    no_edge_file.close()
-    edge_feature.sort()
-    with open('../bin/edge_feature_file.txt', 'w') as edge_feature_file:
-        for i in edge_feature:
-            edge_feature_file.write(str(i)+'\n')
+    for i in range(N):
+        for j in range(N):
+            if adj[i][j] > 0:
+                g.add_edges(i, j)
+                edge_feature.append(edge_feature_all[i * N + j])
+            else:
+                print('not zero: ', i * N + j)
+                # print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
     return
-
     edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
     max_feature=max(edge_feature)
