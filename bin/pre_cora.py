@@ -96,7 +96,7 @@ def save_cora(out_folder,label_number):
             if adj[i][j] > 0:
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i * N + j])
-            else:
+            elif edge_feature_all[i * N + j]!=0:
                 print('not zero: ', i * N + j)
                 # print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
     return
