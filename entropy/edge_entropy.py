@@ -30,6 +30,7 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
 
                 if (adj[line_number][column_number]==0):
                     print('error in {},{}'.format(line_number, column_number))
+                    print(edge_motif)
 
                 edge_entropy = [0 for i in range(8)]
                 for motif_number in edge_motif:
