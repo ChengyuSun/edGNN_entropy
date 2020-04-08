@@ -1,20 +1,14 @@
 import numpy as np
 
-from entropy.utils import read_adjMatrix_csv
-
 
 def edgeEntropy(graph_entropy,countEdges,countmotifs):
     number_vector = [1, 2, 3, 3, 3, 4, 4, 4]
     Node = len(countEdges)
     edge_entropy_matrix = np.zeros((Node, Node,8), np.float)
     line_number = 0
-
-    adj, N = read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
     print('start calculationg edge-entropys')
-
     for line in countEdges:
         column_number = 0
-
         for edge_motif in line:
             if edge_motif == '0':
                 column_number += 1

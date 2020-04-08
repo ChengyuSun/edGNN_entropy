@@ -10,7 +10,6 @@ from core.data.utils import complete_path, load_pickle, save_pickle
 from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_csv
 
-
 def save_cora(out_folder,label_number):
 
     #label
@@ -95,8 +94,11 @@ def save_cora(out_folder,label_number):
                 g.add_edges(i, j)
                 edge_feature.append(edge_feature_all[i * N + j])
             elif edge_feature_all[i * N + j]!=0:
-                print('not zero: ', i * N + j)
-                # print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
+                print('errro in {},{}'.format(i,j))
+    with open('./edge_feature_file2.txt',"w") as edge_feature_file:
+        edge_feature.sort()
+        for i in edge_feature:
+            edge_feature_file.write(str(i)+'\n')
     return
     edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
