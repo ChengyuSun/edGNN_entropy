@@ -95,11 +95,7 @@ def save_cora(out_folder,label_number):
                 edge_feature.append(edge_feature_all[i * N + j])
             elif edge_feature_all[i * N + j]!=0:
                 print('errro in {},{}'.format(i,j))
-    with open('./edge_feature_file2.txt',"w") as edge_feature_file:
-        edge_feature.sort()
-        for i in edge_feature:
-            edge_feature_file.write(str(i)+'\n')
-    return
+
     edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
     max_feature=max(edge_feature)
