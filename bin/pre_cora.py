@@ -84,7 +84,7 @@ def save_cora(out_folder,label_number):
 
     edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
 
-    #edge_feature_all=torch.cat((attention_sum,edge_entropy),1).numpy()
+    edge_feature_all=edge_entropy.numpy()
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
@@ -95,6 +95,11 @@ def save_cora(out_folder,label_number):
                 edge_feature.append(edge_feature_all[i * N + j])
             elif edge_feature_all[i * N + j]!=0:
                 print('errro in {},{}'.format(i,j))
+
+    # with open('./edge_entropy_file.txt',"w") as edge_feature_file:
+    #     edge_feature.sort()
+    #     for i in edge_feature:
+    #         edge_feature_file.write(str(i)+'\n')
 
     edge_num=len(edge_feature)
     edge_feature=np.array(edge_feature)
@@ -123,7 +128,7 @@ def save_cora(out_folder,label_number):
     zeros = torch.zeros(edge_num, label_number)
     edge_labels = zeros.scatter_(1, edge_labels, 1)
     g.edata[GNN_EDGE_FEAT_KEY]=edge_labels
-    #g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
+    g.edata[GNN_EDGE_FEAT_KEY] =torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
