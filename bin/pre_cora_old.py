@@ -80,8 +80,8 @@ def save_cora(out_folder):
         # else :
         #     attention_sum=torch.cat((attention_sum,attention.double()),1)
         attention_sum=torch.add(attention_sum.double(),attention.double())
-
-    attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN,nodN,8).view(nodN*nodN,8)
+    print('attention_sum:',attention_sum.size())
+    attention_average=(attention_sum*(1/8)).unsqueeze(-1).expand(nodN*nodN,8).view(nodN*nodN,8)
 
     #attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
 
