@@ -1,4 +1,4 @@
-acc_file = open('./no_entropy_acc.txt', "r").readlines()
+acc_file = open('./only_entropy_1.txt', "r").readlines()
 accs=[]
 for i in acc_file:
     accs.append(float(i))
@@ -29,3 +29,9 @@ else:
 # min(accs) 0.8539741219963032
 # 0.015711645101663563
 
+#only entropy 1
+# 20
+# avg 0.8703327171903883
+# max(accs) 0.88909426987061
+# min(accs) 0.8521256931608133
+# 0.018761552680221727
