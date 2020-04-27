@@ -121,7 +121,8 @@ class edGNNLayer(nn.Module):
         return {GNN_NODE_FEAT_OUT_KEY: h}
 
     def forward(self, node_features, edge_features, g):
-
+        print('node_features',node_features.size())
+        print('edge_features',edge_features.size())
         if g is not None:
             self.g = g
         # 1. clean graph features
