@@ -43,7 +43,7 @@ def save_cora(out_folder):
 
     #node
     node_feature = []
-    node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
+    node_feature_file = open('../bin/preprocessed_data/cora/node_feature_01.txt', "r").readlines()
     for line in node_feature_file:
         vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
         node_feature.append(vector)
@@ -57,13 +57,13 @@ def save_cora(out_folder):
     edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        # sum=0
-        # for item in vector2:
-        #     sum+=item
-        # edge_entropy.append(sum)
-        edge_entropy.append(vector2)
+        sum=0
+        for item in vector2:
+            sum+=item
+        edge_entropy.append(sum)
+        #edge_entropy.append(vector2)
 
-    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
     print('edge_entropy:',edge_entropy.size())
 
     attention_sum=torch.zeros(nodN,nodN).view(nodN*nodN,1)
@@ -81,12 +81,12 @@ def save_cora(out_folder):
         #     attention_sum=torch.cat((attention_sum,attention.double()),1)
         attention_sum=torch.add(attention_sum.double(),attention.double())
     print('attention_sum:',attention_sum.size())
-    attention_average=(attention_sum*(1/8)).expand(nodN*nodN,8).view(nodN*nodN,8)
+    #attention_average=(attention_sum*(1/8)).expand(nodN*nodN,8).view(nodN*nodN,8)
 
-    #attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
+    attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
 
     edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
-
+    
     #edge_feature_all = edge_entropy.numpy()
 
     edge_feature=[]

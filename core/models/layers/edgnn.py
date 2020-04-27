@@ -83,6 +83,8 @@ class edGNNLayer(nn.Module):
                 msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
                                      edges.data[GNN_EDGE_FEAT_KEY]],
                                     dim=1)
+                print('node feature in:',edges.src[GNN_NODE_FEAT_IN_KEY].size())
+                print('edge feature',edges.data[GNN_EDGE_FEAT_KEY].size())
             else:
                 msg = edges.src[GNN_NODE_FEAT_IN_KEY]
 
@@ -96,12 +98,14 @@ class edGNNLayer(nn.Module):
 
     def gnn_reduce(self, nodes):
         accum = torch.sum((nodes.mailbox[GNN_MSG_KEY]), 1)
+        print('agg msg',accum.size())
         return {GNN_AGG_MSG_KEY: accum}
 
     def node_update(self, nodes):
         h = torch.cat([nodes.data[GNN_NODE_FEAT_IN_KEY],
                        nodes.data[GNN_AGG_MSG_KEY]],
                       dim=1)
+        print('node feature ',nodes.data[GNN_NODE_FEAT_IN_KEY].size())
 
         h = self.linear(h)
 

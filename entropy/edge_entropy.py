@@ -29,7 +29,7 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
                 column_number += 1
         line_number += 1
-    with open('../entropy/data/edge_entropy.txt', 'w') as file:
+    with open('../entropy/data/edge_entropy_club.txt', 'w') as file:
         for i in range(Node):
             for j in range(Node):
                 for k in edge_entropy_matrix[i][j]:

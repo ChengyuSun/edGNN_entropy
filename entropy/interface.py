@@ -22,8 +22,28 @@ def writeEdgeEntropy(graphfile):
     edge_entropy=edgeEntropy(graph_entropy,count_edge,count_motif)
     return edge_entropy
 
-writeEdgeEntropy('../bin/preprocessed_data/cora/adj.csv')
+def read_club():
+    array = open('../entropy/data/club.txt').readlines()
+    N = len(array)
+    matrix = []
+    for line in array:
+        line = line.strip('\r\n').strip(' ').split(' ')
+        line = [int(x) for x in line]
+        matrix.append(line)
+    matrix = np.array(matrix)
+    return matrix,len(matrix)
 
+def club_entropy():
+    A,nodN=read_club()
+    count_edge, count_motif = countEdge(A, nodN)
+    print('count_motif:', count_motif)
+    graph_entropy = graphEntropy(count_motif, nodN)
+    print('graph_entropy:', graph_entropy)
+    edge_entropy = edgeEntropy(graph_entropy, count_edge, count_motif)
+    return edge_entropy
+
+#writeEdgeEntropy('../bin/preprocessed_data/cora/adj.csv')
+#club_entropy()
 def edgeEntropy_node_class(edge_src,edge_dst,nodN):
     edgeN=len(edge_src)
     A=np.zeros([nodN,nodN],int)
