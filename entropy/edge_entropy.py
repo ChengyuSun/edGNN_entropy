@@ -1,15 +1,11 @@
 import numpy as np
 
-from entropy.utils import read_adjMatrix_csv
-
 
 def edgeEntropy(graph_entropy,countEdges,countmotifs):
     number_vector = [1, 2, 3, 3, 3, 4, 4, 4]
     Node = len(countEdges)
     edge_entropy_matrix = np.zeros((Node, Node,8), np.float)
     line_number = 0
-
-    adj, N = read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
 
     print('start calculationg edge-entropys')
     for line in countEdges:
@@ -29,7 +25,7 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
                 column_number += 1
         line_number += 1
-    with open('../entropy/data/edge_entropy_club.txt', 'w') as file:
+    with open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', 'w') as file:
         for i in range(Node):
             for j in range(Node):
                 for k in edge_entropy_matrix[i][j]:
