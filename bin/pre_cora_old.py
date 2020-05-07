@@ -98,7 +98,6 @@ def save_cora(out_folder):
                 edge_feature.append(edge_feature_all[i*N+j])
                 #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
 
-    print('edge_feature',len(edge_feature))
     g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
