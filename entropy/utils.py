@@ -13,6 +13,17 @@ def read_adjMatrix_csv(graphfile_csv):
     matrix = np.array(matrix)
     return matrix,N
 
+def read_adjMatrix_txt(graphfile_txt):
+    array = open(graphfile_txt).readlines()
+    N = len(array)
+    matrix = []
+    for line in array:
+        line = line.strip('\n').strip(',').split(',')
+        line = [int(x) for x in line]
+        matrix.append(line)
+    matrix = np.array(matrix)
+    return matrix,len(matrix)
+
 
 def translata_xlsx_to_csv(graphfile_xlsx):
     data_xls = pd.read_excel(io=graphfile_xlsx,sheet_name=0,header=None,index_col=None)
