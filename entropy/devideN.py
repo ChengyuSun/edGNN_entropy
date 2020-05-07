@@ -1,4 +1,4 @@
-Nn=3000
+Nn=4000
 def devide(N):
     n = [[0] * N for i in range(0, N)]
     for i in range(N):
