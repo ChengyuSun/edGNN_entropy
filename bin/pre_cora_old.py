@@ -7,8 +7,7 @@ from dgl import DGLGraph
 
 from core.data.constants import GRAPH, LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK, N_CLASSES
 from core.data.utils import complete_path, load_pickle, save_pickle
-from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
-from entropy.utils import read_adjMatrix_txt
+from core.models.constants import GNN_NODE_ATTS_KEY
 
 
 def save_cora(out_folder):
@@ -87,19 +86,20 @@ def save_cora(out_folder):
 
     #edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
     #edge_feature_all=torch.randn(nodN * nodN, 8).numpy()
-    edge_feature_all = edge_entropy.numpy()
 
-    edge_feature=[]
-    adj, N = read_adjMatrix_txt('./preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
-    for i in range(N):
-        for j in range(N):
-            if adj[i][j] > 0:
-                g.add_edges(i, j)
-                edge_feature.append(edge_feature_all[i*N+j])
-                #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
+    #edge_feature_all = edge_entropy.numpy()
+
+    # edge_feature=[]
+    # adj, N = read_adjMatrix_txt('./preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
+    # for i in range(N):
+    #     for j in range(N):
+    #         if adj[i][j] > 0:
+    #             g.add_edges(i, j)
+    #             edge_feature.append(edge_feature_all[i*N+j])
+    #             #print('edge_feature_all[i*N+j]:',edge_feature_all[i*N+j])
 
     #g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(np.array(edge_feature))
-    print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
+    #print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
