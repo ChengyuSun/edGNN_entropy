@@ -1,7 +1,6 @@
 {
     "layer_type": "edGNNLayer",
-    "node_dim": 1433,
-    "edge_dim": 50,
+    "node_dim": 3703,
     "layer_params": {
         "n_units": 64,
         "activation": "relu",
