@@ -28,7 +28,7 @@ def read_txt():
     N = len(array)
     matrix = []
     for line in array:
-        line = line.strip('\r\n').strip(' ').split(' ')
+        line = line.strip('\r\n').strip(' ').split(',')
         line = [int(x) for x in line]
         matrix.append(line)
     matrix = np.array(matrix)
