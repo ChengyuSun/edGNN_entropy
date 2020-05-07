@@ -50,7 +50,7 @@ def save_cora(out_folder):
     g = DGLGraph()
     g.add_nodes(nodN)
     g.ndata[GNN_NODE_ATTS_KEY] = torch.from_numpy(np.array(node_feature))
-
+    print('g.ndata[GNN_NODE_ATTS_KEY]:',g.ndata[GNN_NODE_ATTS_KEY].size())
 
     #edge
     edge_entropy=[]
@@ -90,7 +90,7 @@ def save_cora(out_folder):
     edge_feature_all = edge_entropy.numpy()
 
     edge_feature=[]
-    adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
+    adj, N = read_adjMatrix_csv('./preprocessed_data/citeseer/citeseer/citeseer_adj.csv')
     for i in range(N):
         for j in range(N):
             if adj[i][j] > 0:
