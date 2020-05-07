@@ -15,7 +15,7 @@ def save_cora(out_folder):
 
     #label
     labels = []
-    node_label_file = open('../bin/preprocessed_data/cora/node_labels.txt', "r").readlines()
+    node_label_file = open('../bin/preprocessed_data/citeseer/citeseer/node_labels.txt', "r").readlines()
     for line in node_label_file:
          labels.append(int(line))
     nodN = len(labels)
@@ -43,7 +43,7 @@ def save_cora(out_folder):
 
     #node
     node_feature = []
-    node_feature_file = open('../bin/preprocessed_data/cora/node_feature_01.txt', "r").readlines()
+    node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
     for line in node_feature_file:
         vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
         node_feature.append(vector)
@@ -54,40 +54,40 @@ def save_cora(out_folder):
 
     #edge
     edge_entropy=[]
-    edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
+    edge_entropy_file=open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt',"r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        sum=0
-        for item in vector2:
-            sum+=item
-        edge_entropy.append(sum)
-        #edge_entropy.append(vector2)
+        # sum=0
+        # for item in vector2:
+        #     sum+=item
+        # edge_entropy.append(sum)
+        edge_entropy.append(vector2)
 
-    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
     print('edge_entropy:',edge_entropy.size())
 
-    attention_sum=torch.zeros(nodN,nodN).view(nodN*nodN,1)
-    for i in range(8):
-        attention=[]
-        filename='../bin/preprocessed_data/cora/attentions/attention_{}.txt'.format(i)
-        attention_file=open(filename,"r").readlines()
-        for line in attention_file:
-            vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-            attention.append(vector3)
-        attention=torch.from_numpy(np.array(attention)).view(nodN*nodN,1)
-        # if i ==0:
-        #     attention_sum=attention.double()
-        # else :
-        #     attention_sum=torch.cat((attention_sum,attention.double()),1)
-        attention_sum=torch.add(attention_sum.double(),attention.double())
-    print('attention_sum:',attention_sum.size())
-    #attention_average=(attention_sum*(1/8)).expand(nodN*nodN,8).view(nodN*nodN,8)
+    # attention_sum=torch.zeros(nodN,nodN).view(nodN*nodN,1)
+    # for i in range(8):
+    #     attention=[]
+    #     filename='../bin/preprocessed_data/cora/attentions/attention_{}.txt'.format(i)
+    #     attention_file=open(filename,"r").readlines()
+    #     for line in attention_file:
+    #         vector3 = [float(x) for x in line.strip('\n').strip(',').split(",")]
+    #         attention.append(vector3)
+    #     attention=torch.from_numpy(np.array(attention)).view(nodN*nodN,1)
+    #     # if i ==0:
+    #     #     attention_sum=attention.double()
+    #     # else :
+    #     #     attention_sum=torch.cat((attention_sum,attention.double()),1)
+    #     attention_sum=torch.add(attention_sum.double(),attention.double())
+    # print('attention_sum:',attention_sum.size())
+    # #attention_average=(attention_sum*(1/8)).expand(nodN*nodN,8).view(nodN*nodN,8)
+    #
+    # attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
 
-    attention_average = (attention_sum * (1 / 8)).unsqueeze(-1).view(nodN * nodN, 1)
-
-    edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
-    edge_feature_all=torch.randn(nodN * nodN, 8).numpy()
-    #edge_feature_all = edge_entropy.numpy()
+    #edge_feature_all=torch.mul(attention_average,edge_entropy).numpy()
+    #edge_feature_all=torch.randn(nodN * nodN, 8).numpy()
+    edge_feature_all = edge_entropy.numpy()
 
     edge_feature=[]
     adj, N = read_adjMatrix_csv('./preprocessed_data/cora/adj.csv')
@@ -104,7 +104,7 @@ def save_cora(out_folder):
 
     #save
     save_pickle(g, complete_path(out_folder, GRAPH))
-    save_pickle(7, complete_path(out_folder, N_CLASSES))
+    save_pickle(6, complete_path(out_folder, N_CLASSES))
     torch.save(labels, complete_path(out_folder, LABELS))
     torch.save(train_mask, complete_path(out_folder, TRAIN_MASK))
     torch.save(test_mask, complete_path(out_folder, TEST_MASK))
