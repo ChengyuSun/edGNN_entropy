@@ -89,6 +89,7 @@ class edGNNLayer(nn.Module):
             if self.dropout:
                 msg = self.dropout(msg)
         else:
+            print('no edge feature')
             msg = edges.src[GNN_NODE_FEAT_IN_KEY]
             if self.dropout:
                 msg = self.dropout(msg)
@@ -96,6 +97,7 @@ class edGNNLayer(nn.Module):
 
     def gnn_reduce(self, nodes):
         accum = torch.sum((nodes.mailbox[GNN_MSG_KEY]), 1)
+        print('GNN_AGG_MSG_KEY')
         return {GNN_AGG_MSG_KEY: accum}
 
     def node_update(self, nodes):

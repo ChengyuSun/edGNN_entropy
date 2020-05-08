@@ -1,5 +1,4 @@
 #encoding: utf-8
-
 import numpy as np
 from sympy import *
 
@@ -58,10 +57,14 @@ def calEntropy(n,N,dN):
             logZ = n[i] * (log(m_integral) - math.log(n[i]) - l[i] * math.log(l[i]) + 1) + (N - l[i] * n[i]) * (math.log(r)- math.log(N - l[i] * n[i]) +1)
         else:
             logZ = n[i] * (-math.log(n[i]) + 1 + log(m_integral) - math.log(factorial(l[i])))
+        #print('logz:',logZ)
         logZ+=math.log(dN)
         U=diff(logZ,beta)
+        #print('U:',U)
         E=logZ+U*beta
+        #print('E1:',E)
         E = E.subs(beta, 1.0 / (K * T))
+        #print('E2:',E)
         Entropy.append(E)
     return Entropy
 
@@ -69,7 +72,9 @@ def calEntropy(n,N,dN):
 def graphEntropy(motifNumber,nodN):
     dN = read_data(nodN - 1, '../entropy/data2/devide_4000_Nodes.csv')
     return calEntropy(motifNumber,nodN,dN)
-
+#
+# motif_num=[1277, 585, 1166, 295, 371, 1611, 179, 236]
+# graphEntropy(motif_num,3312)
 
 # motif_num_matrix = get_Amount_of_Motif()
 

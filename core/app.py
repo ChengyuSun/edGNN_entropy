@@ -52,7 +52,6 @@ class App:
 
             if learning_config['cuda']:
                 self.model.cuda()
-                print('model cuda')
             for epoch in range(learning_config['n_epochs']):
                 self.model.train()
                 # if epoch >= 3:
