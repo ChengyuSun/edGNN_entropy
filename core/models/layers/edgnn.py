@@ -75,6 +75,7 @@ class edGNNLayer(nn.Module):
             self.bn = nn.BatchNorm1d(self.out_feats)
 
     def gnn_msg(self, edges):
+        print('1')
         """
             If edge features: for each edge u->v, return as msg: MLP(concat([h_u, h_uv]))
         """
@@ -96,10 +97,12 @@ class edGNNLayer(nn.Module):
         return {GNN_MSG_KEY: msg}
 
     def gnn_reduce(self, nodes):
+        print('2')
         accum = torch.sum((nodes.mailbox[GNN_MSG_KEY]), 1)
         return {GNN_AGG_MSG_KEY: accum}
 
     def node_update(self, nodes):
+        print('3')
         h = torch.cat([nodes.data[GNN_NODE_FEAT_IN_KEY],
                        nodes.data[GNN_AGG_MSG_KEY]],
                       dim=1)
