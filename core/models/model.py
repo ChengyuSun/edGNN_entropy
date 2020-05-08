@@ -226,7 +226,6 @@ class Model(nn.Module):
                     edge_features = self.g.edata[GNN_EDGE_FEAT_KEY]
 
         else:
-            print('no edge feature')
             edge_features = None
 
 
