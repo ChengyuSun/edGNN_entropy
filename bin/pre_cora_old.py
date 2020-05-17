@@ -1,4 +1,3 @@
-import random
 import sys
 sys.path.append('../')
 import numpy as np
@@ -20,26 +19,6 @@ def save_cora(out_folder):
          labels.append(int(line))
     nodN = len(labels)
     labels=torch.from_numpy(np.array(labels))
-
-    #mask
-    random_idx=[i for i in range(nodN)]
-    random.shuffle(random_idx)
-    train_idx=random_idx[nodN//5:]
-    test_idx=random_idx[:nodN//5]
-
-    def _idx_to_mask(idx, n):
-        mask = np.zeros(n, dtype=int)
-        mask[idx] = 1
-        return torch.ByteTensor(mask)
-
-    val_idx = train_idx[:len(train_idx) // 5]
-    val_mask = _idx_to_mask(val_idx, labels.shape[0])
-
-    train_idx = train_idx[len(train_idx) // 5:]
-    train_mask = _idx_to_mask(train_idx, labels.shape[0])
-
-    test_mask = _idx_to_mask(test_idx, labels.shape[0])
-
 
     #node
     node_feature = []
@@ -106,9 +85,9 @@ def save_cora(out_folder):
     save_pickle(g, complete_path(out_folder, GRAPH))
     save_pickle(6, complete_path(out_folder, N_CLASSES))
     torch.save(labels, complete_path(out_folder, LABELS))
-    torch.save(train_mask, complete_path(out_folder, TRAIN_MASK))
-    torch.save(test_mask, complete_path(out_folder, TEST_MASK))
-    torch.save(val_mask, complete_path(out_folder, VAL_MASK))
+    # torch.save(train_mask, complete_path(out_folder, TRAIN_MASK))
+    # torch.save(test_mask, complete_path(out_folder, TEST_MASK))
+    # torch.save(val_mask, complete_path(out_folder, VAL_MASK))
 
 def load_cora(folder):
     data = {

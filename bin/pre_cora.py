@@ -146,8 +146,33 @@ def load_cora(folder):
         N_CLASSES: load_pickle(complete_path(folder, N_CLASSES))
     }
 
-    for k in [LABELS, TRAIN_MASK, TEST_MASK, VAL_MASK]:
-        data[k] = torch.load(complete_path(folder, k))
+    labels= data[LABELS] = torch.load(complete_path(folder, LABELS))
+
+    nodN=labels.shape[0]
+    print('loading data has {} nodes'.format(nodN))
+
+    #mask
+    random_idx=[i for i in range(nodN)]
+    random.shuffle(random_idx)
+    train_idx=random_idx[nodN//5:]
+    test_idx=random_idx[:nodN//5]
+
+    def _idx_to_mask(idx, n):
+        mask = np.zeros(n, dtype=int)
+        mask[idx] = 1
+        return torch.ByteTensor(mask)
+
+    val_idx = train_idx[:len(train_idx) // 5]
+    val_mask = _idx_to_mask(val_idx,nodN )
+
+    train_idx = train_idx[len(train_idx) // 5:]
+    train_mask = _idx_to_mask(train_idx,nodN)
+
+    test_mask = _idx_to_mask(test_idx, nodN)
+
+    data[TRAIN_MASK]=train_mask
+    data[TEST_MASK]=test_mask
+    data[VAL_MASK]=val_mask
 
     return data
 
