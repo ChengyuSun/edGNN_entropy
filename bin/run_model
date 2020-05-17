@@ -59,7 +59,7 @@ def main(args):
     config_params = read_params(args.config_fpath, verbose=True)
 
 
-    for i in range(5):
+    for i in range(10):
         # 1. Training
         app = App()
         learning_config = {'lr': args.lr, 'n_epochs': args.n_epochs, 'weight_decay': args.weight_decay, 'batch_size': args.batch_size, 'cuda': cuda}
