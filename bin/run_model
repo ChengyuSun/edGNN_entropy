@@ -36,30 +36,28 @@ def main(args):
     default_path = create_default_path()
     print('\n*** Set default saving/loading path to:', default_path)
 
-    if args.dataset == AIFB or args.dataset == MUTAG:
-        module = importlib.import_module(MODULE.format('dglrgcn'))
-        data = module.load_dglrgcn(args.data_path)
-        data = to_cuda(data) if cuda else data
-        mode = NODE_CLASSIFICATION
-    elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR \
-            or args.dataset == PTC_FM or args.dataset == 'NCI1' or args.dataset == 'NCI109':
-        module = importlib.import_module(MODULE.format('dortmund'))
-        data = module.load_dortmund(args.data_path)
-        data = to_cuda(data) if cuda else data
-        mode = GRAPH_CLASSIFICATION
-    elif args.dataset=='cora' or args.dataset=='citeseer':
-        data = load_cora(args.data_path)
-        data = to_cuda(data) if cuda else data
-        mode = NODE_CLASSIFICATION
-    else:
-        raise ValueError('Unable to load dataset', args.dataset)
-
-    #print_graph_stats(data[GRAPH])
-
-    config_params = read_params(args.config_fpath, verbose=True)
-
-
     for i in range(10):
+        if args.dataset == AIFB or args.dataset == MUTAG:
+            module = importlib.import_module(MODULE.format('dglrgcn'))
+            data = module.load_dglrgcn(args.data_path)
+            data = to_cuda(data) if cuda else data
+            mode = NODE_CLASSIFICATION
+        elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR \
+                or args.dataset == PTC_FM or args.dataset == 'NCI1' or args.dataset == 'NCI109':
+            module = importlib.import_module(MODULE.format('dortmund'))
+            data = module.load_dortmund(args.data_path)
+            data = to_cuda(data) if cuda else data
+            mode = GRAPH_CLASSIFICATION
+        elif args.dataset == 'cora' or args.dataset == 'citeseer':
+            data = load_cora(args.data_path)
+            data = to_cuda(data) if cuda else data
+            mode = NODE_CLASSIFICATION
+        else:
+            raise ValueError('Unable to load dataset', args.dataset)
+
+        # print_graph_stats(data[GRAPH])
+
+        config_params = read_params(args.config_fpath, verbose=True)
         # 1. Training
         app = App()
         learning_config = {'lr': args.lr, 'n_epochs': args.n_epochs, 'weight_decay': args.weight_decay, 'batch_size': args.batch_size, 'cuda': cuda}
