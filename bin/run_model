@@ -36,7 +36,7 @@ def main(args):
     default_path = create_default_path()
     print('\n*** Set default saving/loading path to:', default_path)
 
-    for i in range(10):
+    for i in range(20):
         if args.dataset == AIFB or args.dataset == MUTAG:
             module = importlib.import_module(MODULE.format('dglrgcn'))
             data = module.load_dglrgcn(args.data_path)
