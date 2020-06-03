@@ -1,4 +1,6 @@
 #encoding: utf-8
+import math
+
 import numpy as np
 from sympy import *
 
