@@ -22,6 +22,8 @@ def writeEdgeEntropy(graphfile):
     edge_entropy=edgeEntropy(graph_entropy,count_edge,count_motif)
     return edge_entropy
 
+writeEdgeEntropy('../bin/preprocessed_data/cora/adj.csv')
+
 
 def read_txt():
     array = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt').readlines()
