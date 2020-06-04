@@ -47,7 +47,7 @@ def _entropy():
     edge_entropy = edgeEntropy(graph_entropy, count_edge, count_motif)
     return edge_entropy
 
-_entropy()
+
 
 def edgeEntropy_node_class(edge_src,edge_dst,nodN):
     edgeN=len(edge_src)
