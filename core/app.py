@@ -37,6 +37,7 @@ class App:
             val_mask = data[VAL_MASK].bool()
             #dur = []
 
+            print('data[N_CLASSES]:',data[N_CLASSES])
             # create GNN model
             self.model = Model(g=data[GRAPH],
                                config_params=model_config,
@@ -58,8 +59,8 @@ class App:
                 #     t0 = time.time()
                 # forward
                 logits = self.model(None)
-                print('logits[train_mask]:',logits[train_mask])
-                print('labels[train_mask]:',labels[train_mask])
+                print('logits[train_mask]:',logits[train_mask].size())
+                print('labels[train_mask]:',labels[train_mask].size())
                 loss = loss_fcn(logits[train_mask], labels[train_mask])
 
                 optimizer.zero_grad()
