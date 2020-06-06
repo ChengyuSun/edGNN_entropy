@@ -21,6 +21,7 @@ def save_cora(out_folder):
     for line in node_label_file:
          labels.append(int(line))
     nodN = len(labels)
+    label_num=max(labels)-min(labels)+1
     labels=torch.from_numpy(np.array(labels))
 
     #node
@@ -70,7 +71,7 @@ def save_cora(out_folder):
     if  not os.path.exists(out_folder):
         os.makedirs(out_folder)
     save_pickle(g, complete_path(out_folder, GRAPH))
-    save_pickle(6, complete_path(out_folder, N_CLASSES))
+    save_pickle(label_num, complete_path(out_folder, N_CLASSES))
     torch.save(labels, complete_path(out_folder, LABELS))
     # torch.save(train_mask, complete_path(out_folder, TRAIN_MASK))
     # torch.save(test_mask, complete_path(out_folder, TEST_MASK))
