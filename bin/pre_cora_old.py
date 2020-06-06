@@ -8,6 +8,7 @@ import os
 from core.data.constants import GRAPH, LABELS, N_CLASSES
 from core.data.utils import complete_path, save_pickle
 from core.models.constants import GNN_NODE_ATTS_KEY
+from entropy.utils import read_adjMatrix_csv
 
 
 def save_cora(out_folder):
@@ -51,19 +52,19 @@ def save_cora(out_folder):
     # edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
     # print('edge_entropy:',edge_entropy.size())
     #
-    # edge_feature_all = edge_entropy.numpy()
+    #edge_feature_all = edge_entropy.numpy()
     # edge_feature=[]
     # #adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
-    # adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
-    # for i in range(N):
-    #     for j in range(N):
-    #         if adj[i][j] > 0:
-    #             g.add_edges(i, j)
-    #             edge_feature.append(edge_feature_all[i*N+j])
+    adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
+    for i in range(N):
+        for j in range(N):
+            if adj[i][j] > 0:
+                g.add_edges(i, j)
+                #edge_feature.append(edge_feature_all[i*N+j])
 
 
-    #g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(np.array(edge_feature))
-    #print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
+    # g.edata[GNN_EDGE_FEAT_KEY] = torch.zeros(10556,0)
+    # print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
 
     #save
