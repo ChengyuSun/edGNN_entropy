@@ -30,7 +30,7 @@ def ten_cross(index,nodN,random_idx):
 
     test_start=index*(nodN//10)
     test_end=test_start+(nodN//10)
-    train_idx = random_idx[:test_start]+random[test_end:]
+    train_idx = random_idx[:test_start]+random_idx[test_end:]
     test_idx = random_idx[test_start:test_end]
 
 
