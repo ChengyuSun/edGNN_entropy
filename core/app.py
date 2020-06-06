@@ -58,6 +58,8 @@ class App:
                 #     t0 = time.time()
                 # forward
                 logits = self.model(None)
+                print('logits[train_mask]:',logits[train_mask])
+                print('labels[train_mask]:',labels[train_mask])
                 loss = loss_fcn(logits[train_mask], labels[train_mask])
 
                 optimizer.zero_grad()
