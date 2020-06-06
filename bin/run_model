@@ -7,14 +7,16 @@ import importlib
 import sys
 sys.path.append('../')
 
+import random
 import torch
 from dgl.data import register_data_args
 
-
+import numpy as np
 from pre_cora import load_cora
 from core.app import App
 from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
 from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
+from core.data.constants import TRAIN_MASK, TEST_MASK, VAL_MASK
 from utils.inits import to_cuda
 from utils.io import read_params, create_default_path, remove_model
 
@@ -24,6 +26,28 @@ AVAILABLE_DATASETS = {
     'dortmund'
 }
 
+def ten_cross(index,nodN,random_idx):
+
+    test_start=index*(nodN//10)
+    test_end=test_start+(nodN//10)
+    train_idx = random_idx[:test_start]+random[test_end:]
+    test_idx = random_idx[test_start:test_end]
+
+
+    def _idx_to_mask(idx, n):
+        mask = np.zeros(n, dtype=int)
+        mask[idx] = 1
+        return torch.ByteTensor(mask)
+
+    val_idx = train_idx[:len(train_idx) // 5]
+    val_mask = _idx_to_mask(val_idx, nodN)
+
+    train_idx = train_idx[len(train_idx) // 5:]
+    train_mask = _idx_to_mask(train_idx, nodN)
+
+    test_mask = _idx_to_mask(test_idx, nodN)
+
+    return train_mask,test_mask,val_mask
 
 def main(args):
 
@@ -36,27 +60,31 @@ def main(args):
     default_path = create_default_path()
     print('\n*** Set default saving/loading path to:', default_path)
 
-    for i in range(20):
-        if args.dataset == AIFB or args.dataset == MUTAG:
-            module = importlib.import_module(MODULE.format('dglrgcn'))
-            data = module.load_dglrgcn(args.data_path)
-            data = to_cuda(data) if cuda else data
-            mode = NODE_CLASSIFICATION
-        elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR \
-                or args.dataset == PTC_FM or args.dataset == 'NCI1' or args.dataset == 'NCI109':
-            module = importlib.import_module(MODULE.format('dortmund'))
-            data = module.load_dortmund(args.data_path)
-            data = to_cuda(data) if cuda else data
-            mode = GRAPH_CLASSIFICATION
-        elif args.dataset == 'cora' or args.dataset == 'citeseer':
-            data = load_cora(args.data_path)
-            data = to_cuda(data) if cuda else data
-            mode = NODE_CLASSIFICATION
-        else:
-            raise ValueError('Unable to load dataset', args.dataset)
+    if args.dataset == AIFB or args.dataset == MUTAG:
+        module = importlib.import_module(MODULE.format('dglrgcn'))
+        data = module.load_dglrgcn(args.data_path)
+        data = to_cuda(data) if cuda else data
+        mode = NODE_CLASSIFICATION
+    elif args.dataset == MUTAGENICITY or args.dataset == PTC_MR or args.dataset == PTC_MM or args.dataset == PTC_FR \
+            or args.dataset == PTC_FM or args.dataset == 'NCI1' or args.dataset == 'NCI109':
+        module = importlib.import_module(MODULE.format('dortmund'))
+        data = module.load_dortmund(args.data_path)
+        data = to_cuda(data) if cuda else data
+        mode = GRAPH_CLASSIFICATION
+    elif args.dataset == 'cora' or args.dataset == 'citeseer':
+        data = load_cora(args.data_path)
+        data = to_cuda(data) if cuda else data
+        mode = NODE_CLASSIFICATION
+    else:
+        raise ValueError('Unable to load dataset', args.dataset)
+    # print_graph_stats(data[GRAPH])
 
-        # print_graph_stats(data[GRAPH])
+    random_idx = [i for i in range(data['nodN'])]
+    random.shuffle(random_idx)
 
+    for i in range(10):
+
+        data[TRAIN_MASK],data[TEST_MASK],data[VAL_MASK]=ten_cross(i,data['nodN'],random_idx)
         config_params = read_params(args.config_fpath, verbose=True)
         # 1. Training
         app = App()
