@@ -79,7 +79,8 @@ class edGNNLayer(nn.Module):
             If edge features: for each edge u->v, return as msg: MLP(concat([h_u, h_uv]))
         """
         if self.g.edata is not None:
-            if (GNN_EDGE_FEAT_KEY in edges.data) and (edges.data[GNN_EDGE_FEAT_KEY] is not None):
+            #if (GNN_EDGE_FEAT_KEY in edges.data) and (edges.data[GNN_EDGE_FEAT_KEY] is not None):
+            if edges.data[GNN_EDGE_FEAT_KEY] is not None:
                 msg = torch.cat([edges.src[GNN_NODE_FEAT_IN_KEY],
                                      edges.data[GNN_EDGE_FEAT_KEY]],
                                     dim=1)
@@ -124,8 +125,8 @@ class edGNNLayer(nn.Module):
 
         # 2. set current iteration features
         self.g.ndata[GNN_NODE_FEAT_IN_KEY] = node_features
-        if not edge_features is None:
-            self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
+
+        self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
 
         # 3. aggregate messages
         self.g.update_all(self.gnn_msg,
