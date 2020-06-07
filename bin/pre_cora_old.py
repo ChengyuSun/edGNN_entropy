@@ -8,7 +8,7 @@ import os
 from core.data.constants import GRAPH, LABELS, N_CLASSES
 from core.data.utils import complete_path, save_pickle
 from core.models.constants import GNN_NODE_ATTS_KEY
-from entropy.utils import read_adjMatrix_csv
+from entropy.utils import read_adjMatrix_txt
 
 
 def save_cora(out_folder):
@@ -16,8 +16,9 @@ def save_cora(out_folder):
     #label
     labels = []
 
-    #'../bin/preprocessed_data/citeseer/citeseer/node_labels.txt'
-    node_label_file = open('../bin/preprocessed_data/cora/node_labels.txt', "r").readlines()
+    #''
+    #node_label_file = open('../bin/preprocessed_data/cora/node_labels.txt', "r").readlines()
+    node_label_file = open('../bin/preprocessed_data/citeseer/citeseer/node_labels.txt', "r").readlines()
     for line in node_label_file:
          labels.append(int(line))
     nodN = len(labels)
@@ -26,9 +27,8 @@ def save_cora(out_folder):
 
     #node
     node_feature = []
-    #
-    #bin/preprocessed_data/citeseer/citeseer/node_features.txt
-    node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
+    #node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
+    node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
     for line in node_feature_file:
         vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
         node_feature.append(vector)
@@ -54,8 +54,8 @@ def save_cora(out_folder):
     #
     #edge_feature_all = edge_entropy.numpy()
     # edge_feature=[]
-    # #adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
-    adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
+    adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
+    #adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
     for i in range(N):
         for j in range(N):
             if adj[i][j] > 0:
@@ -63,7 +63,7 @@ def save_cora(out_folder):
                 #edge_feature.append(edge_feature_all[i*N+j])
 
 
-    # g.edata[GNN_EDGE_FEAT_KEY] = torch.zeros(10556,0)
+    # g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(edge_feature)
     # print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
 
