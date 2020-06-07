@@ -7,7 +7,7 @@ import os
 
 from core.data.constants import GRAPH, LABELS, N_CLASSES
 from core.data.utils import complete_path, save_pickle
-from core.models.constants import GNN_NODE_ATTS_KEY
+from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_txt
 
 
@@ -38,33 +38,33 @@ def save_cora(out_folder):
     print('g.ndata[GNN_NODE_ATTS_KEY]:',g.ndata[GNN_NODE_ATTS_KEY].size())
 
     #edge
-    # edge_entropy=[]
-    # #bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt
-    # edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
-    # for line in edge_entropy_file:
-    #     vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-    #     # sum=0
-    #     # for item in vector2:
-    #     #     sum+=item
-    #     # edge_entropy.append(sum)
-    #     edge_entropy.append(vector2)
-    #
-    # edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
-    # print('edge_entropy:',edge_entropy.size())
-    #
-    #edge_feature_all = edge_entropy.numpy()
-    # edge_feature=[]
+    edge_entropy=[]
+    #bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt
+    edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
+    for line in edge_entropy_file:
+        vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
+        # sum=0
+        # for item in vector2:
+        #     sum+=item
+        # edge_entropy.append(sum)
+        edge_entropy.append(vector2)
+
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
+    print('edge_entropy:',edge_entropy.size())
+
+    edge_feature_all = edge_entropy.numpy()
+    edge_feature=[]
     adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
     #adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
     for i in range(N):
         for j in range(N):
             if adj[i][j] > 0:
                 g.add_edges(i, j)
-                #edge_feature.append(edge_feature_all[i*N+j])
+                edge_feature.append(edge_feature_all[i*N+j])
 
 
-    # g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(edge_feature)
-    # print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
+    g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(edge_feature)
+    print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
 
     #save
