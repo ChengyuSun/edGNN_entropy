@@ -39,8 +39,8 @@ def save_cora(out_folder):
 
     #edge
     edge_entropy=[]
-    #bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt
-    edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
+    #edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
+    edge_entropy_file = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', "r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
         # sum=0
