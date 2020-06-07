@@ -125,8 +125,7 @@ class edGNNLayer(nn.Module):
 
         # 2. set current iteration features
         self.g.ndata[GNN_NODE_FEAT_IN_KEY] = node_features
-        print('edge_features:',edge_features.size())
-        if edge_features!=None:
+        if not edge_features is None:
             self.g.edata[GNN_EDGE_FEAT_KEY] = edge_features
 
         # 3. aggregate messages
