@@ -80,7 +80,11 @@ def draw_graph(adj,node_labels,nodN,label):
     return
 
 
-def count_perssad(adj,node_labels,nodN):
+def count_perssad_3(adj,node_labels,nodN):
+    for i in range(nodN):
+        for j in range(nodN):
+            if node_labels[i]==1 :
+                return
 
 
     return
