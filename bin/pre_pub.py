@@ -7,19 +7,19 @@ def read_label():
     labels=[]
     node_label_file = open('../bin/preprocessed_data/pub/pub_label.txt', "r").readlines()
     for line in node_label_file:
-        vector = [float(x) for x in line.strip('\n').split(" : ")]
+        vector = [int(x) for x in line.strip('\n').split(" : ")]
         label_dir[vector[0]]=vector[1]
     nodN = label_dir.__len__()
     for i in range(nodN):
         labels.append(label_dir[i])
-    print(labels)
     labels = torch.from_numpy(np.array(labels))
-    print(labels.size())
-    return labels
+    return  nodN,labels
 
-read_label()
 
-def read_adj():
+def read_adj(nodN):
+    adj=np.zeros((nodN,nodN),int)
     adj_file = open('../bin/preprocessed_data/pub/pub_adj.txt', "r").readlines()
     for line in adj_file:
-        return
+        vector = [float(x) for x in line.strip('\n').split(" ")]
+        adj[vector[0]][vector[1]]=1
+        adj[vector[1]][vector[0]] = 1
