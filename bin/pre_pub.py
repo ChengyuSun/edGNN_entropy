@@ -13,7 +13,7 @@ def read_label():
     for i in range(nodN):
         labels.append(label_dir[i])
     labels = torch.from_numpy(np.array(labels))
-    print(labels.shape())
+    print(labels.size())
     return labels
 
 read_label()
