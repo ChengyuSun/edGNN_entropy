@@ -5,6 +5,7 @@ import numpy as np
 
 
 def count_star(A,N,neiN,motif,edge_adj):
+    print('开始搜索motif： ',motif)
     n=0
     a=copy.copy(A)
     for i in range(N):
@@ -124,13 +125,14 @@ def find_next(a,N,i,rest,stack):
             return -1
 
 def count_chain(A,N,rest,motif,edge_adj):
+    print('开始搜索motif: ',motif)
     n=0
     a = copy.copy(A)
     for i in range(N):
         stack=[]
         stack.append(i)
         if find_next(a,N,i,rest-1,stack)>=0:
-            #print('当前搜索完成！', stack)
+            print('当前搜索完成！', stack)
             for j in range(len(stack) - 1):
                 edge_adj[stack[j]][stack[j + 1]] += str(motif)
                 edge_adj[stack[j + 1]][stack[j]] += str(motif)
@@ -161,6 +163,7 @@ def count_polygon0(num,edges):
     return n
 
 def count_poly_edge(A, N,edge_adj):
+    print('开始搜索motif： 3')
     n=0
     a = copy.copy(A)
     for i in range(N):
@@ -178,6 +181,7 @@ def count_poly_edge(A, N,edge_adj):
     return n
 
 def count_poly_qua(A, N,edge_adj):
+    print('开始搜索motif： 6')
     n=0
     a = copy.copy(A)
     for i in range(N):
