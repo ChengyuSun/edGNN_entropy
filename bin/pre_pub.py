@@ -24,12 +24,7 @@ def read_adj(nodN):
         adj[vector[0]][vector[1]]=1
         adj[vector[1]][vector[0]] = 1
         counter+=1
-    print('edge num: ',counter)
     for i in range(nodN):
         if adj[i][i]==1:
             adj[i][i]=0
-            print('delete self edge:',i)
     return adj,nodN
-
-nodN,_=read_label()
-read_adj(nodN)

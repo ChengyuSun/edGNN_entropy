@@ -25,10 +25,10 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 edge_entropy_matrix[column_number][line_number] = edge_entropy
                 column_number += 1
         line_number += 1
-    # with open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', 'w') as file:
-    #     for i in range(Node):
-    #         for j in range(Node):
-    #             for k in edge_entropy_matrix[i][j]:
-    #                 file.write(str(k)+',')
-    #             file.write('\n')
+    with open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', 'w') as file:
+        for i in range(Node):
+            for j in range(Node):
+                for k in edge_entropy_matrix[i][j]:
+                    file.write(str(k)+',')
+                file.write('\n')
     return edge_entropy_matrix
