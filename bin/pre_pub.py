@@ -26,7 +26,7 @@ def read_adj(nodN):
         counter+=1
     print('edge num: ',counter)
     for i in range(nodN):
-        if adj[i][i]==0:
+        if adj[i][i]==1:
             adj[i][i]=0
             print('delete self edge:',i)
     return adj,nodN
