@@ -1,5 +1,4 @@
 #encoding: utf-8
-import math
 
 import numpy as np
 from sympy import *
@@ -72,7 +71,7 @@ def calEntropy(n,N,dN):
 
 
 def graphEntropy(motifNumber,nodN):
-    dN = read_data(nodN - 1, '../entropy/data2/devide_4000_Nodes.csv')
+    dN = read_data(nodN - 1, '../entropy/data2/devide_20000_Nodes.csv')
     return calEntropy(motifNumber,nodN,dN)
 #
 # motif_num=[1277, 585, 1166, 295, 371, 1611, 179, 236]
