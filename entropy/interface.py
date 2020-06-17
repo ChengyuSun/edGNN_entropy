@@ -8,6 +8,7 @@ from entropy.CountMotif_nr import countMotifs
 from entropy.Entropy import graphEntropy
 from entropy.countedge import countEdge
 from entropy.edge_entropy import edgeEntropy
+from bin.pre_pub import read_label,read_adj
 
 
 def writeEdgeEntropy(graphfile):
@@ -22,9 +23,6 @@ def writeEdgeEntropy(graphfile):
     edge_entropy=edgeEntropy(graph_entropy,count_edge,count_motif)
     return edge_entropy
 
-writeEdgeEntropy('../bin/preprocessed_data/cora/adj.csv')
-
-
 def read_txt():
     array = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt').readlines()
     N = len(array)
@@ -37,9 +35,9 @@ def read_txt():
     return matrix,len(matrix)
 
 
-
 def _entropy():
-    A,nodN=read_txt()
+    nodN,labels=read_label()
+    A,_=read_adj(nodN)
     count_edge, count_motif = countEdge(A, nodN)
     print('count_motif:', count_motif)
     graph_entropy = graphEntropy(count_motif, nodN)

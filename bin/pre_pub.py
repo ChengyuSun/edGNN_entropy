@@ -23,3 +23,4 @@ def read_adj(nodN):
         vector = [float(x) for x in line.strip('\n').split(" ")]
         adj[vector[0]][vector[1]]=1
         adj[vector[1]][vector[0]] = 1
+    return adj,nodN
