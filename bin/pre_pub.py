@@ -28,3 +28,4 @@ def read_adj(nodN):
         if adj[i][i]==1:
             adj[i][i]=0
     return adj,nodN
+

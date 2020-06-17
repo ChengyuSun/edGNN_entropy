@@ -1,5 +1,5 @@
 import sys
 sys.path.append('../')
-from pre_cora_old import save_cora
+from pre_data import save_cora
 
 save_cora('../bin/preprocessed_data/citeseer_entropy1')

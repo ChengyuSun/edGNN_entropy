@@ -6,7 +6,7 @@ from dgl import DGLGraph
 import os
 
 from core.data.constants import GRAPH, LABELS, N_CLASSES
-from core.data.utils import complete_path, save_pickle
+from core.data.utils import complete_path, save_pickle,load_pickle
 from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
 from entropy.utils import read_adjMatrix_txt
 
@@ -77,5 +77,18 @@ def save_cora(out_folder):
     # torch.save(test_mask, complete_path(out_folder, TEST_MASK))
     # torch.save(val_mask, complete_path(out_folder, VAL_MASK))
 
+def load_cora(folder):
+    data = {
+        GRAPH: load_pickle(complete_path(folder, GRAPH)),
+        #N_RELS: load_pickle(complete_path(folder, N_RELS)),
+        N_CLASSES: load_pickle(complete_path(folder, N_CLASSES))
+    }
 
+    labels= data[LABELS] = torch.load(complete_path(folder, LABELS))
+
+    nodN=labels.shape[0]
+    print('loading data has {} nodes'.format(nodN))
+    data['nodN']=nodN
+
+    return data
 
