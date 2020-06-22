@@ -37,6 +37,8 @@ def read_feature():
             continue
         vector = [float(x) for x in line.strip('\n').strip(' ').split(" ")]
         features.append(vector)
+    print(len(features))
+    print(len(features[0]))
     return features
 
 read_feature()
