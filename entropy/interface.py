@@ -36,7 +36,7 @@ def read_txt():
 
 
 def _entropy():
-    nodN,labels=read_label_pub()
+    labels,nodN,_=read_label_pub()
     adj,_=read_adj_pub(nodN)
     count_edge, count_motif = countEdge(adj, nodN)
     print('count_motif:', count_motif)
