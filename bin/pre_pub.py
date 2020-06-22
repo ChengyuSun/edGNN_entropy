@@ -29,13 +29,14 @@ def read_adj(nodN):
             adj[i][i]=0
     return adj,nodN
 
-def read_feature(nodN):
-    adj=np.zeros((nodN,nodN),int)
-    adj_file = open('../bin/preprocessed_data/pub/pub_adj.txt', "r").readlines()
-    counter=0
-    for line in adj_file:
-        vector = [int(x) for x in line.strip('\n').split(" ")]
-        adj[vector[0]][vector[1]]=1
-        adj[vector[1]][vector[0]] = 1
-        counter+=1
+def read_feature():
+    feature_file = open('/new_disk_B/pub/pub_feature.txt', "r").readlines()
+    features=[]
+    for line in feature_file:
+        if line=='\n':
+            continue
+        vector = [float(x) for x in line.strip('\n').split(" ")]
+        features.append(vector)
+    return features
 
+read_feature()
