@@ -2,7 +2,7 @@ import numpy as np
 import torch
 
 
-def read_label():
+def read_label_pub():
     label_dir=dict()
     labels=[]
     node_label_file = open('/new_disk_B/scy/pub/pub_label.txt', "r").readlines()
@@ -12,12 +12,13 @@ def read_label():
     nodN = label_dir.__len__()
     for i in range(nodN):
         labels.append(label_dir[i])
+    label_num = max(labels) - min(labels) + 1
     labels = torch.from_numpy(np.array(labels))
-    return  nodN,labels
+    return  labels,nodN,label_num
 
-def read_adj(nodN):
+def read_adj_pub(nodN):
     adj=np.zeros((nodN,nodN),int)
-    adj_file = open('../bin/preprocessed_data/pub/pub_adj.txt', "r").readlines()
+    adj_file = open('/new_disk_B/scy/pub/pub_adj.txt', "r").readlines()
     counter=0
     for line in adj_file:
         vector = [int(x) for x in line.strip('\n').split(" ")]
@@ -29,7 +30,7 @@ def read_adj(nodN):
             adj[i][i]=0
     return adj,nodN
 
-def read_feature():
+def read_feature_pub():
     feature_file = open('/new_disk_B/scy/pub/pub_feature.txt', "r").readlines()
     features=[]
     for line in feature_file:
@@ -40,5 +41,3 @@ def read_feature():
             print(len(vector))
         features.append(vector)
     return features
-
-read_feature()

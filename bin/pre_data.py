@@ -8,31 +8,40 @@ import os
 from core.data.constants import GRAPH, LABELS, N_CLASSES
 from core.data.utils import complete_path, save_pickle,load_pickle
 from core.models.constants import GNN_NODE_ATTS_KEY,GNN_EDGE_FEAT_KEY
-from entropy.utils import read_adjMatrix_txt
+from entropy.utils import read_adjMatrix_txt,read_adjMatrix_csv
+from pre_pub import read_adj_pub,read_label_pub,read_feature_pub
 
-
-def save_cora(out_folder):
+def save_data(out_folder,dataset):
 
     #label
-    labels = []
+    lables=[]
+    nodN=0
+    label_num=0
 
-    #''
-    #node_label_file = open('../bin/preprocessed_data/cora/node_labels.txt', "r").readlines()
-    node_label_file = open('../bin/preprocessed_data/citeseer/citeseer/node_labels.txt', "r").readlines()
-    for line in node_label_file:
-         labels.append(int(line))
-    nodN = len(labels)
-    label_num=max(labels)-min(labels)+1
-    labels=torch.from_numpy(np.array(labels))
+    if dataset=='pub':
+        labels,nodN,label_num=read_label_pub()
+    elif dataset=='cora':
+        node_label_file = open('../bin/preprocessed_data/cora/node_labels.txt', "r").readlines()
+        labels,nodN,label_num=read_label(node_label_file)
+    elif dataset=='citeseer':
+        node_label_file = open('../bin/preprocessed_data/citeseer/citeseer/node_labels.txt', "r").readlines()
+        labels, nodN ,label_num= read_label(node_label_file)
 
     #node
     node_feature = []
-    #node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
-    #node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
-    node_feature_file = open('../bin/preprocessed_data/pub/pub_feature.txt', "r").readlines()
-    for line in node_feature_file:
-        vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        node_feature.append(vector)
+    if dataset=='pub':
+        node_feature=read_feature_pub()
+    elif dataset=='cora':
+        node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
+        for line in node_feature_file:
+            vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
+            node_feature.append(vector)
+    elif dataset=='citeseer':
+        node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
+        for line in node_feature_file:
+            vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
+            node_feature.append(vector)
+
     g = DGLGraph()
     g.add_nodes(nodN)
     g.ndata[GNN_NODE_ATTS_KEY] = torch.from_numpy(np.array(node_feature))
@@ -40,9 +49,15 @@ def save_cora(out_folder):
 
     #edge
     edge_entropy=[]
-    #edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
-    edge_entropy_file = open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', "r").readlines()
-    #edge_entropy_file = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', "r").readlines()
+
+    if dataset == 'pub':
+        edge_entropy_file = open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', "r").readlines()
+    elif dataset == 'cora':
+        edge_entropy_file = open('../bin/preprocessed_data/cora/edge_entropy.txt', "r").readlines()
+    elif dataset == 'citeseer':
+        edge_entropy_file = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt',
+                                 "r").readlines()
+
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
         sum=0
@@ -56,8 +71,16 @@ def save_cora(out_folder):
 
     edge_feature_all = edge_entropy.numpy()
     edge_feature=[]
-    adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
-    #adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
+    adj=[]
+    N=nodN
+
+    if dataset == 'pub':
+        adj, N=read_adj_pub(nodN)
+    elif dataset == 'cora':
+        adj,N=read_adjMatrix_csv('../bin/preprocessed_data/cora/adj.csv')
+    elif dataset == 'citeseer':
+        adj, N = read_adjMatrix_txt('../bin/preprocessed_data/citeseer/citeseer/citeseer_adj.txt')
+
     for i in range(N):
         for j in range(N):
             if adj[i][j] > 0:
@@ -90,3 +113,12 @@ def load_data(folder):
 
     return data
 
+
+def read_label(node_label_file):
+    labels=[]
+    for line in node_label_file:
+         labels.append(int(line))
+    nodN = len(labels)
+    label_num=max(labels)-min(labels)+1
+    labels=torch.from_numpy(np.array(labels))
+    return labels,nodN,label_num

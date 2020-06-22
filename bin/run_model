@@ -71,7 +71,7 @@ def main(args):
         data = module.load_dortmund(args.data_path)
         data = to_cuda(data) if cuda else data
         mode = GRAPH_CLASSIFICATION
-    elif args.dataset == 'cora' or args.dataset == 'citeseer':
+    elif args.dataset == 'cora' or args.dataset == 'citeseer' or args.dataset == 'pub':
         data = load_data(args.data_path)
         data = to_cuda(data) if cuda else data
         mode = NODE_CLASSIFICATION
