@@ -26,7 +26,7 @@ def edgeEntropy(graph_entropy,countEdges,countmotifs):
                 column_number += 1
         line_number += 1
         print('正在计算边熵行数为： ', line_number)
-    with open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', 'w') as file:
+    with open('/new_disk_B/scy/pub/pub_edge_entropy.txt', 'w') as file:
         for i in range(Node):
             for j in range(Node):
                 for k in edge_entropy_matrix[i][j]:

@@ -12,7 +12,7 @@ import torch
 from dgl.data import register_data_args
 
 import numpy as np
-from pre_cora import load_cora
+from pre_data import load_data
 from core.app import App
 from core.models.constants import AIFB, MUTAG, MUTAGENICITY, PTC_FM, PTC_FR, PTC_MM, PTC_MR
 from core.models.constants import NODE_CLASSIFICATION, GRAPH_CLASSIFICATION
@@ -72,7 +72,7 @@ def main(args):
         data = to_cuda(data) if cuda else data
         mode = GRAPH_CLASSIFICATION
     elif args.dataset == 'cora' or args.dataset == 'citeseer':
-        data = load_cora(args.data_path)
+        data = load_data(args.data_path)
         data = to_cuda(data) if cuda else data
         mode = NODE_CLASSIFICATION
     else:

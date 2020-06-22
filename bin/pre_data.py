@@ -28,7 +28,8 @@ def save_cora(out_folder):
     #node
     node_feature = []
     #node_feature_file = open('../bin/preprocessed_data/cora/node_feature.txt', "r").readlines()
-    node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
+    #node_feature_file = open('../bin/preprocessed_data/citeseer/citeseer/node_features.txt', "r").readlines()
+    node_feature_file = open('../bin/preprocessed_data/pub/pub_feature.txt', "r").readlines()
     for line in node_feature_file:
         vector = [float(x) for x in line.strip('\n').strip(',').split(",")]
         node_feature.append(vector)
@@ -40,7 +41,8 @@ def save_cora(out_folder):
     #edge
     edge_entropy=[]
     #edge_entropy_file=open('../bin/preprocessed_data/cora/edge_entropy.txt',"r").readlines()
-    edge_entropy_file = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', "r").readlines()
+    edge_entropy_file = open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', "r").readlines()
+    #edge_entropy_file = open('../bin/preprocessed_data/citeseer/citeseer/citeseer_edge_entropy.txt', "r").readlines()
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
         sum=0
@@ -66,21 +68,17 @@ def save_cora(out_folder):
     g.edata[GNN_EDGE_FEAT_KEY] = torch.from_numpy(np.array(edge_feature))
     print('g.edata[GNN_EDGE_FEAT_KEY]',g.edata[GNN_EDGE_FEAT_KEY].size())
 
-
     #save
     if  not os.path.exists(out_folder):
         os.makedirs(out_folder)
     save_pickle(g, complete_path(out_folder, GRAPH))
     save_pickle(label_num, complete_path(out_folder, N_CLASSES))
     torch.save(labels, complete_path(out_folder, LABELS))
-    # torch.save(train_mask, complete_path(out_folder, TRAIN_MASK))
-    # torch.save(test_mask, complete_path(out_folder, TEST_MASK))
-    # torch.save(val_mask, complete_path(out_folder, VAL_MASK))
 
-def load_cora(folder):
+
+def load_data(folder):
     data = {
         GRAPH: load_pickle(complete_path(folder, GRAPH)),
-        #N_RELS: load_pickle(complete_path(folder, N_RELS)),
         N_CLASSES: load_pickle(complete_path(folder, N_CLASSES))
     }
 

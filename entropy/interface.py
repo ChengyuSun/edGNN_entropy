@@ -38,7 +38,7 @@ def read_txt():
 def _entropy():
     nodN,labels=read_label()
     count_edge=[]
-    count_edge_file= open('../bin/preprocessed_data/pub/pub_count_edge.txt', "r").readlines()
+    count_edge_file= open('/new_disk_B/scy/pub/pub_count_edge.txt', "r").readlines()
     for line in count_edge_file:
         vector = [str(x) for x in line.strip('\n').strip(',').split(",")]
         count_edge.append(vector)
