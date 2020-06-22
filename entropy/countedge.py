@@ -217,11 +217,11 @@ def countEdge(A,nodN):
     Nm_7 = count_chain(A, nodN, 5, 7,edge_adj)
     Nm_8 = count_star(A,nodN,4,8,edge_adj)
     count_motifs=[Nm_1,Nm_2,Nm_3,Nm_4,Nm_5,Nm_6,Nm_7,Nm_8]
-    # with open('../bin/preprocessed_data/pub/pub_count_edge.txt', 'w') as file:
-    #     for line in edge_adj:
-    #         for item in line:
-    #             file.write(item+',')
-    #         file.write('\n')
+    with open('/new_disk_B/scy/pub/pub_count_edge.txt', 'w') as file:
+        for line in edge_adj:
+            for item in line:
+                file.write(item+',')
+            file.write('\n')
     return edge_adj,count_motifs
 
 

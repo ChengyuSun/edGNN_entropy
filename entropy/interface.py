@@ -8,7 +8,7 @@ from entropy.CountMotif_nr import countMotifs
 from entropy.Entropy import graphEntropy
 from entropy.countedge import countEdge
 from entropy.edge_entropy import edgeEntropy
-from bin.pre_pub import read_label
+from bin.pre_pub import read_adj_pub, read_label_pub
 
 
 def writeEdgeEntropy(graphfile):
@@ -36,13 +36,10 @@ def read_txt():
 
 
 def _entropy():
-    nodN,labels=read_label()
-    count_edge=[]
-    count_edge_file= open('/new_disk_B/scy/pub/pub_count_edge.txt', "r").readlines()
-    for line in count_edge_file:
-        vector = [str(x) for x in line.strip('\n').strip(',').split(",")]
-        count_edge.append(vector)
-    count_motif=[3643, 2726, 12520, 1148, 2015, 54312, 896, 1776]
+    nodN,labels=read_label_pub()
+    adj,_=read_adj_pub(nodN)
+    count_edge, count_motif = countEdge(adj, nodN)
+    print('count_motif:', count_motif)
     graph_entropy = graphEntropy(count_motif, nodN)
     print('graph_entropy:', graph_entropy)
     edge_entropy = edgeEntropy(graph_entropy, count_edge, count_motif)

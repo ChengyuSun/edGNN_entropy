@@ -9,7 +9,7 @@ def read_label_pub():
     for line in node_label_file:
         vector = [int(x) for x in line.strip('\n').split(" : ")]
         label_dir[vector[0]]=vector[1]
-    nodN = label_dir.__len__()
+    nodN = label_dir.__len__()-1
     for i in range(nodN):
         labels.append(label_dir[i])
     label_num = max(labels) - min(labels) + 1
@@ -19,12 +19,12 @@ def read_label_pub():
 def read_adj_pub(nodN):
     adj=np.zeros((nodN,nodN),int)
     adj_file = open('/new_disk_B/scy/pub/pub_adj.txt', "r").readlines()
-    counter=0
     for line in adj_file:
         vector = [int(x) for x in line.strip('\n').split(" ")]
+        if vector[0]==19717:
+            continue
         adj[vector[0]][vector[1]]=1
         adj[vector[1]][vector[0]] = 1
-        counter+=1
     for i in range(nodN):
         if adj[i][i]==1:
             adj[i][i]=0
