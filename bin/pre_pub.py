@@ -36,9 +36,9 @@ def read_feature():
         if line=='\n':
             continue
         vector = [float(x) for x in line.strip('\n').strip(' ').split(" ")]
+        if len(vector)!=500:
+            print(len(vector))
         features.append(vector)
-    print(len(features))
-    print(len(features[0]))
     return features
 
 read_feature()
