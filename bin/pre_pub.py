@@ -35,7 +35,7 @@ def read_feature():
     for line in feature_file:
         if line=='\n':
             continue
-        vector = [float(x) for x in line.strip('\n').split(" ")]
+        vector = [float(x) for x in line.strip('\n').strip(' ').split(" ")]
         features.append(vector)
     return features
 
