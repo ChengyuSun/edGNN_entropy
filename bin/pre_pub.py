@@ -30,7 +30,7 @@ def read_adj(nodN):
     return adj,nodN
 
 def read_feature():
-    feature_file = open('/new_disk_B/pub/pub_feature.txt', "r").readlines()
+    feature_file = open('/new_disk_B/scy/pub/pub_feature.txt', "r").readlines()
     features=[]
     for line in feature_file:
         if line=='\n':
