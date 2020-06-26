@@ -1,5 +1,9 @@
+import sys
+
 import numpy as np
 import torch
+
+sys.path.append('../')
 
 from core.data.utils import complete_path
 
