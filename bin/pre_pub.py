@@ -1,6 +1,8 @@
 import numpy as np
 import torch
 
+from core.data.utils import complete_path
+
 
 def read_label_pub():
     label_dir=dict()
@@ -11,10 +13,13 @@ def read_label_pub():
         label_dir[vector[0]]=vector[1]
     nodN = label_dir.__len__()-1
     for i in range(nodN):
-        labels.append(label_dir[i])
+        labels.append(label_dir[i]-1)
     label_num = max(labels) - min(labels) + 1
     labels = torch.from_numpy(np.array(labels))
     return  labels,nodN,label_num
+
+labels,_,_=read_label_pub()
+torch.save(labels, complete_path('/new_disk_B/scy/pub_entropy1', 'labels'))
 
 def read_adj_pub(nodN):
     adj=np.zeros((nodN,nodN),int)
