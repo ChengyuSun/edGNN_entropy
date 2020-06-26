@@ -51,7 +51,7 @@ def save_data(out_folder,dataset):
     edge_entropy=[]
 
     if dataset == 'pub':
-        edge_entropy_file = open('../bin/preprocessed_data/pub/pub_edge_entropy.txt', "r").readlines()
+        edge_entropy_file = open('./new_disk_B/scy/pub/pub_edge_entropy.txt', "r").readlines()
     elif dataset == 'cora':
         edge_entropy_file = open('../bin/preprocessed_data/cora/edge_entropy.txt', "r").readlines()
     elif dataset == 'citeseer':

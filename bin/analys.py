@@ -108,10 +108,9 @@ def count_perssad_6_ring(adj,node_labels,nodN):
     temp_adj=copy.copy(adj)
     motif_count=0
     for i in range(nodN):
-        if node_labels[i]!=0:#not red node
+        if node_labels[i]!=0 or red_degree(temp_adj, node_labels, i) < 2:
             temp_adj[i].fill(0)
             temp_adj[:,i].fill(0)
-
 
 
 
