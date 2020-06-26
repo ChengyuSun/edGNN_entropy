@@ -203,6 +203,6 @@ class App:
 
         print("\nTest Accuracy {:.4f}".format(acc))
 
-        with open('./cora_attention_acc.txt', 'a+') as f:
+        with open('./acc.txt', 'a+') as f:
             f.write(str(acc) + '\n')
         return acc
