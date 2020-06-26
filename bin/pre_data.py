@@ -60,13 +60,13 @@ def save_data(out_folder,dataset):
 
     for line in edge_entropy_file:
         vector2 = [float(x) for x in line.strip('\n').strip(',').split(",")]
-        sum=0
-        for item in vector2:
-            sum+=item
-        edge_entropy.append(sum)
-        #edge_entropy.append(vector2)
+        # sum=0
+        # for item in vector2:
+        #     sum+=item
+        # edge_entropy.append(sum)
+        edge_entropy.append(vector2)
 
-    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,1)
+    edge_entropy=torch.from_numpy(np.array(edge_entropy)).view(nodN*nodN,8)
     print('edge_entropy:',edge_entropy.size())
 
     edge_feature_all = edge_entropy.numpy()
