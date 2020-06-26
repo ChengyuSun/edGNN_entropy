@@ -1,6 +1,6 @@
 {
     "layer_type": "edGNNLayer",
-    "node_dim": 19717,
+    "node_dim": 500,
     "edge_dim": 1,
     "layer_params": {
         "n_units": 64,
