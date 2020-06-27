@@ -1,4 +1,4 @@
-acc_file = open('./acc.txt', "r").readlines()
+acc_file = open('./acc2.txt', "r").readlines()
 accs=[]
 for i in acc_file:
     accs.append(float(i))

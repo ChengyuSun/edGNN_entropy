@@ -4,10 +4,8 @@ cora no enropy
 cora entropy 1
 0.8714±0.0248
 
-
 cora entropy 8
 0.8807±0.03777
-
 
 citeseer no entropy
 0.76797±0.02960
@@ -17,3 +15,8 @@ citeseer-entropy-8
 
 citeseer entropy 1
 0.7688±0.0256
+
+pub entropy 1
+0.88264±0.0097
+
+pub no entropy
