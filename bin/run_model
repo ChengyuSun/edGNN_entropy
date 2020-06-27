@@ -115,7 +115,7 @@ if __name__ == '__main__':
     parser.add_argument("--weight-decay", type=float, default=5e-4,
                         help="Weight for L2 loss")
     parser.add_argument("--batch-size", type=int, default=16, help="batch size (only for graph classification)")
-    parser.add_argument("--dataset", type=str, required=True, help="dataset name")
+    #parser.add_argument("--dataset", type=str, required=True, help="dataset name")
     args = parser.parse_args()
 
     main(args)
